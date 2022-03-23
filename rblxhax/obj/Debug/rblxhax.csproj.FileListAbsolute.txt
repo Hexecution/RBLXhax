@@ -1,0 +1,11 @@
+C:\Users\lucas\source\repos\rblxhax\rblxhax\obj\Debug\rblxhax.csprojAssemblyReference.cache
+C:\Users\lucas\source\repos\rblxhax\rblxhax\obj\Debug\rblxhax.Form1.resources
+C:\Users\lucas\source\repos\rblxhax\rblxhax\obj\Debug\rblxhax.Properties.Resources.resources
+C:\Users\lucas\source\repos\rblxhax\rblxhax\obj\Debug\rblxhax.csproj.GenerateResource.cache
+C:\Users\lucas\source\repos\rblxhax\rblxhax\obj\Debug\rblxhax.csproj.CoreCompileInputs.cache
+C:\Users\lucas\source\repos\rblxhax\rblxhax\obj\Debug\rblxhax.csproj.CopyComplete
+C:\Users\lucas\source\repos\rblxhax\rblxhax.exe.config
+C:\Users\lucas\source\repos\rblxhax\rblxhax\obj\Debug\rblxhax.exe
+C:\Users\lucas\source\repos\rblxhax\rblxhax\obj\Debug\rblxhax.pdb
+C:\Users\lucas\source\repos\rblxhax\rblxhax.exe
+C:\Users\lucas\source\repos\rblxhax\rblxhax.pdb
