@@ -1,0 +1,147 @@
+-- Objects
+
+local GUISurvival = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local AFKWins = Instance.new("TextButton")
+local Notice = Instance.new("TextLabel")
+local TPMap = Instance.new("TextButton")
+local TPLobby = Instance.new("TextButton")
+local Title = Instance.new("TextLabel")
+local Creds = Instance.new("TextLabel")
+local Crazy = Instance.new("TextButton")
+local SAWNIC = Instance.new("TextButton")
+
+-- Properties
+
+GUISurvival.Name = "GUISurvival"
+GUISurvival.ResetOnSpawn = false
+GUISurvival.Parent = game.Players.LocalPlayer.PlayerGui
+
+Main.Name = "Main"
+Main.Parent = GUISurvival
+Main.BackgroundColor3 = Color3.new(1, 1, 1)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0, 0, 0.5, -192)
+Main.Size = UDim2.new(0, 420, 0, 384)
+
+AFKWins.Name = "AFKWins"
+AFKWins.Parent = Main
+AFKWins.BackgroundColor3 = Color3.new(0.294118, 0.729412, 1)
+AFKWins.BorderSizePixel = 0
+AFKWins.Position = UDim2.new(0.042857144, 0, 0.802083313, 0)
+AFKWins.Size = UDim2.new(0, 383, 0, 40)
+AFKWins.Font = Enum.Font.SourceSansLight
+AFKWins.Text = "AFK Farm Wins"
+AFKWins.TextColor3 = Color3.new(1, 1, 1)
+AFKWins.TextSize = 14
+
+Notice.Name = "Notice"
+Notice.Parent = Main
+Notice.BackgroundColor3 = Color3.new(0.294118, 0.729412, 1)
+Notice.BackgroundTransparency = 1
+Notice.BorderSizePixel = 0
+Notice.Position = UDim2.new(0.0452380963, 0, 0.90625, 0)
+Notice.Size = UDim2.new(0, 383, 0, 25)
+Notice.Font = Enum.Font.SourceSansLight
+Notice.Text = "Once enabled, you can't disable this"
+Notice.TextColor3 = Color3.new(0, 0, 0)
+Notice.TextSize = 14
+
+TPMap.Name = "TPMap"
+TPMap.Parent = Main
+TPMap.BackgroundColor3 = Color3.new(0.294118, 0.729412, 1)
+TPMap.BorderSizePixel = 0
+TPMap.Position = UDim2.new(0.0452380963, 0, 0.658854187, 0)
+TPMap.Size = UDim2.new(0, 383, 0, 40)
+TPMap.Font = Enum.Font.SourceSansLight
+TPMap.Text = "Teleport to Map"
+TPMap.TextColor3 = Color3.new(1, 1, 1)
+TPMap.TextSize = 14
+
+TPLobby.Name = "TPLobby"
+TPLobby.Parent = Main
+TPLobby.BackgroundColor3 = Color3.new(0.294118, 0.729412, 1)
+TPLobby.BorderSizePixel = 0
+TPLobby.Position = UDim2.new(0.0452380963, 0, 0.51171881, 0)
+TPLobby.Size = UDim2.new(0, 383, 0, 40)
+TPLobby.Font = Enum.Font.SourceSansLight
+TPLobby.Text = "Teleport to Lobby"
+TPLobby.TextColor3 = Color3.new(1, 1, 1)
+TPLobby.TextSize = 14
+
+Title.Name = "Title"
+Title.Parent = Main
+Title.BackgroundColor3 = Color3.new(1, 1, 1)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.0452380963, 0, 0.0442708321, 0)
+Title.Size = UDim2.new(0, 383, 0, 49)
+Title.Font = Enum.Font.SourceSansLight
+Title.Text = "Hoofer's Natrual Disaster Survival GUI"
+Title.TextScaled = true
+Title.TextSize = 14
+Title.TextWrapped = true
+
+Creds.Name = "Creds"
+Creds.Parent = Main
+Creds.BackgroundColor3 = Color3.new(1, 1, 1)
+Creds.BorderSizePixel = 0
+Creds.Position = UDim2.new(0.0452380963, 0, 0.171875, 0)
+Creds.Size = UDim2.new(0, 383, 0, 16)
+Creds.Font = Enum.Font.SourceSansLight
+Creds.Text = "Idea by: Justindhd#1693 | GUI and Scripting by: Hoofer"
+Creds.TextScaled = true
+Creds.TextSize = 12
+Creds.TextWrapped = true
+
+Crazy.Name = "Crazy"
+Crazy.Parent = Main
+Crazy.BackgroundColor3 = Color3.new(0.294118, 0.729412, 1)
+Crazy.BorderSizePixel = 0
+Crazy.Position = UDim2.new(0.0440476201, 0, 0.364583313, 0)
+Crazy.Size = UDim2.new(0, 383, 0, 40)
+Crazy.Font = Enum.Font.SourceSansLight
+Crazy.Text = "Make your character go Balloon Crazy"
+Crazy.TextColor3 = Color3.new(1, 1, 1)
+Crazy.TextSize = 14
+
+SAWNIC.Name = "SAWNIC"
+SAWNIC.Parent = Main
+SAWNIC.BackgroundColor3 = Color3.new(0.294118, 0.729412, 1)
+SAWNIC.BorderSizePixel = 0
+SAWNIC.Position = UDim2.new(0.042857144, 0, 0.229166642, 0)
+SAWNIC.Size = UDim2.new(0, 383, 0, 40)
+SAWNIC.Font = Enum.Font.SourceSansLight
+SAWNIC.Text = "Super Sonic Speed"
+SAWNIC.TextColor3 = Color3.new(1, 1, 1)
+SAWNIC.TextSize = 14
+
+Crazy.MouseButton1Click:connect(function()
+while wait(1) do
+   AnimationId = "569145055"
+   local Anim = Instance.new("Animation")
+   Anim.AnimationId = "rbxassetid://"..AnimationId
+   local k = game.Players.LocalPlayer.Character.Humanoid:LoadAnimation(Anim)
+   k:Play() --Play the animation
+   k:AdjustSpeed(5)
+end
+end)
+
+SAWNIC.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 75
+end)
+
+AFKWins.MouseButton1Click:connect(function()
+while true do
+wait(5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-290, 178, 379)
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end
+end)
+
+TPMap.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(106, 46, 3)
+end)
+
+TPLobby.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-290, 178, 379)
+end)

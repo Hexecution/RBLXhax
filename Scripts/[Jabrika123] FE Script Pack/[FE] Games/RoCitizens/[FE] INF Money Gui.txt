@@ -1,0 +1,78 @@
+-- Objects
+
+local gui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local top = Instance.new("Frame")
+local title = Instance.new("TextLabel")
+local discord = Instance.new("TextLabel")
+local gimmemoney = Instance.new("TextButton")
+local invitecode = Instance.new("TextLabel")
+
+-- Properties
+
+gui.Name = "gui"
+gui.Parent = game.StarterGui
+
+main.Name = "main"
+main.Parent = gui
+main.BackgroundColor3 = Color3.new(0.333333, 0.333333, 1)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.0179076344, 0, 0.612052739, 0)
+main.Size = UDim2.new(0, 259, 0, 191)
+main.Active = true
+main.Draggable = true
+
+top.Name = "top"
+top.Parent = main
+top.BackgroundColor3 = Color3.new(1, 1, 1)
+top.Size = UDim2.new(0, 259, 0, 62)
+
+title.Name = "title"
+title.Parent = top
+title.BackgroundColor3 = Color3.new(1, 1, 1)
+title.BackgroundTransparency = 1
+title.BorderSizePixel = 0
+title.Position = UDim2.new(0.111969098, 0, 0.0928897262, 0)
+title.Size = UDim2.new(0, 200, 0, 50)
+title.Font = Enum.Font.Highway
+title.Text = "RoCitizens Money GUI"
+title.TextSize = 30
+
+discord.Name = "discord"
+discord.Parent = top
+discord.BackgroundColor3 = Color3.new(1, 1, 1)
+discord.BackgroundTransparency = 1
+discord.BorderSizePixel = 0
+discord.Position = UDim2.new(0.474903464, 0, 0.483870953, 0)
+discord.Size = UDim2.new(0, 200, 0, 50)
+discord.Font = Enum.Font.SourceSans
+discord.Text = "Jimbo#9089"
+discord.TextSize = 14
+
+gimmemoney.Name = "gimmemoney"
+gimmemoney.Parent = main
+gimmemoney.BackgroundColor3 = Color3.new(1, 1, 1)
+gimmemoney.BorderSizePixel = 0
+gimmemoney.Position = UDim2.new(0.111969113, 0, 0.502617776, 0)
+gimmemoney.Size = UDim2.new(0, 200, 0, 50)
+gimmemoney.Font = Enum.Font.SourceSans
+gimmemoney.Text = "Gimme Money"
+gimmemoney.TextSize = 40
+
+invitecode.Name = "invitecode"
+invitecode.Parent = main
+invitecode.BackgroundColor3 = Color3.new(1, 1, 1)
+invitecode.BackgroundTransparency = 1
+invitecode.BorderSizePixel = 0
+invitecode.Position = UDim2.new(0, 0, 0.324607313, 0)
+invitecode.Size = UDim2.new(0, 259, 0, 27)
+invitecode.Font = Enum.Font.SourceSans
+invitecode.Text = "https://discordapp.com/invite/CbNtdRJ"
+invitecode.TextColor3 = Color3.new(1, 1, 1)
+invitecode.TextScaled = true
+invitecode.TextSize = 18
+invitecode.TextWrapped = true
+
+gimmemoney.MouseButton1Click:Connect(function()
+game.Players.LocalPlayer.ChangeMoney:Fire(200000000)
+end)

@@ -1,0 +1,9 @@
+                                                                                                         local Nix = game:GetService'Players'.LocalPlayer;local Is = "Character";local Kinda = "Head";local Decent = "BillboardGui" --[[
+ _  _   _            ___           __      
+| \| | (_) __ __    / __|  __ _   / _|  ___
+| .` | | | \ \ /   | (__  / _` | |  _| / -_)
+|_|\_| |_| /_\_\    \___| \__,_| |_|   \___|
+FE No Name - Working as of 5/18/2018
+                                                                                                          ]]
+
+Nix[Is][Kinda][Decent]                                                                      :ClearAllChildren()

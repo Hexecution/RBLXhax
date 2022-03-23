@@ -1,0 +1,36 @@
+local player=game:GetService'Players'.LocalPlayer
+
+local function createTorsoRayCast(RandomPos)
+
+    if RandomPos == nil then
+
+        local hit, position = workspace:FindPartOnRayWithIgnoreList(Ray.new(player.Character.HumanoidRootPart.Position + player.Character.HumanoidRootPart.CFrame.lookVector * 4, Vector3.new(0, -999, 0)), {}, true)
+
+        if hit then
+
+            return position
+
+        else
+
+            return nil
+
+        end
+
+    else
+
+        local hit, position = workspace:FindPartOnRayWithIgnoreList(Ray.new(player.Character.HumanoidRootPart.Position + Vector3.new(math.random(-3, 3), 0, math.random(-3, 3)), Vector3.new(0, -999, 0)), {}, true)
+
+        if hit then
+
+            return position
+
+        else
+
+            return nil
+
+        end
+
+    end
+
+end
+game.ReplicatedStorage.DropItem:FireServer({'Item Name','Pristine'}, createTorsoRayCast(),workspace.conf.Value)

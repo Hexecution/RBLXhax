@@ -1,0 +1,3 @@
+local building = "5 Star Restaurant" -- You need to have enough money to buy but it won't take the money.
+local num = 39 -- just keep changing it from 20-50 until u find the pattern
+game.ReplicatedStorage.Events.PlaceBuilding:InvokeServer(building, num)

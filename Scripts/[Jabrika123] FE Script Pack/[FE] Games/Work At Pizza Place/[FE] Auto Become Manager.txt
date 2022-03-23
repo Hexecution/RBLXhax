@@ -1,0 +1,3 @@
+game.Teams.Manager.PlayerRemoved:connect(function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(workspace.ManagerChair.Seat.Position)
+end)

@@ -1,0 +1,131 @@
+-- Objects
+
+local gui = Instance.new("ScreenGui")
+local frame = Instance.new("Frame")
+local color = Instance.new("Frame")
+local title = Instance.new("TextLabel")
+local credits = Instance.new("TextLabel")
+local createtp = Instance.new("TextButton")
+local speed = Instance.new("TextButton")
+local credits_2 = Instance.new("TextLabel")
+
+-- Properties
+
+gui.Name = "gui"
+gui.Parent = game.CoreGui
+
+frame.Name = "frame"
+frame.Parent = gui
+frame.BackgroundColor3 = Color3.new(1, 0.666667, 1)
+frame.BorderSizePixel = 0
+frame.Position = UDim2.new(0.0113207549, 0, 0.355932206, 0)
+frame.Size = UDim2.new(0, 271, 0, 203)
+frame.Active = true
+
+color.Name = "color"
+color.Parent = frame
+color.BackgroundColor3 = Color3.new(1, 1, 1)
+color.BorderSizePixel = 0
+color.Size = UDim2.new(0, 271, 0, 68)
+
+title.Name = "title"
+title.Parent = color
+title.BackgroundColor3 = Color3.new(1, 1, 1)
+title.BackgroundTransparency = 1
+title.BorderSizePixel = 0
+title.Position = UDim2.new(0.1291513, 0, 0, 0)
+title.Size = UDim2.new(0, 200, 0, 50)
+title.Font = Enum.Font.Highway
+title.Text = "Vehicle simulator GUI"
+title.TextSize = 30
+
+credits.Name = "credits"
+credits.Parent = color
+credits.BackgroundColor3 = Color3.new(1, 1, 1)
+credits.BackgroundTransparency = 1
+credits.BorderSizePixel = 0
+credits.Position = UDim2.new(0.416974187, 0, 0.5, 0)
+credits.Size = UDim2.new(0, 200, 0, 50)
+credits.Font = Enum.Font.Highway
+credits.Text = "Jimbo#9089"
+credits.TextSize = 20
+
+createtp.Name = "createtp"
+createtp.Parent = frame
+createtp.BackgroundColor3 = Color3.new(1, 1, 1)
+createtp.BorderSizePixel = 0
+createtp.Position = UDim2.new(0.0258302614, 0, 0.413793087, 0)
+createtp.Size = UDim2.new(0, 114, 0, 67)
+createtp.Font = Enum.Font.SourceSans
+createtp.Text = "Crate TP"
+createtp.TextSize = 30
+
+speed.Name = "speed"
+speed.Parent = frame
+speed.BackgroundColor3 = Color3.new(1, 1, 1)
+speed.BorderSizePixel = 0
+speed.Position = UDim2.new(0.55350554, 0, 0.413793087, 0)
+speed.Size = UDim2.new(0, 114, 0, 67)
+speed.Font = Enum.Font.SourceSans
+speed.Text = "Speed"
+speed.TextSize = 30
+
+credits_2.Name = "credits"
+credits_2.Parent = frame
+credits_2.BackgroundColor3 = Color3.new(1, 1, 1)
+credits_2.BackgroundTransparency = 1
+credits_2.BorderSizePixel = 0
+credits_2.Position = UDim2.new(0.127306283, 0, 0.820197046, 0)
+credits_2.Size = UDim2.new(0, 200, 0, 50)
+credits_2.Font = Enum.Font.Highway
+credits_2.Text = "As suggested by Demon#5038\n"
+credits_2.TextColor3 = Color3.new(1, 1, 1)
+credits_2.TextSize = 20
+
+createtp.MouseButton1Down:connect(function()
+print("Crate Script created by Demon#5038")
+
+local plr = game.Players.LocalPlayer
+   
+hum = plr.Character.HumanoidRootPart
+local descendants = game.Workspace:GetDescendants()
+
+
+for index, descendant in pairs(descendants) do
+if descendant:IsA("Model") and descendant.DataCost == 52 then
+print(descendant)
+if descendant.PrimaryPart:IsA("MeshPart") then
+print(descendant.Parent.Parent.Name)
+descendant.Name = "Lukki02RCrateScript"
+end
+end
+end
+
+wait(0.5)
+
+hum.CFrame = game.Workspace.Lukki02RCrateScript.PrimaryPart.CFrame + Vector3.new(math.random(10,15), math.random(10,15), math.random(10,15))
+end)
+
+speed.MouseButton1Down:connect(function()
+veh = nil
+for i,v in pairs(game.Workspace.Vehicles:GetChildren()) do
+if v:IsA("Model") then
+if v.owner.Value == game.Players.LocalPlayer.Name then
+veh = v
+end
+end
+end
+
+if veh then
+han = veh.Handling
+han.MaxSpeed.Value = 800
+han.Torque.Value = 30000
+han.SteeringRadiusConstant.Value = 3000
+han.FrictionRoad.Value = 200
+han.Gears.Value = 7
+han.Nitro.NitroSpeed.Value = 500
+han.Nitro.NitroForce.Value = 8000
+else
+print("Unable to find your vehicle!")
+end
+end)

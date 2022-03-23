@@ -1,0 +1,16 @@
+--made by Bloxy
+--edited by Pristh
+
+local b = 1
+while b < 10 do
+
+for i = 1,500 do
+game.ReplicatedStorage.AvatarEditor.HatHandle:FireServer("169448080")
+for i,hats in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+if hats:IsA'Hat' or hats:IsA'Accessory' then
+wait()
+hats.Parent = workspace
+end
+end
+end
+end

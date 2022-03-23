@@ -1,0 +1,3 @@
+local A_1 = 0
+local Event = game:GetService("Lighting").BailEvent
+Event:FireServer(A_1)

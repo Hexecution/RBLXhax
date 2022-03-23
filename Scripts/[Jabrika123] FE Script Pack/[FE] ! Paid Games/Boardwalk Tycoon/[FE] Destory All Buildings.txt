@@ -1,0 +1,13 @@
+function destroy(a)
+game.ReplicatedStorage.Events.DeleteBuilding:FireServer(a)
+end
+
+function plrs(a)
+for i,v in pairs(a.Holder:GetChildren())do
+destroy(v)
+end
+end
+
+for i,v in pairs(game.Workspace.Tycoons:GetChildren())do
+plrs(v)
+end

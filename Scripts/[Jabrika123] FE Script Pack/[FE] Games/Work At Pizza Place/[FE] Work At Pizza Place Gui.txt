@@ -1,0 +1,226 @@
+ovenst = false
+plr = game.Players.LocalPlayer
+rain = false
+mana = false
+bell = false
+ra = false
+jobs = false
+
+a = {21,1020,1009,1015,1019,1016,1006,1014,1008,106,119,1003}
+j = {"Cashier", "Cook", "Pizza Boxer", "Delivery", "Supplier", "On Break"}
+
+-- Objects
+
+local gui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local color = Instance.new("Frame")
+local title = Instance.new("TextLabel")
+local credits = Instance.new("TextLabel")
+local spamovens = Instance.new("TextButton")
+local automanager = Instance.new("TextButton")
+local spambells = Instance.new("TextButton")
+local spamovens_2 = Instance.new("TextButton")
+local spamjobs = Instance.new("TextButton")
+local invite = Instance.new("TextLabel")
+
+-- Properties
+
+gui.Name = "gui"
+gui.Parent = game.CoreGui
+
+main.Name = "main"
+main.Parent = gui
+main.Active = true
+main.BackgroundColor3 = Color3.new(1, 0.666667, 1)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.0207351558, 0, 0.249529183, 0)
+main.Size = UDim2.new(0, 340, 0, 266)
+
+color.Name = "color"
+color.Parent = main
+color.BackgroundColor3 = Color3.new(1, 1, 1)
+color.BorderSizePixel = 0
+color.Size = UDim2.new(0, 340, 0, 72)
+
+title.Name = "title"
+title.Parent = color
+title.BackgroundColor3 = Color3.new(1, 1, 1)
+title.BackgroundTransparency = 1
+title.BorderSizePixel = 0
+title.Position = UDim2.new(-0.0970588326, 0, 0, 0)
+title.Size = UDim2.new(0, 406, 0, 50)
+title.Font = Enum.Font.Highway
+title.Text = "Work at a pizza place GUI"
+title.TextSize = 35
+title.TextWrapped = true
+
+credits.Name = "credits"
+credits.Parent = color
+credits.BackgroundColor3 = Color3.new(1, 1, 1)
+credits.BackgroundTransparency = 1
+credits.BorderSizePixel = 0
+credits.Position = UDim2.new(0.547058761, 0, 0.49999997, 0)
+credits.Size = UDim2.new(0, 200, 0, 50)
+credits.Font = Enum.Font.Highway
+credits.Text = "Jimbo#9089"
+credits.TextColor3 = Color3.new(1, 0.666667, 1)
+credits.TextSize = 20
+
+spamovens.Name = "spamovens"
+spamovens.Parent = main
+spamovens.BackgroundColor3 = Color3.new(1, 1, 1)
+spamovens.BorderSizePixel = 0
+spamovens.Position = UDim2.new(1.86264515e-09, 0, 0.323308259, 0)
+spamovens.Size = UDim2.new(0, 103, 0, 67)
+spamovens.Font = Enum.Font.Highway
+spamovens.Text = "Spam Ovens"
+spamovens.TextSize = 20
+
+automanager.Name = "automanager"
+automanager.Parent = main
+automanager.BackgroundColor3 = Color3.new(1, 1, 1)
+automanager.BorderSizePixel = 0
+automanager.Position = UDim2.new(0.348529398, 0, 0.323308259, 0)
+automanager.Size = UDim2.new(0, 103, 0, 67)
+automanager.Font = Enum.Font.Highway
+automanager.Text = "Auto Manager"
+automanager.TextSize = 20
+
+spambells.Name = "spambells"
+spambells.Parent = main
+spambells.BackgroundColor3 = Color3.new(1, 1, 1)
+spambells.BorderSizePixel = 0
+spambells.Position = UDim2.new(0.695588231, 0, 0.323308259, 0)
+spambells.Size = UDim2.new(0, 103, 0, 67)
+spambells.Font = Enum.Font.Highway
+spambells.Text = "Spam bells"
+spambells.TextSize = 20
+
+spamovens_2.Name = "spamovens"
+spamovens_2.Parent = main
+spamovens_2.BackgroundColor3 = Color3.new(1, 1, 1)
+spamovens_2.BorderSizePixel = 0
+spamovens_2.Position = UDim2.new(1.86264515e-09, 0, 0.624060154, 0)
+spamovens_2.Size = UDim2.new(0, 103, 0, 67)
+spamovens_2.Font = Enum.Font.Highway
+spamovens_2.Text = "Spam Ovens"
+spamovens_2.TextSize = 20
+
+spamjobs.Name = "spam jobs"
+spamjobs.Parent = main
+spamjobs.BackgroundColor3 = Color3.new(1, 1, 1)
+spamjobs.BorderSizePixel = 0
+spamjobs.Position = UDim2.new(0.348529398, 0, 0.624060154, 0)
+spamjobs.Size = UDim2.new(0, 103, 0, 67)
+spamjobs.Font = Enum.Font.Highway
+spamjobs.Text = "Spam Jobs"
+spamjobs.TextSize = 20
+
+invite.Name = "invite"
+invite.Parent = gui
+invite.BackgroundColor3 = Color3.new(1, 1, 1)
+invite.BackgroundTransparency = 1
+invite.BorderSizePixel = 0
+invite.Position = UDim2.new(0.0207351558, 0, 0.672316432, 0)
+invite.Size = UDim2.new(0, 336, 0, 50)
+invite.Font = Enum.Font.Highway
+invite.Text = "https://discordapp.com/invite/CbNtdRJ"
+invite.TextColor3 = Color3.new(1, 1, 1)
+invite.TextSize = 20
+invite.TextWrapped = true
+
+
+spamjobs.MouseButton1Down:connect(function()
+		if jobs == false then
+		jobs = true
+		jobs.BackgroundColor3 = Color3.fromRGB(0,255,0)
+		
+	else
+		jobs = false
+		jobs.BackgroundColor3 = Color3.fromRGB(255,0,0)
+	end
+end)
+
+spambells.MouseButton1Down:connect(function()
+		if bell == false then
+		bell = true
+		bell.BackgroundColor3 = Color3.fromRGB(0,255,0)
+		
+	else
+		bell = false
+		bell.BackgroundColor3 = Color3.fromRGB(255,0,0)
+	end
+end)
+
+automanager.MouseButton1Down:connect(function()
+		if mana == false then
+		mana = true
+		mana.BackgroundColor3 = Color3.fromRGB(0,255,0)
+	else
+		mana = false
+		mana.BackgroundColor3 = Color3.fromRGB(255,0,0)
+	end
+end)
+
+
+spamovens.MouseButton1Down:connect(function()
+		if ovenst == false then
+		ovenst = true
+		ovenst.BackgroundColor3 = Color3.fromRGB(0,255,0)
+	else
+		ovenst = false
+		ovenst.BackgroundColor3 = Color3.fromRGB(255,0,0)
+	end
+end)
+
+
+--thanks papa 
+
+while wait() do
+	if jobs == true then
+		local b = math.random(#j)
+
+        game.ReplicatedStorage.Channels.PlayerChannel:FireServer("ChangeJob", j[b])
+        wait()
+	end
+	if ra == true then
+		for _,v in pairs(workspace.Houses:GetChildren()) do
+             if v.Owner.Value == game.Players.LocalPlayer then
+                for _,i in pairs(v.Upgrades:GetChildren()) do
+                   bc = math.random(#a)
+                   game.ReplicatedStorage.Channels.HouseChannel:FireServer("PaintHouse", i.Wall, "None", a[bc])
+                   wait()
+                end
+            end
+        end
+	end
+	if bell == true then
+		 for _,v in pairs(workspace.Houses:GetChildren()) do
+              for _,i in pairs(v.Upgrades:GetChildren()) do
+                   i.Doors.FrontDoor.ClickDetector.Detector:FireServer()
+                   wait(.1)
+              end
+         end
+	end
+	if mana == true then
+		local a = game.Teams.Manager:GetPlayers()
+		if #a < 1 then
+			plr.Character:MoveTo(workspace.ManagerChair.Part.Position - Vector3.new(0,3,0))
+			wait(1)
+		end
+	end
+	if rain == true then
+		for _,v in pairs(workspace.Cars:GetChildren()) do
+           lo = math.random(#a)
+           game.ReplicatedStorage.Channels.VehicleChannel:FireServer("Paint", v.Paint, "None", a[lo])
+           wait()
+        end
+	end
+	if ovenst == true then
+		for _,v in pairs(workspace.Ovens:GetChildren()) do
+           if v:IsA("Model") then
+                v.Door.ClickDetector.Detector:FireServer()
+           end
+         end
+	end
+end

@@ -1,0 +1,7 @@
+local A_1 = game:GetService("Players").Tranht
+local A_2 = "Marketing"
+local A_3 = "Buy"
+local A_4 = "autosave"
+local A_5 = 90
+local Event = game:GetService("ReplicatedStorage").Functions.TycoonFunctions
+Event:InvokeServer(A_1, A_2, A_3, A_4, A_5)

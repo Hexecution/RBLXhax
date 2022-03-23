@@ -1,0 +1,16 @@
+local id = 607067978
+game:GetObjects('rbxassetid://'..id)[1].Parent=game.Players.LocalPlayer.PlayerGui
+-------------------------------------------------------------
+NDSui = game.Players.LocalPlayer.PlayerGui.NDSui
+-------------------------------------------------------------
+wait(1)
+NDSui.OpenButton.LocalScript.Disabled = false
+NDSui.OpenButton.mngr.Disabled = false
+wait(.1)
+NDSui.Panel.ClsBttn.LocalScript.Disabled = false
+NDSui.Panel.InfBtn.LocalScript.Disabled = false
+NDSui.Panel.RvlDis.LocalScript.Disabled = false
+NDSui.Panel.VoteSys.LocalScript.Disabled = false
+NDSui.Panel.Tele.LocalScript.Disabled = false
+NDSui.Panel.DisDSP.LocalScript.Disabled = false
+warn("NDS_ui Initialization Complete")

@@ -1,0 +1,3 @@
+workspace.Jewelrys.Jewelry.Lasers: Destroy()
+workspace.Jewelrys.Jewelry.Cameras: Destroy()
+workspace.Jewelrys.Jewelry.FloorLasers: Destroy()

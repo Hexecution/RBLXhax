@@ -1,0 +1,2053 @@
+function Introduction()
+-- Objects
+
+local Intro = Instance.new("ScreenGui")
+local Intro_2 = Instance.new("Frame")
+local Letter = Instance.new("Frame")
+local Frame = Instance.new("Frame")
+local Frame_2 = Instance.new("Frame")
+local Frame_3 = Instance.new("Frame")
+local Frame_4 = Instance.new("Frame")
+local Frame_5 = Instance.new("Frame")
+local Top = Instance.new("Frame")
+
+-- Properties
+
+Intro.Name = "Intro"
+Intro.Parent = game.Players.LocalPlayer.PlayerGui
+
+Intro_2.Name = "Intro"
+Intro_2.Parent = Intro
+Intro_2.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
+Intro_2.BorderColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
+Intro_2.BorderSizePixel = 0
+Intro_2.Size = UDim2.new(1, 0, 1, 0)
+
+Letter.Name = "Letter"
+Letter.Parent = Intro_2
+Letter.BackgroundColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
+Letter.BackgroundTransparency = 1
+Letter.BorderColor3 = Color3.new(0.0784314, 0.0784314, 0.0784314)
+Letter.BorderSizePixel = 0
+Letter.Position = UDim2.new(0.5, -100, 0.5, -100)
+Letter.Size = UDim2.new(0, 200, 0, 200)
+
+Frame.Parent = Letter
+Frame.BackgroundColor3 = Color3.new(0, 1, 1)
+Frame.BorderSizePixel = 0
+Frame.Size = UDim2.new(0, 200, 0, 40)
+
+Frame_2.Parent = Letter
+Frame_2.BackgroundColor3 = Color3.new(0, 1, 1)
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(0, 0, 0, 40)
+Frame_2.Size = UDim2.new(0, 40, 0, 80)
+
+Frame_3.Parent = Letter
+Frame_3.BackgroundColor3 = Color3.new(0, 1, 1)
+Frame_3.BorderSizePixel = 0
+Frame_3.Position = UDim2.new(0, 160, 0, 120)
+Frame_3.Size = UDim2.new(0, 40, 0, 80)
+
+Frame_4.Parent = Letter
+Frame_4.BackgroundColor3 = Color3.new(0, 1, 1)
+Frame_4.BorderSizePixel = 0
+Frame_4.Position = UDim2.new(0, 0, 0, 90)
+Frame_4.Size = UDim2.new(0, 200, 0, 40)
+
+Frame_5.Parent = Letter
+Frame_5.BackgroundColor3 = Color3.new(0, 1, 1)
+Frame_5.BorderSizePixel = 0
+Frame_5.Position = UDim2.new(0, 0, 0, 180)
+Frame_5.Size = UDim2.new(0, 200, 0, 40)
+
+Top.Name = "Top"
+Top.Parent = Intro_2
+Top.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
+Top.BorderSizePixel = 0
+Top.Position = UDim2.new(0, 0, 0, -100)
+Top.Size = UDim2.new(1, 0, 0, 100)
+
+local TextLabel = Instance.new("TextLabel")
+
+-- Properties
+
+TextLabel.Parent = Intro_2
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.BorderSizePixel = 0
+TextLabel.LayoutOrder = 5
+TextLabel.Position = UDim2.new(1, 0, 0.699999988, 0)
+TextLabel.Size = UDim2.new(1, 0, 0, 50)
+TextLabel.Font = Enum.Font.SciFi
+TextLabel.FontSize = Enum.FontSize.Size14
+TextLabel.Text = "Squid's Scripts"
+TextLabel.TextColor3 = Color3.new(0.101961, 0.988235, 1)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14
+TextLabel.TextWrapped = true
+
+local top = 255
+while Intro == nil do wait() end
+local intro_frame = Intro_2
+intro_frame.Visible = true
+wait(1) --A fail proof wait, yisss
+
+local flies = Instance.new("Sound")
+flies.Name = "Flies"
+flies.SoundId = "rbxassetid://258663133"
+flies.MaxDistance = "10000.000"
+flies.Parent = Intro
+
+local Intro1 = Instance.new("Sound")
+Intro1.Name = "Intro"
+Intro1.SoundId = "rbxassetid://258666677"
+Intro1.MaxDistance = "10000.000"
+Intro1.Parent = Intro
+
+local snd_flies = flies
+local snd_intro = Intro1
+
+
+local camera = game.Workspace.CurrentCamera
+local RenderStepped = game:GetService("RunService").RenderStepped
+
+local letter = Letter
+letter:ClearAllChildren()
+
+
+local function V2Interp(v1, v2, t)
+	return v1 + (v2 - v1) * t
+end
+
+local function FollowInterp(v1, v2, max_dist, speed, delta)
+	local mag = (v1 - v2).magnitude
+	if mag > max_dist then
+		v1 = V2Interp(v1, v2, (mag - max_dist) / mag)
+	end
+	return V2Interp(v1, v2, math.min(1, 1 - (1 - speed) ^ delta))
+end
+	
+function Shake2D(speed, speed2, radius)
+	local old_radius = radius
+	
+	local function GetNextPos()
+		local roll = Vector2.new(math.random() - 0.5, math.random() - 0.5)
+		if roll.x == 0 and roll.y == 0 then
+			return Vector2.new(0, 1) * radius * (math.random() - 0.5) * 2
+		else
+			return roll.unit * radius * (math.random() - 0.5) * 2
+		end
+	end
+
+	local start = nil
+	local pos1 = Vector2.new(0, 0)
+	local pos2 = GetNextPos()
+	local time_req = (pos2 - pos1).magnitude / speed
+	
+	local shaker_pos = pos1
+	
+	local last_update = nil
+	local function Update(force_radius)
+		if force_radius ~= nil then
+			radius = force_radius
+		end
+		if start == nil then
+			start = tick()
+			last_update = tick()
+		end
+		local delta = tick() - last_update
+		last_update = tick()
+		
+		local amm = (tick() - start) / time_req
+		local over_time = tick() - start - time_req
+		
+		local follow_pos = V2Interp(pos1, pos2, math.min(1, amm))
+		shaker_pos = FollowInterp(shaker_pos, follow_pos, old_radius, speed2, math.max(0, delta - math.max(0, over_time)))
+		if over_time > 0 then
+			pos1 = pos2
+			pos2 = GetNextPos()
+			local new_time_req = (pos2 - pos1).magnitude / speed
+			
+			start = math.min(start + time_req, tick() + new_time_req)
+			time_req = new_time_req
+			
+			local amm = (tick() - start) / time_req
+			local follow_pos = V2Interp(pos1, pos2, math.min(1, amm))
+			shaker_pos = FollowInterp(shaker_pos, follow_pos, old_radius, speed2, over_time)
+		end
+		
+		return shaker_pos
+	end
+	
+	return {Update = Update}
+end
+
+local neon_list = {
+	Vector3.new(1, 0, 0),
+	Vector3.new(1, 0, 1),
+	Vector3.new(1, 1, 0),
+	Vector3.new(0, 1, 0),
+	Vector3.new(1, 180 / 255, 0),
+	Vector3.new(0, 1, 1),
+}
+
+local m_code = {
+	"1111111111",
+	"1111111111",
+	"1100000000",
+	"1100000000",
+	"1111111111",
+	"1111111111",
+	"0000000011",
+	"0000000011",
+	"1111111111",
+	"1111111111",
+}
+
+local m_partics = {}
+for y, str_lin in pairs(m_code) do
+	for x = 1, str_lin:len() do
+		if str_lin:sub(x, x) == "1" then
+			local n_p = Instance.new("Frame")
+			n_p.BorderSizePixel = 0
+			n_p.Size = UDim2.new(0, 20, 0, 20)
+			n_p.BackgroundColor3 = Color3.new(0, 0, 0)
+			n_p.Position = UDim2.new(0, (x - 1) * 20, 0, (y - 1) * 20)
+			n_p.Parent = letter
+			
+			local orig_pos = Vector2.new((x - 1) * 20, (y - 1) * 20)
+			local shaker = Shake2D(1000, 0.95, 400)
+TextLabel:TweenPosition(UDim2.new(0, 0, 0.69998, 0), 'In', 'Elastic', 10)
+			
+			table.insert(m_partics, {n_p, orig_pos, shaker})
+		end
+	end
+end
+
+local BEAT = 0.476
+
+local start = tick()
+snd_flies:Play()
+
+local intro_played = false
+local last_swap = 0
+local curr_neon = 1 --neon_list
+
+while true do
+	local amm = math.min(1 , (tick() - start) / 10)
+	if amm < 0.1 then
+		snd_flies.Volume = amm * 10
+	elseif amm > 0.1 and amm < 0.4 then
+		snd_flies.Volume = 1
+	else
+		snd_flies.Volume = 0
+	end
+	
+	if amm > 0.4 then
+		if not intro_played then
+			snd_intro:Play()
+			intro_played = true
+		end
+		if tick() - last_swap > BEAT or last_swap == 0 then
+			if last_swap == 0 then
+				last_swap = tick()
+			else
+				last_swap = last_swap + BEAT
+			end
+			curr_neon = curr_neon + 1
+			if curr_neon > #neon_list then
+				curr_neon = 1
+			end
+		end
+		local gen_col = neon_list[curr_neon]
+	
+	end
+	
+	
+	for _, p in pairs(m_partics) do
+		local gen_pos
+		if amm < 0.5 then
+			gen_pos = p[2] + p[3].Update()
+		else
+			gen_pos = p[2] + p[3].Update(math.max(0, 400 - ((amm - 0.5) * 1000)))
+		end
+	p[1].Position = UDim2.new(0, gen_pos.x, 0, gen_pos.y)
+	p[1].BackgroundColor3 = Color3.new(0,255,255)
+end	
+	
+if tick() - start > 10 then break end
+RenderStepped:wait()
+end
+
+local start2 = tick()
+while true do
+	if tick() - last_swap > BEAT then
+		last_swap = last_swap + BEAT
+		curr_neon = curr_neon + 1
+		if curr_neon > #neon_list then
+			curr_neon = 1
+		end
+	end
+	local gen_col = neon_list[curr_neon]
+	
+	if tick() - start2 > 9 then break end
+	RenderStepped:wait()
+end
+
+--------------------------------
+wait(0.1)
+
+snd_flies:Stop()
+snd_intro:Stop()
+
+--The end
+TextLabel:TweenPosition(UDim2.new(-1, 0, 0.699999988, 0), 'Out', 'Elastic', 1)
+wait(1)
+Intro_2:TweenPosition(UDim2.new(0, 0, -1.2, 0), 'Out', 'Elastic', 1.2)
+end
+Introduction()
+-- Objects
+
+local EpicMinigamesGUIbySquid = Instance.new("ScreenGui")
+local EMGUI = Instance.new("Frame")
+local CloseButton = Instance.new("ImageButton")
+local Teleport = Instance.new("TextButton")
+local BulletBound = Instance.new("TextButton")
+local HighlightUI = Instance.new("TextButton")
+local AztecAdventure = Instance.new("TextButton")
+local HighlightUI_2 = Instance.new("TextButton")
+local Expedition = Instance.new("TextButton")
+local HighlightUI_3 = Instance.new("TextButton")
+local TrialTraversing = Instance.new("TextButton")
+local HighlightUI_4 = Instance.new("TextButton")
+local TopLevelBAR = Instance.new("TextButton")
+local Lobby = Instance.new("TextButton")
+local HighlightUI_5 = Instance.new("TextButton")
+local PlatformPervil = Instance.new("TextButton")
+local HighlightUI_6 = Instance.new("TextButton")
+local Avalanche = Instance.new("TextButton")
+local HighlightUI_7 = Instance.new("TextButton")
+local SharkSurvival = Instance.new("TextButton")
+local HighlightUI_8 = Instance.new("TextButton")
+local DownhillRoll = Instance.new("TextButton")
+local HighlightUI_9 = Instance.new("TextButton")
+local HighRolling = Instance.new("TextButton")
+local HighlightUI_10 = Instance.new("TextButton")
+local Game = Instance.new("TextButton")
+local BulletEvasion = Instance.new("TextButton")
+local HighlightUI_11 = Instance.new("TextButton")
+local HighPressure = Instance.new("TextButton")
+local HighlightUI_12 = Instance.new("TextButton")
+local LaserGuidance = Instance.new("TextButton")
+local HighlightUI_13 = Instance.new("TextButton")
+local TopLevelBAR_2 = Instance.new("TextButton")
+local TheSweeper = Instance.new("TextButton")
+local HighlightUI_14 = Instance.new("TextButton")
+local LavaForecast = Instance.new("TextButton")
+local HighlightUI_15 = Instance.new("TextButton")
+local Activate = Instance.new("TextButton")
+local LaserCutting = Instance.new("TextButton")
+local HighlightUI_16 = Instance.new("TextButton")
+local Player = Instance.new("TextButton")
+local Noclip = Instance.new("TextButton")
+local Property1 = Instance.new("TextLabel")
+local Property2 = Instance.new("TextLabel")
+local Property3 = Instance.new("TextLabel")
+local On = Instance.new("TextButton")
+local HighlightUI_17 = Instance.new("TextButton")
+local Fly = Instance.new("TextButton")
+local Property1_2 = Instance.new("TextLabel")
+local Property2_2 = Instance.new("TextLabel")
+local Property3_2 = Instance.new("TextLabel")
+local Toggle = Instance.new("TextButton")
+local HighlightUI_18 = Instance.new("TextButton")
+local HighJump = Instance.new("TextButton")
+local Toggle_2 = Instance.new("TextButton")
+local Property1_3 = Instance.new("TextLabel")
+local Property2_3 = Instance.new("TextLabel")
+local Property3_3 = Instance.new("TextLabel")
+local HighlightUI_19 = Instance.new("TextButton")
+local Speed = Instance.new("TextButton")
+local HighlightUI_20 = Instance.new("TextButton")
+local Toggle_3 = Instance.new("TextButton")
+local Property1_4 = Instance.new("TextLabel")
+local Property2_4 = Instance.new("TextLabel")
+local Property3_4 = Instance.new("TextLabel")
+local TopLevelBAR_3 = Instance.new("TextButton")
+local DividerUI = Instance.new("TextButton")
+local Credits = Instance.new("TextButton")
+local TopLevelBAR_4 = Instance.new("TextButton")
+local Creds = Instance.new("TextLabel")
+local DividerUI_2 = Instance.new("TextButton")
+local Creds_2 = Instance.new("TextLabel")
+local Creds_3 = Instance.new("TextLabel")
+local DividerUI_3 = Instance.new("TextButton")
+local Creds_4 = Instance.new("TextLabel")
+local TransparencyAERO = Instance.new("TextLabel")
+local EMText = Instance.new("TextLabel")
+local ImageLabel = Instance.new("ImageLabel")
+local SelectTabHint = Instance.new("TextLabel")
+local solarBUX = Instance.new("ImageButton")
+local OpenButton = Instance.new("TextButton")
+
+-- Properties
+
+EpicMinigamesGUIbySquid.Name = "Epic Minigames GUI by Squid"
+EpicMinigamesGUIbySquid.Parent = game.CoreGui
+
+EMGUI.Name = "EMGUI"
+EMGUI.Parent = EpicMinigamesGUIbySquid
+EMGUI.BackgroundColor3 = Color3.new(0.0470588, 0.0705882, 0.0941177)
+EMGUI.BackgroundTransparency = 0.20000000298023
+EMGUI.BorderColor3 = Color3.new(0.117647, 0.00392157, 0.00392157)
+EMGUI.Position = UDim2.new(0.200000003, 0, 0.200000003, 0)
+EMGUI.Size = UDim2.new(0, 700, 0, 400)
+
+CloseButton.Name = "CloseButton"
+CloseButton.Parent = EMGUI
+CloseButton.BackgroundColor3 = Color3.new(1, 1, 1)
+CloseButton.BackgroundTransparency = 1
+CloseButton.BorderColor3 = Color3.new(0, 0, 0)
+CloseButton.Position = UDim2.new(0.949999988, 0, -0.00999999978, 0)
+CloseButton.Size = UDim2.new(0, 20, 0, 18)
+CloseButton.Image = "http://www.roblox.com/asset/?id=157136587"
+
+Teleport.Name = "Teleport"
+Teleport.Parent = EMGUI
+Teleport.BackgroundColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+Teleport.BackgroundTransparency = 1
+Teleport.BorderColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+Teleport.BorderSizePixel = 0
+Teleport.Position = UDim2.new(0.300000012, 0, 0.0199999996, 0)
+Teleport.Size = UDim2.new(0, 80, 0, 40)
+Teleport.Font = Enum.Font.SourceSans
+Teleport.FontSize = Enum.FontSize.Size24
+Teleport.Text = "Teleport"
+Teleport.TextColor3 = Color3.new(0.988235, 0.988235, 0.988235)
+Teleport.TextSize = 24
+
+BulletBound.Name = "Bullet Bound"
+BulletBound.Parent = Teleport
+BulletBound.BackgroundColor3 = Color3.new(0.333333, 0.666667, 1)
+BulletBound.Position = UDim2.new(0, -55, 0, 100)
+BulletBound.Size = UDim2.new(0, 100, 0, 100)
+BulletBound.Visible = false
+BulletBound.Font = Enum.Font.Arcade
+BulletBound.FontSize = Enum.FontSize.Size24
+BulletBound.Text = "Bullet Bound"
+BulletBound.TextColor3 = Color3.new(1, 1, 1)
+BulletBound.TextSize = 20
+BulletBound.TextWrapped = true
+
+HighlightUI.Name = "HighlightUI"
+HighlightUI.Parent = BulletBound
+HighlightUI.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI.Visible = false
+HighlightUI.Font = Enum.Font.SourceSans
+HighlightUI.FontSize = Enum.FontSize.Size14
+HighlightUI.Text = ""
+HighlightUI.TextSize = 14
+HighlightUI.TextWrapped = true
+
+AztecAdventure.Name = "Aztec Adventure"
+AztecAdventure.Parent = Teleport
+AztecAdventure.BackgroundColor3 = Color3.new(0.407843, 0.407843, 0.203922)
+AztecAdventure.Position = UDim2.new(0, 222, 0, 100)
+AztecAdventure.Size = UDim2.new(0, 100, 0, 100)
+AztecAdventure.Visible = false
+AztecAdventure.Font = Enum.Font.Arcade
+AztecAdventure.FontSize = Enum.FontSize.Size18
+AztecAdventure.Text = "Aztec Adventure"
+AztecAdventure.TextColor3 = Color3.new(1, 1, 1)
+AztecAdventure.TextSize = 18
+AztecAdventure.TextWrapped = true
+
+HighlightUI_2.Name = "HighlightUI"
+HighlightUI_2.Parent = AztecAdventure
+HighlightUI_2.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_2.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_2.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_2.Visible = false
+HighlightUI_2.Font = Enum.Font.SourceSans
+HighlightUI_2.FontSize = Enum.FontSize.Size14
+HighlightUI_2.Text = ""
+HighlightUI_2.TextSize = 14
+HighlightUI_2.TextWrapped = true
+
+Expedition.Name = "Expedition"
+Expedition.Parent = Teleport
+Expedition.BackgroundColor3 = Color3.new(0, 0.333333, 0)
+Expedition.Position = UDim2.new(0, -185, 0, 100)
+Expedition.Size = UDim2.new(0, 100, 0, 100)
+Expedition.Visible = false
+Expedition.Font = Enum.Font.Arcade
+Expedition.FontSize = Enum.FontSize.Size18
+Expedition.Text = "Expedition Sprint Highpeak"
+Expedition.TextColor3 = Color3.new(1, 1, 1)
+Expedition.TextSize = 17
+Expedition.TextWrapped = true
+
+HighlightUI_3.Name = "HighlightUI"
+HighlightUI_3.Parent = Expedition
+HighlightUI_3.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_3.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_3.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_3.Visible = false
+HighlightUI_3.Font = Enum.Font.SourceSans
+HighlightUI_3.FontSize = Enum.FontSize.Size14
+HighlightUI_3.Text = ""
+HighlightUI_3.TextSize = 14
+HighlightUI_3.TextWrapped = true
+
+TrialTraversing.Name = "Trial Traversing"
+TrialTraversing.Parent = Teleport
+TrialTraversing.BackgroundColor3 = Color3.new(1, 0.333333, 0.498039)
+TrialTraversing.Position = UDim2.new(0, 82, 0, 100)
+TrialTraversing.Size = UDim2.new(0, 100, 0, 100)
+TrialTraversing.Visible = false
+TrialTraversing.Font = Enum.Font.Arcade
+TrialTraversing.FontSize = Enum.FontSize.Size18
+TrialTraversing.Text = "Trial Traversing"
+TrialTraversing.TextColor3 = Color3.new(1, 1, 1)
+TrialTraversing.TextSize = 17
+TrialTraversing.TextWrapped = true
+
+HighlightUI_4.Name = "HighlightUI"
+HighlightUI_4.Parent = TrialTraversing
+HighlightUI_4.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_4.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_4.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_4.Visible = false
+HighlightUI_4.Font = Enum.Font.SourceSans
+HighlightUI_4.FontSize = Enum.FontSize.Size14
+HighlightUI_4.Text = ""
+HighlightUI_4.TextSize = 14
+HighlightUI_4.TextWrapped = true
+
+TopLevelBAR.Name = "TopLevelBAR"
+TopLevelBAR.Parent = Teleport
+TopLevelBAR.BackgroundColor3 = Color3.new(1, 1, 1)
+TopLevelBAR.BorderColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+TopLevelBAR.BorderSizePixel = 0
+TopLevelBAR.Size = UDim2.new(0, 80, 0, 1)
+TopLevelBAR.Visible = false
+TopLevelBAR.Font = Enum.Font.SourceSans
+TopLevelBAR.FontSize = Enum.FontSize.Size24
+TopLevelBAR.Text = ""
+TopLevelBAR.TextColor3 = Color3.new(0.988235, 0.988235, 0.988235)
+TopLevelBAR.TextSize = 24
+
+Lobby.Name = "Lobby"
+Lobby.Parent = Teleport
+Lobby.BackgroundColor3 = Color3.new(0, 0, 0)
+Lobby.Position = UDim2.new(0, 360, 0, 240)
+Lobby.Size = UDim2.new(0, 100, 0, 100)
+Lobby.Visible = false
+Lobby.Font = Enum.Font.Arcade
+Lobby.FontSize = Enum.FontSize.Size28
+Lobby.Text = "Lobby"
+Lobby.TextColor3 = Color3.new(1, 1, 1)
+Lobby.TextSize = 25
+Lobby.TextWrapped = true
+
+HighlightUI_5.Name = "HighlightUI"
+HighlightUI_5.Parent = Lobby
+HighlightUI_5.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_5.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_5.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_5.Visible = false
+HighlightUI_5.Font = Enum.Font.SourceSans
+HighlightUI_5.FontSize = Enum.FontSize.Size14
+HighlightUI_5.Text = ""
+HighlightUI_5.TextSize = 14
+HighlightUI_5.TextWrapped = true
+
+PlatformPervil.Name = "Platform Pervil"
+PlatformPervil.Parent = Teleport
+PlatformPervil.BackgroundColor3 = Color3.new(0.415686, 0.415686, 0.415686)
+PlatformPervil.Position = UDim2.new(0, -185, 0, 240)
+PlatformPervil.Size = UDim2.new(0, 100, 0, 100)
+PlatformPervil.Visible = false
+PlatformPervil.Font = Enum.Font.Arcade
+PlatformPervil.FontSize = Enum.FontSize.Size18
+PlatformPervil.Text = "Platform Pervil"
+PlatformPervil.TextColor3 = Color3.new(1, 1, 1)
+PlatformPervil.TextSize = 17
+PlatformPervil.TextWrapped = true
+
+HighlightUI_6.Name = "HighlightUI"
+HighlightUI_6.Parent = PlatformPervil
+HighlightUI_6.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_6.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_6.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_6.Visible = false
+HighlightUI_6.Font = Enum.Font.SourceSans
+HighlightUI_6.FontSize = Enum.FontSize.Size14
+HighlightUI_6.Text = ""
+HighlightUI_6.TextSize = 14
+HighlightUI_6.TextWrapped = true
+
+Avalanche.Name = "Avalanche"
+Avalanche.Parent = Teleport
+Avalanche.BackgroundColor3 = Color3.new(1, 1, 1)
+Avalanche.Position = UDim2.new(0, -55, 0, 240)
+Avalanche.Size = UDim2.new(0, 100, 0, 100)
+Avalanche.Visible = false
+Avalanche.Font = Enum.Font.Arcade
+Avalanche.FontSize = Enum.FontSize.Size24
+Avalanche.Text = "Avalanche"
+Avalanche.TextColor3 = Color3.new(0, 0, 0)
+Avalanche.TextSize = 19
+Avalanche.TextWrapped = true
+
+HighlightUI_7.Name = "HighlightUI"
+HighlightUI_7.Parent = Avalanche
+HighlightUI_7.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_7.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_7.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_7.Visible = false
+HighlightUI_7.Font = Enum.Font.SourceSans
+HighlightUI_7.FontSize = Enum.FontSize.Size14
+HighlightUI_7.Text = ""
+HighlightUI_7.TextSize = 14
+HighlightUI_7.TextWrapped = true
+
+SharkSurvival.Name = "Shark Survival"
+SharkSurvival.Parent = Teleport
+SharkSurvival.BackgroundColor3 = Color3.new(0, 0.666667, 1)
+SharkSurvival.Position = UDim2.new(0, 82, 0, 240)
+SharkSurvival.Size = UDim2.new(0, 100, 0, 100)
+SharkSurvival.Visible = false
+SharkSurvival.Font = Enum.Font.Arcade
+SharkSurvival.FontSize = Enum.FontSize.Size18
+SharkSurvival.Text = "Shark Survival"
+SharkSurvival.TextColor3 = Color3.new(1, 1, 1)
+SharkSurvival.TextSize = 17
+SharkSurvival.TextWrapped = true
+
+HighlightUI_8.Name = "HighlightUI"
+HighlightUI_8.Parent = SharkSurvival
+HighlightUI_8.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_8.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_8.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_8.Visible = false
+HighlightUI_8.Font = Enum.Font.SourceSans
+HighlightUI_8.FontSize = Enum.FontSize.Size14
+HighlightUI_8.Text = ""
+HighlightUI_8.TextSize = 14
+HighlightUI_8.TextWrapped = true
+
+DownhillRoll.Name = "Downhill Roll"
+DownhillRoll.Parent = Teleport
+DownhillRoll.BackgroundColor3 = Color3.new(0.333333, 0, 0)
+DownhillRoll.Position = UDim2.new(0, 222, 0, 240)
+DownhillRoll.Size = UDim2.new(0, 100, 0, 100)
+DownhillRoll.Visible = false
+DownhillRoll.Font = Enum.Font.Arcade
+DownhillRoll.FontSize = Enum.FontSize.Size18
+DownhillRoll.Text = "Downhill Roll"
+DownhillRoll.TextColor3 = Color3.new(1, 1, 1)
+DownhillRoll.TextSize = 18
+DownhillRoll.TextWrapped = true
+
+HighlightUI_9.Name = "HighlightUI"
+HighlightUI_9.Parent = DownhillRoll
+HighlightUI_9.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_9.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_9.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_9.Visible = false
+HighlightUI_9.Font = Enum.Font.SourceSans
+HighlightUI_9.FontSize = Enum.FontSize.Size14
+HighlightUI_9.Text = ""
+HighlightUI_9.TextSize = 14
+HighlightUI_9.TextWrapped = true
+
+HighRolling.Name = "High Rolling"
+HighRolling.Parent = Teleport
+HighRolling.BackgroundColor3 = Color3.new(1, 0, 0.498039)
+HighRolling.Position = UDim2.new(0, 360, 0, 100)
+HighRolling.Size = UDim2.new(0, 100, 0, 100)
+HighRolling.Visible = false
+HighRolling.Font = Enum.Font.Arcade
+HighRolling.FontSize = Enum.FontSize.Size28
+HighRolling.Text = "High Rolling"
+HighRolling.TextColor3 = Color3.new(1, 1, 1)
+HighRolling.TextSize = 25
+HighRolling.TextWrapped = true
+
+HighlightUI_10.Name = "HighlightUI"
+HighlightUI_10.Parent = HighRolling
+HighlightUI_10.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_10.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_10.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_10.Visible = false
+HighlightUI_10.Font = Enum.Font.SourceSans
+HighlightUI_10.FontSize = Enum.FontSize.Size14
+HighlightUI_10.Text = ""
+HighlightUI_10.TextSize = 14
+HighlightUI_10.TextWrapped = true
+
+Game.Name = "Game"
+Game.Parent = EMGUI
+Game.BackgroundColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+Game.BackgroundTransparency = 1
+Game.BorderColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+Game.BorderSizePixel = 0
+Game.Position = UDim2.new(0.449999988, 0, 0.0199999996, 0)
+Game.Size = UDim2.new(0, 80, 0, 40)
+Game.Font = Enum.Font.SourceSans
+Game.FontSize = Enum.FontSize.Size24
+Game.Text = "Games"
+Game.TextColor3 = Color3.new(0.988235, 0.988235, 0.988235)
+Game.TextSize = 24
+
+BulletEvasion.Name = "Bullet Evasion"
+BulletEvasion.Parent = Game
+BulletEvasion.BackgroundColor3 = Color3.new(0, 0, 0)
+BulletEvasion.Position = UDim2.new(0, -95, 0, 100)
+BulletEvasion.Size = UDim2.new(0, 100, 0, 100)
+BulletEvasion.Visible = false
+BulletEvasion.Font = Enum.Font.Arcade
+BulletEvasion.FontSize = Enum.FontSize.Size24
+BulletEvasion.Text = "Bullet Evasion"
+BulletEvasion.TextColor3 = Color3.new(1, 1, 1)
+BulletEvasion.TextSize = 20
+BulletEvasion.TextWrapped = true
+
+HighlightUI_11.Name = "HighlightUI"
+HighlightUI_11.Parent = BulletEvasion
+HighlightUI_11.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_11.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_11.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_11.Visible = false
+HighlightUI_11.Font = Enum.Font.SourceSans
+HighlightUI_11.FontSize = Enum.FontSize.Size14
+HighlightUI_11.Text = ""
+HighlightUI_11.TextSize = 14
+HighlightUI_11.TextWrapped = true
+
+HighPressure.Name = "High Pressure"
+HighPressure.Parent = Game
+HighPressure.BackgroundColor3 = Color3.new(0.364706, 0.364706, 0.180392)
+HighPressure.Position = UDim2.new(0, -255, 0, 100)
+HighPressure.Size = UDim2.new(0, 100, 0, 100)
+HighPressure.Visible = false
+HighPressure.Font = Enum.Font.Arcade
+HighPressure.FontSize = Enum.FontSize.Size24
+HighPressure.Text = "High Pressure"
+HighPressure.TextColor3 = Color3.new(1, 1, 1)
+HighPressure.TextSize = 20
+HighPressure.TextWrapped = true
+
+HighlightUI_12.Name = "HighlightUI"
+HighlightUI_12.Parent = HighPressure
+HighlightUI_12.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_12.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_12.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_12.Font = Enum.Font.SourceSans
+HighlightUI_12.FontSize = Enum.FontSize.Size14
+HighlightUI_12.Text = ""
+HighlightUI_12.TextSize = 14
+HighlightUI_12.TextWrapped = true
+
+LaserGuidance.Name = "Laser Guidance"
+LaserGuidance.Parent = Game
+LaserGuidance.BackgroundColor3 = Color3.new(0.741176, 0, 0)
+LaserGuidance.Position = UDim2.new(0, 75, 0, 100)
+LaserGuidance.Size = UDim2.new(0, 100, 0, 100)
+LaserGuidance.Visible = false
+LaserGuidance.Font = Enum.Font.Arcade
+LaserGuidance.FontSize = Enum.FontSize.Size24
+LaserGuidance.Text = "Laser Guidance"
+LaserGuidance.TextColor3 = Color3.new(1, 1, 1)
+LaserGuidance.TextSize = 22
+LaserGuidance.TextWrapped = true
+
+HighlightUI_13.Name = "HighlightUI"
+HighlightUI_13.Parent = LaserGuidance
+HighlightUI_13.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_13.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_13.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_13.Visible = false
+HighlightUI_13.Font = Enum.Font.SourceSans
+HighlightUI_13.FontSize = Enum.FontSize.Size14
+HighlightUI_13.Text = ""
+HighlightUI_13.TextSize = 14
+HighlightUI_13.TextWrapped = true
+
+TopLevelBAR_2.Name = "TopLevelBAR"
+TopLevelBAR_2.Parent = Game
+TopLevelBAR_2.BackgroundColor3 = Color3.new(1, 1, 1)
+TopLevelBAR_2.BorderColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+TopLevelBAR_2.BorderSizePixel = 0
+TopLevelBAR_2.Size = UDim2.new(0, 80, 0, 1)
+TopLevelBAR_2.Visible = false
+TopLevelBAR_2.Font = Enum.Font.SourceSans
+TopLevelBAR_2.FontSize = Enum.FontSize.Size24
+TopLevelBAR_2.Text = ""
+TopLevelBAR_2.TextColor3 = Color3.new(0.988235, 0.988235, 0.988235)
+TopLevelBAR_2.TextSize = 24
+
+TheSweeper.Name = "The Sweeper"
+TheSweeper.Parent = Game
+TheSweeper.BackgroundColor3 = Color3.new(0, 0.333333, 1)
+TheSweeper.Position = UDim2.new(0, -175, 0, 240)
+TheSweeper.Size = UDim2.new(0, 100, 0, 100)
+TheSweeper.Visible = false
+TheSweeper.Font = Enum.Font.Arcade
+TheSweeper.FontSize = Enum.FontSize.Size24
+TheSweeper.Text = "The Sweeper"
+TheSweeper.TextColor3 = Color3.new(1, 1, 1)
+TheSweeper.TextSize = 20
+TheSweeper.TextWrapped = true
+
+HighlightUI_14.Name = "HighlightUI"
+HighlightUI_14.Parent = TheSweeper
+HighlightUI_14.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_14.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_14.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_14.Visible = false
+HighlightUI_14.Font = Enum.Font.SourceSans
+HighlightUI_14.FontSize = Enum.FontSize.Size14
+HighlightUI_14.Text = ""
+HighlightUI_14.TextSize = 14
+HighlightUI_14.TextWrapped = true
+
+LavaForecast.Name = "Lava Forecast"
+LavaForecast.Parent = Game
+LavaForecast.BackgroundColor3 = Color3.new(1, 0.333333, 0)
+LavaForecast.Position = UDim2.new(0, 160, 0, 240)
+LavaForecast.Size = UDim2.new(0, 100, 0, 100)
+LavaForecast.Visible = false
+LavaForecast.Font = Enum.Font.Arcade
+LavaForecast.FontSize = Enum.FontSize.Size24
+LavaForecast.Text = "Lava Forecast"
+LavaForecast.TextColor3 = Color3.new(1, 1, 1)
+LavaForecast.TextSize = 20
+LavaForecast.TextWrapped = true
+
+HighlightUI_15.Name = "HighlightUI"
+HighlightUI_15.Parent = LavaForecast
+HighlightUI_15.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_15.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_15.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_15.Visible = false
+HighlightUI_15.Font = Enum.Font.SourceSans
+HighlightUI_15.FontSize = Enum.FontSize.Size14
+HighlightUI_15.Text = ""
+HighlightUI_15.TextSize = 14
+HighlightUI_15.TextWrapped = true
+
+Activate.Name = "Activate"
+Activate.Parent = Game
+Activate.BackgroundColor3 = Color3.new(0, 1, 0)
+Activate.Position = UDim2.new(0, -60, 0, 275)
+Activate.Size = UDim2.new(0, 200, 0, 30)
+Activate.Visible = false
+Activate.Font = Enum.Font.Arcade
+Activate.FontSize = Enum.FontSize.Size24
+Activate.Text = "Activate"
+Activate.TextColor3 = Color3.new(1, 1, 1)
+Activate.TextSize = 20
+Activate.TextWrapped = true
+
+LaserCutting.Name = "Laser Cutting"
+LaserCutting.Parent = Game
+LaserCutting.BackgroundColor3 = Color3.new(0.243137, 0, 0)
+LaserCutting.Position = UDim2.new(0, 245, 0, 100)
+LaserCutting.Size = UDim2.new(0, 100, 0, 100)
+LaserCutting.Visible = false
+LaserCutting.Font = Enum.Font.Arcade
+LaserCutting.FontSize = Enum.FontSize.Size24
+LaserCutting.Text = "Laser Cutting"
+LaserCutting.TextColor3 = Color3.new(1, 1, 1)
+LaserCutting.TextSize = 20
+LaserCutting.TextWrapped = true
+
+HighlightUI_16.Name = "HighlightUI"
+HighlightUI_16.Parent = LaserCutting
+HighlightUI_16.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_16.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_16.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_16.Visible = false
+HighlightUI_16.Font = Enum.Font.SourceSans
+HighlightUI_16.FontSize = Enum.FontSize.Size14
+HighlightUI_16.Text = ""
+HighlightUI_16.TextSize = 14
+HighlightUI_16.TextWrapped = true
+
+Player.Name = "Player"
+Player.Parent = EMGUI
+Player.BackgroundColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+Player.BackgroundTransparency = 1
+Player.BorderColor3 = Color3.new(0.67451, 0.67451, 0.67451)
+Player.BorderSizePixel = 0
+Player.Position = UDim2.new(0.600000024, 0, 0.0199999996, 0)
+Player.Size = UDim2.new(0, 80, 0, 40)
+Player.Font = Enum.Font.SourceSans
+Player.FontSize = Enum.FontSize.Size24
+Player.Text = "Player"
+Player.TextColor3 = Color3.new(0.988235, 0.988235, 0.988235)
+Player.TextSize = 24
+
+Noclip.Name = "Noclip"
+Noclip.Parent = Player
+Noclip.BackgroundColor3 = Color3.new(0.333333, 0.333333, 0.498039)
+Noclip.Position = UDim2.new(0, -360, 0, 100)
+Noclip.Size = UDim2.new(0, 100, 0, 100)
+Noclip.Visible = false
+Noclip.Font = Enum.Font.Arcade
+Noclip.FontSize = Enum.FontSize.Size24
+Noclip.Text = "Noclip"
+Noclip.TextColor3 = Color3.new(1, 1, 1)
+Noclip.TextSize = 24
+
+Property1.Name = "Property1"
+Property1.Parent = Noclip
+Property1.BackgroundColor3 = Color3.new(1, 1, 1)
+Property1.BackgroundTransparency = 1
+Property1.Position = UDim2.new(0, 0, 0, 140)
+Property1.Size = UDim2.new(0, 450, 0, 30)
+Property1.Font = Enum.Font.Arcade
+Property1.FontSize = Enum.FontSize.Size18
+Property1.Text = "Noclip + Fly"
+Property1.TextColor3 = Color3.new(1, 1, 1)
+Property1.TextSize = 18
+Property1.TextXAlignment = Enum.TextXAlignment.Left
+
+Property2.Name = "Property2"
+Property2.Parent = Noclip
+Property2.BackgroundColor3 = Color3.new(1, 1, 1)
+Property2.BackgroundTransparency = 1
+Property2.Position = UDim2.new(0, 0, 0, 170)
+Property2.Size = UDim2.new(0, 450, 0, 30)
+Property2.Font = Enum.Font.Arcade
+Property2.FontSize = Enum.FontSize.Size18
+Property2.Text = "Works in R15 only"
+Property2.TextColor3 = Color3.new(1, 1, 1)
+Property2.TextSize = 18
+Property2.TextXAlignment = Enum.TextXAlignment.Left
+
+Property3.Name = "Property3"
+Property3.Parent = Noclip
+Property3.BackgroundColor3 = Color3.new(1, 1, 1)
+Property3.BackgroundTransparency = 1
+Property3.Position = UDim2.new(0, 0, 0, 200)
+Property3.Size = UDim2.new(0, 450, 0, 30)
+Property3.Font = Enum.Font.Arcade
+Property3.FontSize = Enum.FontSize.Size18
+Property3.Text = "Fly through walls to victory!"
+Property3.TextColor3 = Color3.new(1, 1, 1)
+Property3.TextSize = 18
+Property3.TextXAlignment = Enum.TextXAlignment.Left
+
+On.Name = "On"
+On.Parent = Noclip
+On.Active = false
+On.BackgroundColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+On.BorderColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+On.Position = UDim2.new(0, 390, 0, 150)
+On.Size = UDim2.new(0, 100, 0, 60)
+On.Font = Enum.Font.Arcade
+On.FontSize = Enum.FontSize.Size24
+On.Text = "Toggle"
+On.TextColor3 = Color3.new(1, 1, 1)
+On.TextSize = 24
+
+HighlightUI_17.Name = "HighlightUI"
+HighlightUI_17.Parent = Noclip
+HighlightUI_17.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_17.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_17.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_17.Font = Enum.Font.Arcade
+HighlightUI_17.FontSize = Enum.FontSize.Size14
+HighlightUI_17.Text = ""
+HighlightUI_17.TextSize = 14
+HighlightUI_17.TextWrapped = true
+
+Fly.Name = "Fly"
+Fly.Parent = Player
+Fly.BackgroundColor3 = Color3.new(0.333333, 0.666667, 1)
+Fly.Position = UDim2.new(0, -200, 0, 100)
+Fly.Size = UDim2.new(0, 100, 0, 100)
+Fly.Visible = false
+Fly.Font = Enum.Font.Arcade
+Fly.FontSize = Enum.FontSize.Size24
+Fly.Text = "Fly"
+Fly.TextColor3 = Color3.new(1, 1, 1)
+Fly.TextSize = 24
+
+Property1_2.Name = "Property1"
+Property1_2.Parent = Fly
+Property1_2.BackgroundColor3 = Color3.new(1, 1, 1)
+Property1_2.BackgroundTransparency = 1
+Property1_2.Position = UDim2.new(0, -160, 0, 140)
+Property1_2.Size = UDim2.new(0, 450, 0, 30)
+Property1_2.Visible = false
+Property1_2.Font = Enum.Font.Arcade
+Property1_2.FontSize = Enum.FontSize.Size18
+Property1_2.Text = "Fly (Do not toggle with noclip)"
+Property1_2.TextColor3 = Color3.new(1, 1, 1)
+Property1_2.TextSize = 18
+Property1_2.TextXAlignment = Enum.TextXAlignment.Left
+
+Property2_2.Name = "Property2"
+Property2_2.Parent = Fly
+Property2_2.BackgroundColor3 = Color3.new(1, 1, 1)
+Property2_2.BackgroundTransparency = 1
+Property2_2.Position = UDim2.new(0, -160, 0, 170)
+Property2_2.Size = UDim2.new(0, 450, 0, 30)
+Property2_2.Visible = false
+Property2_2.Font = Enum.Font.Arcade
+Property2_2.FontSize = Enum.FontSize.Size18
+Property2_2.Text = "Works in R15"
+Property2_2.TextColor3 = Color3.new(1, 1, 1)
+Property2_2.TextSize = 18
+Property2_2.TextXAlignment = Enum.TextXAlignment.Left
+
+Property3_2.Name = "Property3"
+Property3_2.Parent = Fly
+Property3_2.BackgroundColor3 = Color3.new(1, 1, 1)
+Property3_2.BackgroundTransparency = 1
+Property3_2.Position = UDim2.new(0, -160, 0, 200)
+Property3_2.Size = UDim2.new(0, 450, 0, 30)
+Property3_2.Visible = false
+Property3_2.Font = Enum.Font.Arcade
+Property3_2.FontSize = Enum.FontSize.Size18
+Property3_2.Text = "Makes you fly away into the skies"
+Property3_2.TextColor3 = Color3.new(1, 1, 1)
+Property3_2.TextSize = 18
+Property3_2.TextXAlignment = Enum.TextXAlignment.Left
+
+Toggle.Name = "Toggle"
+Toggle.Parent = Fly
+Toggle.Active = false
+Toggle.BackgroundColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+Toggle.BorderColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+Toggle.Position = UDim2.new(0, 270, 0, 150)
+Toggle.Size = UDim2.new(0, 100, 0, 60)
+Toggle.Visible = false
+Toggle.Font = Enum.Font.Arcade
+Toggle.FontSize = Enum.FontSize.Size24
+Toggle.Text = "Toggle"
+Toggle.TextColor3 = Color3.new(1, 1, 1)
+Toggle.TextSize = 24
+
+HighlightUI_18.Name = "HighlightUI"
+HighlightUI_18.Parent = Fly
+HighlightUI_18.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_18.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_18.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_18.Visible = false
+HighlightUI_18.Font = Enum.Font.Arcade
+HighlightUI_18.FontSize = Enum.FontSize.Size14
+HighlightUI_18.Text = ""
+HighlightUI_18.TextSize = 14
+HighlightUI_18.TextWrapped = true
+
+HighJump.Name = "HighJump"
+HighJump.Parent = Player
+HighJump.BackgroundColor3 = Color3.new(0.666667, 0.666667, 0.498039)
+HighJump.Position = UDim2.new(0, 140, 0, 100)
+HighJump.Size = UDim2.new(0, 100, 0, 100)
+HighJump.Visible = false
+HighJump.Font = Enum.Font.Arcade
+HighJump.FontSize = Enum.FontSize.Size24
+HighJump.Text = "High Jump"
+HighJump.TextColor3 = Color3.new(1, 1, 1)
+HighJump.TextSize = 20
+HighJump.TextWrapped = true
+
+Toggle_2.Name = "Toggle"
+Toggle_2.Parent = HighJump
+Toggle_2.Active = false
+Toggle_2.BackgroundColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+Toggle_2.BorderColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+Toggle_2.Position = UDim2.new(0, -60, 0, 150)
+Toggle_2.Size = UDim2.new(0, 100, 0, 60)
+Toggle_2.Visible = false
+Toggle_2.Font = Enum.Font.Arcade
+Toggle_2.FontSize = Enum.FontSize.Size24
+Toggle_2.Text = "Toggle"
+Toggle_2.TextColor3 = Color3.new(1, 1, 1)
+Toggle_2.TextSize = 24
+
+Property1_3.Name = "Property1"
+Property1_3.Parent = HighJump
+Property1_3.BackgroundColor3 = Color3.new(1, 1, 1)
+Property1_3.BackgroundTransparency = 1
+Property1_3.Position = UDim2.new(0, -500, 0, 140)
+Property1_3.Size = UDim2.new(0, 450, 0, 30)
+Property1_3.Visible = false
+Property1_3.Font = Enum.Font.Arcade
+Property1_3.FontSize = Enum.FontSize.Size18
+Property1_3.Text = "Gives you high jump"
+Property1_3.TextColor3 = Color3.new(1, 1, 1)
+Property1_3.TextSize = 18
+Property1_3.TextXAlignment = Enum.TextXAlignment.Left
+
+Property2_3.Name = "Property2"
+Property2_3.Parent = HighJump
+Property2_3.BackgroundColor3 = Color3.new(1, 1, 1)
+Property2_3.BackgroundTransparency = 1
+Property2_3.Position = UDim2.new(0, -500, 0, 170)
+Property2_3.Size = UDim2.new(0, 450, 0, 30)
+Property2_3.Visible = false
+Property2_3.Font = Enum.Font.Arcade
+Property2_3.FontSize = Enum.FontSize.Size18
+Property2_3.Text = "Works in R15"
+Property2_3.TextColor3 = Color3.new(1, 1, 1)
+Property2_3.TextSize = 18
+Property2_3.TextXAlignment = Enum.TextXAlignment.Left
+
+Property3_3.Name = "Property3"
+Property3_3.Parent = HighJump
+Property3_3.BackgroundColor3 = Color3.new(1, 1, 1)
+Property3_3.BackgroundTransparency = 1
+Property3_3.Position = UDim2.new(0, -500, 0, 200)
+Property3_3.Size = UDim2.new(0, 450, 0, 30)
+Property3_3.Visible = false
+Property3_3.Font = Enum.Font.Arcade
+Property3_3.FontSize = Enum.FontSize.Size18
+Property3_3.Text = "Now jump into the skies and win the minigames!"
+Property3_3.TextColor3 = Color3.new(1, 1, 1)
+Property3_3.TextSize = 18
+Property3_3.TextXAlignment = Enum.TextXAlignment.Left
+
+HighlightUI_19.Name = "HighlightUI"
+HighlightUI_19.Parent = HighJump
+HighlightUI_19.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_19.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_19.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_19.Visible = false
+HighlightUI_19.Font = Enum.Font.Arcade
+HighlightUI_19.FontSize = Enum.FontSize.Size14
+HighlightUI_19.Text = ""
+HighlightUI_19.TextSize = 14
+HighlightUI_19.TextWrapped = true
+
+Speed.Name = "Speed"
+Speed.Parent = Player
+Speed.BackgroundColor3 = Color3.new(1, 0.333333, 0.498039)
+Speed.Position = UDim2.new(0, -30, 0, 100)
+Speed.Size = UDim2.new(0, 100, 0, 100)
+Speed.Visible = false
+Speed.Font = Enum.Font.Arcade
+Speed.FontSize = Enum.FontSize.Size24
+Speed.Text = "Speed"
+Speed.TextColor3 = Color3.new(1, 1, 1)
+Speed.TextSize = 24
+
+HighlightUI_20.Name = "HighlightUI"
+HighlightUI_20.Parent = Speed
+HighlightUI_20.BackgroundColor3 = Color3.new(1, 1, 1)
+HighlightUI_20.Position = UDim2.new(0, 0, 0, -10)
+HighlightUI_20.Size = UDim2.new(0, 100, 0, 1)
+HighlightUI_20.Visible = false
+HighlightUI_20.Font = Enum.Font.Arcade
+HighlightUI_20.FontSize = Enum.FontSize.Size14
+HighlightUI_20.Text = ""
+HighlightUI_20.TextSize = 14
+HighlightUI_20.TextWrapped = true
+
+Toggle_3.Name = "Toggle"
+Toggle_3.Parent = Speed
+Toggle_3.Active = false
+Toggle_3.BackgroundColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+Toggle_3.BorderColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+Toggle_3.Position = UDim2.new(0, 120, 0, 150)
+Toggle_3.Size = UDim2.new(0, 100, 0, 60)
+Toggle_3.Visible = false
+Toggle_3.Font = Enum.Font.Arcade
+Toggle_3.FontSize = Enum.FontSize.Size24
+Toggle_3.Text = "Toggle"
+Toggle_3.TextColor3 = Color3.new(1, 1, 1)
+Toggle_3.TextSize = 24
+
+Property1_4.Name = "Property1"
+Property1_4.Parent = Speed
+Property1_4.BackgroundColor3 = Color3.new(1, 1, 1)
+Property1_4.BackgroundTransparency = 1
+Property1_4.Position = UDim2.new(0, -330, 0, 140)
+Property1_4.Size = UDim2.new(0, 450, 0, 30)
+Property1_4.Visible = false
+Property1_4.Font = Enum.Font.Arcade
+Property1_4.FontSize = Enum.FontSize.Size18
+Property1_4.Text = "Speed hack"
+Property1_4.TextColor3 = Color3.new(1, 1, 1)
+Property1_4.TextSize = 18
+Property1_4.TextXAlignment = Enum.TextXAlignment.Left
+
+Property2_4.Name = "Property2"
+Property2_4.Parent = Speed
+Property2_4.BackgroundColor3 = Color3.new(1, 1, 1)
+Property2_4.BackgroundTransparency = 1
+Property2_4.Position = UDim2.new(0, -330, 0, 170)
+Property2_4.Size = UDim2.new(0, 450, 0, 30)
+Property2_4.Visible = false
+Property2_4.Font = Enum.Font.Arcade
+Property2_4.FontSize = Enum.FontSize.Size18
+Property2_4.Text = "Works in R15! "
+Property2_4.TextColor3 = Color3.new(1, 1, 1)
+Property2_4.TextSize = 18
+Property2_4.TextXAlignment = Enum.TextXAlignment.Left
+
+Property3_4.Name = "Property3"
+Property3_4.Parent = Speed
+Property3_4.BackgroundColor3 = Color3.new(1, 1, 1)
+Property3_4.BackgroundTransparency = 1
+Property3_4.Position = UDim2.new(0, -330, 0, 200)
+Property3_4.Size = UDim2.new(0, 450, 0, 30)
+Property3_4.Visible = false
+Property3_4.Font = Enum.Font.Arcade
+Property3_4.FontSize = Enum.FontSize.Size18
+Property3_4.Text = "Gives you 50 walkspeed to uh.."
+Property3_4.TextColor3 = Color3.new(1, 1, 1)
+Property3_4.TextSize = 18
+Property3_4.TextXAlignment = Enum.TextXAlignment.Left
+
+TopLevelBAR_3.Name = "TopLevelBAR"
+TopLevelBAR_3.Parent = Player
+TopLevelBAR_3.BackgroundColor3 = Color3.new(1, 1, 1)
+TopLevelBAR_3.BorderColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+TopLevelBAR_3.BorderSizePixel = 0
+TopLevelBAR_3.Size = UDim2.new(0, 80, 0, 1)
+TopLevelBAR_3.Visible = false
+TopLevelBAR_3.Font = Enum.Font.SourceSans
+TopLevelBAR_3.FontSize = Enum.FontSize.Size24
+TopLevelBAR_3.Text = ""
+TopLevelBAR_3.TextColor3 = Color3.new(0.988235, 0.988235, 0.988235)
+TopLevelBAR_3.TextSize = 24
+
+DividerUI.Name = "DividerUI"
+DividerUI.Parent = Player
+DividerUI.BackgroundColor3 = Color3.new(1, 1, 1)
+DividerUI.Position = UDim2.new(0, -360, 0, 220)
+DividerUI.Size = UDim2.new(0, 600, 0, 1)
+DividerUI.Font = Enum.Font.SourceSans
+DividerUI.FontSize = Enum.FontSize.Size14
+DividerUI.Text = ""
+DividerUI.TextSize = 14
+
+Credits.Name = "Credits"
+Credits.Parent = EMGUI
+Credits.BackgroundColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+Credits.BackgroundTransparency = 1
+Credits.BorderColor3 = Color3.new(0.67451, 0.67451, 0.67451)
+Credits.BorderSizePixel = 0
+Credits.Position = UDim2.new(0.74000001, 0, 0.0199999996, 0)
+Credits.Size = UDim2.new(0, 80, 0, 40)
+Credits.Font = Enum.Font.SourceSans
+Credits.FontSize = Enum.FontSize.Size24
+Credits.Text = "Credits"
+Credits.TextColor3 = Color3.new(0.988235, 0.988235, 0.988235)
+Credits.TextSize = 24
+
+TopLevelBAR_4.Name = "TopLevelBAR"
+TopLevelBAR_4.Parent = Credits
+TopLevelBAR_4.BackgroundColor3 = Color3.new(1, 1, 1)
+TopLevelBAR_4.BorderColor3 = Color3.new(0.337255, 0.337255, 0.337255)
+TopLevelBAR_4.BorderSizePixel = 0
+TopLevelBAR_4.Size = UDim2.new(0, 80, 0, 1)
+TopLevelBAR_4.Visible = false
+TopLevelBAR_4.Font = Enum.Font.SourceSans
+TopLevelBAR_4.FontSize = Enum.FontSize.Size24
+TopLevelBAR_4.Text = ""
+TopLevelBAR_4.TextColor3 = Color3.new(0.988235, 0.988235, 0.988235)
+TopLevelBAR_4.TextSize = 24
+
+Creds.Name = "Creds"
+Creds.Parent = Credits
+Creds.BackgroundColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+Creds.BackgroundTransparency = 1
+Creds.BorderColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+Creds.BorderSizePixel = 0
+Creds.Position = UDim2.new(0, -355, 0, 45)
+Creds.Size = UDim2.new(0, 400, 0, 100)
+Creds.Visible = false
+Creds.Font = Enum.Font.SourceSans
+Creds.FontSize = Enum.FontSize.Size36
+Creds.Text = "Epic Minigames GUI by Squid || Credits"
+Creds.TextColor3 = Color3.new(0.996078, 0.996078, 0.996078)
+Creds.TextSize = 35
+
+DividerUI_2.Name = "DividerUI"
+DividerUI_2.Parent = Credits
+DividerUI_2.BackgroundColor3 = Color3.new(1, 1, 1)
+DividerUI_2.Position = UDim2.new(0, -455, 0, 125)
+DividerUI_2.Size = UDim2.new(0, 600, 0, 1)
+DividerUI_2.Visible = false
+DividerUI_2.Font = Enum.Font.SourceSans
+DividerUI_2.FontSize = Enum.FontSize.Size14
+DividerUI_2.Text = ""
+DividerUI_2.TextSize = 14
+
+Creds_2.Name = "Creds"
+Creds_2.Parent = Credits
+Creds_2.BackgroundColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+Creds_2.BackgroundTransparency = 1
+Creds_2.BorderColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+Creds_2.BorderSizePixel = 0
+Creds_2.Position = UDim2.new(0, -400, 0, 130)
+Creds_2.Size = UDim2.new(0, 500, 0, 50)
+Creds_2.Visible = false
+Creds_2.Font = Enum.Font.SourceSans
+Creds_2.FontSize = Enum.FontSize.Size36
+Creds_2.Text = "Kujo (UID = 312) || Noclip Script"
+Creds_2.TextColor3 = Color3.new(0.996078, 0.996078, 0.996078)
+Creds_2.TextSize = 35
+
+Creds_3.Name = "Creds"
+Creds_3.Parent = Credits
+Creds_3.BackgroundColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+Creds_3.BackgroundTransparency = 1
+Creds_3.BorderColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+Creds_3.BorderSizePixel = 0
+Creds_3.Position = UDim2.new(0, -400, 0, 180)
+Creds_3.Size = UDim2.new(0, 500, 0, 50)
+Creds_3.Visible = false
+Creds_3.Font = Enum.Font.SourceSans
+Creds_3.FontSize = Enum.FontSize.Size36
+Creds_3.Text = "Ignoramical (UID = 235495) || Fly Script"
+Creds_3.TextColor3 = Color3.new(0.996078, 0.996078, 0.996078)
+Creds_3.TextSize = 35
+
+DividerUI_3.Name = "DividerUI"
+DividerUI_3.Parent = Credits
+DividerUI_3.BackgroundColor3 = Color3.new(1, 1, 1)
+DividerUI_3.Position = UDim2.new(0, -455, 0, 245)
+DividerUI_3.Size = UDim2.new(0, 600, 0, 1)
+DividerUI_3.Visible = false
+DividerUI_3.Font = Enum.Font.SourceSans
+DividerUI_3.FontSize = Enum.FontSize.Size14
+DividerUI_3.Text = ""
+DividerUI_3.TextSize = 14
+
+Creds_4.Name = "Creds"
+Creds_4.Parent = Credits
+Creds_4.BackgroundColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+Creds_4.BackgroundTransparency = 1
+Creds_4.BorderColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+Creds_4.BorderSizePixel = 0
+Creds_4.Position = UDim2.new(0, -400, 0, 250)
+Creds_4.Size = UDim2.new(0, 500, 0, 50)
+Creds_4.Visible = false
+Creds_4.Font = Enum.Font.SourceSans
+Creds_4.FontSize = Enum.FontSize.Size36
+Creds_4.Text = "Squid"
+Creds_4.TextColor3 = Color3.new(0.996078, 0.996078, 0.996078)
+Creds_4.TextSize = 35
+
+TransparencyAERO.Name = "TransparencyAERO"
+TransparencyAERO.Parent = EMGUI
+TransparencyAERO.BackgroundColor3 = Color3.new(1, 0, 0)
+TransparencyAERO.BackgroundTransparency = 0.69999998807907
+TransparencyAERO.BorderColor3 = Color3.new(1, 1, 1)
+TransparencyAERO.Position = UDim2.new(0, 0, -0.0299999993, 0)
+TransparencyAERO.Size = UDim2.new(1, 0, 0, 10)
+TransparencyAERO.Font = Enum.Font.SourceSans
+TransparencyAERO.FontSize = Enum.FontSize.Size14
+TransparencyAERO.Text = ""
+TransparencyAERO.TextSize = 14
+
+EMText.Name = "EMText"
+EMText.Parent = EMGUI
+EMText.BackgroundColor3 = Color3.new(0.666667, 1, 0.498039)
+EMText.BorderColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+EMText.BorderSizePixel = 0
+EMText.Position = UDim2.new(0.0500000007, 0, 0, -30)
+EMText.Size = UDim2.new(0, 100, 0, 100)
+EMText.Font = Enum.Font.SourceSans
+EMText.FontSize = Enum.FontSize.Size48
+EMText.Text = ""
+EMText.TextColor3 = Color3.new(0.996078, 0.996078, 0.996078)
+EMText.TextSize = 48
+
+ImageLabel.Parent = EMText
+ImageLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+ImageLabel.BackgroundTransparency = 1
+ImageLabel.BorderSizePixel = 0
+ImageLabel.Size = UDim2.new(0, 100, 0, 100)
+ImageLabel.Image = "rbxassetid://584462337"
+
+SelectTabHint.Name = "SelectTabHint"
+SelectTabHint.Parent = EMGUI
+SelectTabHint.BackgroundColor3 = Color3.new(0.780392, 0.192157, 0.0901961)
+SelectTabHint.BackgroundTransparency = 1
+SelectTabHint.BorderColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+SelectTabHint.BorderSizePixel = 0
+SelectTabHint.Position = UDim2.new(0.219999999, 0, 0, 150)
+SelectTabHint.Size = UDim2.new(0, 400, 0, 100)
+SelectTabHint.Font = Enum.Font.SourceSans
+SelectTabHint.FontSize = Enum.FontSize.Size36
+SelectTabHint.Text = "Epic Minigames GUI by Squid || Press any tab to begin"
+SelectTabHint.TextColor3 = Color3.new(0.996078, 0.996078, 0.996078)
+SelectTabHint.TextSize = 35
+
+solarBUX.Name = "solarBUX"
+solarBUX.Parent = EpicMinigamesGUIbySquid
+solarBUX.BackgroundColor3 = Color3.new(1, 1, 1)
+solarBUX.BackgroundTransparency = 1
+solarBUX.Position = UDim2.new(0, 0, 0.449999988, 0)
+solarBUX.Size = UDim2.new(0, 60, 0, 60)
+solarBUX.Selected = true
+solarBUX.Image = "rbxassetid://507103941"
+solarBUX.ImageColor3 = Color3.new(1, 1, 0)
+
+OpenButton.Name = "OpenButton"
+OpenButton.Parent = solarBUX
+OpenButton.BackgroundColor3 = Color3.new(0.333333, 1, 1)
+OpenButton.BackgroundTransparency = 0.60000002384186
+OpenButton.BorderSizePixel = 0
+OpenButton.Position = UDim2.new(0, 70, 0, 15)
+OpenButton.Size = UDim2.new(0, 80, 0, 25)
+OpenButton.Font = Enum.Font.Arcade
+OpenButton.FontSize = Enum.FontSize.Size24
+OpenButton.Text = "Open"
+OpenButton.TextColor3 = Color3.new(0, 0.333333, 1)
+OpenButton.TextSize = 24
+
+local OpenButtonz = OpenButton
+local CloseButtonz = CloseButton
+local TabHintz = SelectTabHint
+local Playerz = Player
+local PlayerTabz = Player.TopLevelBAR
+
+local Noclipz = Playerz.Noclip
+local Speedz = Playerz.Speed
+local Flyz = Playerz.Fly
+local HighJumpz = Playerz.HighJump
+	
+EMGUI.Size = UDim2.new(0,0,0,0);
+EMGUI.Position = UDim2.new(0, 0, .450, 0)
+EMGUI.Visible = false;
+
+function onClickOpen()
+	EMGUI.Position = UDim2.new(0, 0, .450, 0)
+	wait()
+	EMGUI.Visible = true;
+	EMGUI:TweenSizeAndPosition(UDim2.new(0, 700, 0, 400), UDim2.new(.5, -350, .5, -200), "Out", "Elastic", 2)
+end
+
+OpenButtonz.MouseButton1Click:connect(onClickOpen)
+
+function onClickPlayer()
+		wait()		
+		PlayerTabz.Visible = true;
+		TabHintz.Visible = false;
+		Noclipz.Visible = true;
+		Speedz.Visible = true;
+		Flyz.Visible = true;
+		HighJumpz.Visible = true;
+		for _,v in pairs(Teleport:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Game:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Player:GetChildren()) do
+		v.Visible = true;
+		end
+		for _,v in pairs(Credits:GetChildren()) do
+		v.Visible = false;
+		end
+end
+
+Playerz.MouseButton1Click:connect(onClickPlayer)
+
+function onClickCredz()
+		wait()		
+		for _,v in pairs(Teleport:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Game:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Player:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Credits:GetChildren()) do
+		v.Visible = true;
+		end
+end
+
+Credits.MouseButton1Click:connect(onClickCredz)
+--Noclip buttons
+function onClickNoclip()
+		wait()		
+		for _,v in pairs(Speedz:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(HighJumpz:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Flyz:GetChildren()) do
+		v.Visible = false;
+		end
+		Noclipz.Visible = true;
+		for _,v in pairs(Noclipz:GetChildren()) do
+		v.Visible = true;
+		end
+end
+
+Noclipz.MouseButton1Click:connect(onClickNoclip)
+
+noclip = false
+function ToggleNoclip()
+if noclip == false then
+noclip = true
+Noclipz.On.BackgroundColor3 = Color3.new(0,255,0)
+local mouse = game.Players.LocalPlayer:GetMouse() 
+local torso = game.Players.LocalPlayer.Character.HumanoidRootPart 
+local dir = {w = 0, s = 0, a = 0, d = 0} 
+local spd = 2 
+mouse.KeyDown:connect(function(key) 
+if key:lower() == "w" then dir.w = 1 
+elseif key:lower() == "s" then dir.s = 1
+elseif key:lower() == "a" then dir.a = 1 
+elseif key:lower() == "d" then dir.d = 1 
+elseif key:lower() == "q" then spd = spd + 1 
+elseif key:lower() == "e" then spd = spd - 1 
+end end) 
+mouse.KeyUp:connect(function(key) 
+if key:lower() == "w" then 
+dir.w = 0 
+elseif key:lower() == "s" then dir.s = 0 
+elseif key:lower() == "a" then dir.a = 0 
+elseif key:lower() == "d" then dir.d = 0 
+end end)
+repeat wait(1/44)
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = true
+game.Players.LocalPlayer.Character.Humanoid.PlatformStand = true 
+torso.CFrame = CFrame.new(torso.Position, game.Workspace.CurrentCamera.CoordinateFrame.p) * CFrame.Angles(0,math.rad(180),0) * CFrame.new((dir.d-dir.a)*spd,0,(dir.s-dir.w)*spd)
+until noclip == false
+game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+elseif noclip == true then
+noclip = false
+Noclipz.On.BackgroundColor3 = Color3.new(255,0,0)
+game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+end
+end
+
+Noclipz.On.MouseButton1Click:connect(ToggleNoclip)
+--Noclip end
+--Speed button
+function onClickSpeed()
+		wait()		
+		for _,v in pairs(Speedz:GetChildren()) do
+		v.Visible = true;
+		end
+		Speedz.Visible = true
+		for _,v in pairs(HighJumpz:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Flyz:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Noclipz:GetChildren()) do
+		v.Visible = false;
+		end
+end
+
+Speedz.MouseButton1Click:connect(onClickSpeed)
+
+speed = false
+
+function ToggleSpeed()
+if speed == false then
+speed = true
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+Speedz.Toggle.BackgroundColor3 = Color3.new(0,255,0)
+else if speed == true then
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+Speedz.Toggle.BackgroundColor3 = Color3.new(255,0,0)
+end
+end
+end
+
+Speedz.Toggle.MouseButton1Click:connect(ToggleSpeed)
+--End of speed
+--Fly Button
+function onClickFly()
+		wait()		
+		for _,v in pairs(Speedz:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(HighJumpz:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Flyz:GetChildren()) do
+		v.Visible = true;
+		end
+		Flyz.Visible = true;
+		for _,v in pairs(Noclipz:GetChildren()) do
+		v.Visible = false;
+		end
+end
+
+Flyz.MouseButton1Click:connect(onClickFly)
+
+flying = false
+repeat wait()
+until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("HumanoidRootPart") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid")
+local mouse = game.Players.LocalPlayer:GetMouse()
+repeat wait() until mouse
+local plr = game.Players.LocalPlayer
+local torso = plr.Character.HumanoidRootPart
+local flying = true
+local deb = true
+local ctrl = {f = 0, b = 0, l = 0, r = 0}
+local lastctrl = {f = 0, b = 0, l = 0, r = 0}
+local maxspeed = 50
+local speed = 0
+
+function Fly1()
+if flying == false then
+flying = true
+Flyz.Toggle.BackgroundColor3 = Color3.new(0,255,0)
+local bg = Instance.new("BodyGyro", torso)
+bg.P = 9e4
+bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+bg.cframe = torso.CFrame
+local bv = Instance.new("BodyVelocity", torso)
+bv.velocity = Vector3.new(0,0.1,0)
+bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
+repeat wait()
+plr.Character.Humanoid.PlatformStand = true
+if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
+speed = speed+.5+(speed/maxspeed)
+if speed > maxspeed then
+speed = maxspeed
+end
+elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
+speed = speed-1
+if speed < 0 then
+speed = 0
+end
+end
+if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
+bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
+elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
+bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
+else
+bv.velocity = Vector3.new(0,0.1,0)
+end
+bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
+until not flying
+ctrl = {f = 0, b = 0, l = 0, r = 0}
+lastctrl = {f = 0, b = 0, l = 0, r = 0}
+speed = 0
+bg:Destroy()
+bv:Destroy()
+plr.Character.Humanoid.PlatformStand = false
+elseif flying == true then
+flying = false
+Fly.Toggle.BackgroundColor3 = Color3.new(255,0,0)
+end
+end
+mouse.KeyDown:connect(function(key)
+if key:lower() == "w" then
+ctrl.f = 1
+elseif key:lower() == "s" then
+ctrl.b = -1
+elseif key:lower() == "a" then
+ctrl.l = -1
+elseif key:lower() == "d" then
+ctrl.r = 1
+end
+end)
+mouse.KeyUp:connect(function(key)
+if key:lower() == "w" then
+ctrl.f = 0
+elseif key:lower() == "s" then
+ctrl.b = 0
+elseif key:lower() == "a" then
+ctrl.l = 0
+elseif key:lower() == "d" then
+ctrl.r = 0
+end
+end)
+Fly1()
+
+Flyz.Toggle.MouseButton1Click:connect(Fly1)
+--end of Fly
+--toggle off
+function onClickHighJump()
+		wait()		
+		for _,v in pairs(Speedz:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(HighJumpz:GetChildren()) do
+		v.Visible = true;
+		end
+		for _,v in pairs(Flyz:GetChildren()) do
+		v.Visible = false;
+		end
+		HighJumpz.Visible = true;
+		for _,v in pairs(Noclipz:GetChildren()) do
+		v.Visible = false;
+		end
+end
+
+HighJumpz.MouseButton1Click:connect(onClickHighJump)
+
+highjump = false
+function HighJumpT()
+if highjump == false then
+	highjump = true
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 150
+HighJumpz.Toggle.BackgroundColor3 = Color3.new(0,255,0)
+else if highjump == true then
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+HighJumpz.Toggle.BackgroundColor3 = Color3.new(255,0,0)
+end
+end
+end
+
+HighJumpz.Toggle.MouseButton1Click:connect(HighJumpT)
+
+function onClickClose()
+		
+	EMGUI:TweenSizeAndPosition(UDim2.new(0,700, 0, 400), UDim2.new(-.8, 0, .450, 0), "Out", "Quint", 2)
+	wait(1.4)
+	EMGUI.Visible = false;
+end
+
+CloseButton.MouseButton1Click:connect(onClickClose)
+
+--Player end
+--Game start
+local Gamez = Game
+local GamezTab = Game.TopLevelBAR
+
+function onClickGamez()
+		wait()		
+		Gamez.Visible = true;
+		GamezTab.Visible = false;
+		for _,v in pairs(Credits:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Game:GetChildren()) do
+		v.Visible = true;
+		end
+		for _,v in pairs(Player:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Teleport:GetChildren()) do
+		v.Visible = false;
+		end
+end
+
+Gamez.MouseButton1Click:connect(onClickGamez)
+
+--EndGame
+--Start of games
+value = "No Value"
+function onClickSweeper()
+		wait()	
+TheSweeper.Visible = true;	
+value = "TheSweeper"
+		for _,v in pairs(TheSweeper:GetChildren()) do
+		v.Visible = true;
+		end
+		for _,v in pairs(BulletEvasion:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(HighPressure:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LaserCutting:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LaserGuidance:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LavaForecast:GetChildren()) do
+		v.Visible = false;
+		end
+end
+
+
+TheSweeper.MouseButton1Click:connect(onClickSweeper)
+
+function onClickBullet()
+		wait()	
+BulletEvasion.Visible = true;	
+value = "BulletEvasion"
+		for _,v in pairs(TheSweeper:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(BulletEvasion:GetChildren()) do
+		v.Visible = true;
+		end
+		for _,v in pairs(HighPressure:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LaserCutting:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LaserGuidance:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LavaForecast:GetChildren()) do
+		v.Visible = false;
+		end
+end
+
+
+BulletEvasion.MouseButton1Click:connect(onClickBullet)
+
+function onClickHighP()
+		wait()	
+HighPressure.Visible = true;	
+value = "HighPressure"
+		for _,v in pairs(TheSweeper:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(BulletEvasion:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(HighPressure:GetChildren()) do
+		v.Visible = true;
+		end
+		for _,v in pairs(LaserCutting:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LaserGuidance:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LavaForecast:GetChildren()) do
+		v.Visible = false;
+		end
+end
+
+
+HighPressure.MouseButton1Click:connect(onClickHighP)
+
+function onClickLaserCutting()
+		wait()	
+LaserCutting.Visible = true;	
+value = "LaserCutting"
+		for _,v in pairs(TheSweeper:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(BulletEvasion:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(HighPressure:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LaserCutting:GetChildren()) do
+		v.Visible = true;
+		end
+		for _,v in pairs(LaserGuidance:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LavaForecast:GetChildren()) do
+		v.Visible = false;
+		end
+end
+
+
+LaserCutting.MouseButton1Click:connect(onClickLaserCutting)
+
+function onClickLaserGuidance()
+		wait()	
+LaserGuidance.Visible = true;	
+value = "LaserGuidance"
+		for _,v in pairs(TheSweeper:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(BulletEvasion:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(HighPressure:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LaserCutting:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LaserGuidance:GetChildren()) do
+		v.Visible = true;
+		end
+		for _,v in pairs(LavaForecast:GetChildren()) do
+		v.Visible = false;
+		end
+end
+
+
+LaserGuidance.MouseButton1Click:connect(onClickLaserGuidance)
+
+function onClickLavaForecast()
+		wait()	
+LavaForecast.Visible = true;	
+value = "LavaForecast"
+		for _,v in pairs(TheSweeper:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(BulletEvasion:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(HighPressure:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LaserCutting:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LaserGuidance:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(LavaForecast:GetChildren()) do
+		v.Visible = true;
+		end
+end
+
+
+LavaForecast.MouseButton1Click:connect(onClickLavaForecast)
+
+function onClickActivate()
+		wait()	
+value = "LavaForecast"
+if value == "TheSweeper" and game.Workspace:FindFirstChild("The Sweeper") then
+game.Workspace["The Sweeper"].sweeper:Destroy()	
+elseif value == "BulletEvasion" and game.Workspace:FindFirstChild("Bullet Evasion") then
+game.Workspace["Bullet Evasion"].bullets:Destroy()
+elseif value == "HighPressure" and game.Workspace:FindFirstChild("High Pressure") then
+game.Workspace["High Pressure"].sh1:Destroy()
+game.Workspace["High Pressure"].sh2:Destroy()
+game.Workspace["High Pressure"].sh3:Destroy()
+game.Workspace["High Pressure"].sh4:Destroy()	
+elseif value == "LaserCutting" and game.Workspace:FindFirstChild("Laser Cutting") then
+for i=1,100 do
+wait(0.5)
+for i,v in pairs(game.Workspace["Laser Cutting"]:GetChildren()) do
+if v.Name == "ldoor" then v:Destroy()
+end
+end
+end
+elseif value == "LaserGuidance" and game.Workspace:FindFirstChild("Laser Guidance") then
+game.Workspace["Laser Guidance"].vlaser:Destroy()
+game.Workspace["Laser Guidance"].hlaser:Destroy()
+elseif value == "LavaForecast" and game.Workspace:FindFirstChild("Lava Forecast") then
+for i=1,100 do
+wait(.5)
+for i,v in pairs(game.Workspace["Lava Forecast"]:GetChildren()) do
+if v.Name == "lavarain" then v:Destroy()
+end
+end
+end
+else warn("Error, nothing selected or nothing detected!")
+end
+end
+
+
+Activate.MouseButton1Click:connect(onClickActivate)
+--EndGame
+--TeleportStart
+
+local Telez = Teleport
+local TelezTab = Teleport.TopLevelBAR
+
+function onClickTelez()
+		wait()		
+		Telez.Visible = true;
+		TelezTab.Visible = false;
+		for _,v in pairs(Credits:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Game:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Player:GetChildren()) do
+		v.Visible = false;
+		end
+		for _,v in pairs(Teleport:GetChildren()) do
+		v.Visible = true;
+		end
+end
+
+Telez.MouseButton1Click:connect(onClickTelez)
+
+function onClickTrial()
+		wait()		
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(40.183,107,-33.48))
+end
+
+TrialTraversing.MouseButton1Click:connect(onClickTrial)
+
+function onClickLobby()
+		wait()		
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(126.21,831.3,-14.25))
+end
+
+Lobby.MouseButton1Click:connect(onClickLobby)
+
+function onClickAztec()
+		wait()		
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-578.5,30.95,-26.935))
+end
+
+AztecAdventure.MouseButton1Click:connect(onClickAztec)
+
+function onClickAvalanche()
+		wait()		
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-8.93,90.217,-121.402))
+end
+
+Avalanche.MouseButton1Click:connect(onClickAvalanche)
+
+function onClickDownhill()
+		wait()		
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(82.395,-137.7,-430.7))
+end
+
+DownhillRoll.MouseButton1Click:connect(onClickDownhill)
+
+function onClickExpedition()
+		wait()		
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(51.3,254.45,-6.52))
+end
+
+Expedition.MouseButton1Click:connect(onClickExpedition)
+
+function onClickBulletBound()
+		wait()		
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(47,137.6,-40.4))
+end
+
+BulletBound.MouseButton1Click:connect(onClickBulletBound)
+
+function onClickHighRolling()
+		wait()		
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(29,92.39,-60.447))
+end
+
+HighRolling.MouseButton1Click:connect(onClickHighRolling)
+
+function onClickPlatform()
+		wait()		
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(35.67919,93.026,-16.8))
+end
+
+PlatformPervil.MouseButton1Click:connect(onClickPlatform)
+
+local Sharky = Instance.new("Sound")
+Sharky.Parent = EMGUI
+Sharky.Volume = 1
+Sharky.SoundId = "rbxassetid://1000388087"
+function onClickShark()
+		wait()		
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(35.67919,93.026,-16.8))
+if Sharky.Playing == false then
+Sharky:Play()
+else
+end
+end
+
+SharkSurvival.MouseButton1Click:connect(onClickShark)

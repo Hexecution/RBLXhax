@@ -1,0 +1,7 @@
+local Y = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Y
+local Z = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.Z
+local X = game.Players.LocalPlayer.Character.HumanoidRootPart.Position.X
+local Player = game.Players.LocalPlayer
+local Object = game.Lighting.Consumables.Tower
+game.ReplicatedStorage.remoteCreateObject:InvokeServer("Tower", game.Workspace.UserParts:FindFirstChild(Player.Name), Player.UserId)
+game.ReplicatedStorage.remotePlaceObject:FireServer(Object, X, Y, Z, 0, Player.UserId)

@@ -1,0 +1,24 @@
+workspace.BoxingRoom.ChildAdded:connect(function(pizza)
+if pizza.Name == "Pizza" then
+workspace.GameService.DraggingStarted:FireServer(workspace.AllBox.BoxClosed)
+wait(0.1)
+workspace.GameService.UpdateObjectProperty:FireServer(true, workspace.AllBox.BoxClosed, "CFrame", CFrame.new(66,4,19.5), 51158)
+wait(0.1)
+workspace.GameService.OpenBox:FireServer(workspace.AllBox.BoxClosed)
+wait(0.2)
+workspace.GameService.AssignPizzaToBox:FireServer(workspace.AllBox.BoxOpen, pizza)
+wait(0.1)
+workspace.GameService.CloseBox:FireServer(workspace.AllBox.BoxOpen)
+wait(0.1)
+workspace.GameService.UpdateObjectProperty:FireServer(true, workspace.AllBox.BoxOpen, "CFrame", CFrame.new(68.2,4.4,4.9), 51158)
+end
+end)
+spawn(function()
+workspace.BoxingRoom.ChildAdded:connect(function(dew)
+if dew.Name == "Dew" then
+workspace.GameService.DraggingStarted:FireServer(dew)
+wait(0.1)
+workspace.GameService.UpdateObjectProperty:FireServer(true, dew, "CFrame", CFrame.new(62.8,4.9,2.7), 51158)
+end
+end)
+end)

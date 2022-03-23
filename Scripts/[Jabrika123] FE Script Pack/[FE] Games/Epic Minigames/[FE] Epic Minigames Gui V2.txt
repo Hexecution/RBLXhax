@@ -1,0 +1,387 @@
+local Player = game.Players.LocalPlayer--Don't change this since it works on only the localplayer
+
+local guip = Player.PlayerGui
+local Mouse = Player:GetMouse()
+local RoundCorner = "rbxassetid://864843300"
+local Sprinting = false
+local SprintSpeed = 24
+local Flying = false
+local FlySpeed = 100
+local Pathing = false
+local XZPathSize = 10
+local vDown = false
+
+
+local function MakeGui()
+local g = Instance.new("ScreenGui",guip)
+local SingleMinigamesFrame = Instance.new("Frame",g)
+local OpenButton = Instance.new("TextButton",g)
+local TileTakeover = Instance.new("TextButton",SingleMinigamesFrame)
+local OrbCollection = Instance.new("TextButton",SingleMinigamesFrame)
+local ManicMining = Instance.new("TextButton",SingleMinigamesFrame)
+local BulletEvasion = Instance.new("TextButton",SingleMinigamesFrame)
+local BounceOut = Instance.new("TextButton",SingleMinigamesFrame)
+local AztecAdventure = Instance.new("TextButton",SingleMinigamesFrame)
+local JustJump = Instance.new("TextButton",SingleMinigamesFrame)
+local SlipperySledding = Instance.new("TextButton",SingleMinigamesFrame)
+local TheCrusher = Instance.new("TextButton",SingleMinigamesFrame)
+local TheSweeper = Instance.new("TextButton",SingleMinigamesFrame)
+local TrialTravsersing = Instance.new("TextButton",SingleMinigamesFrame)
+local BlowDryerBattle = Instance.new("TextButton",SingleMinigamesFrame)
+local BulletBound = Instance.new("TextButton",SingleMinigamesFrame)
+local DownHillRoll = Instance.new("TextButton",SingleMinigamesFrame)
+local LaneJumping = Instance.new("TextButton",SingleMinigamesFrame)
+local LaserGuidance = Instance.new("TextButton",SingleMinigamesFrame)
+local HauntedHallways = Instance.new("TextButton",SingleMinigamesFrame)
+local HedgeWayOut = Instance.new("TextButton",SingleMinigamesFrame)
+local HighRolling = Instance.new("TextButton",SingleMinigamesFrame)
+local HardPressed = Instance.new("TextButton",SingleMinigamesFrame)
+local CannonCooldownRed = Instance.new("TextButton",SingleMinigamesFrame)
+local CannonCooldownBlue = Instance.new("TextButton",SingleMinigamesFrame)
+local AllSingleMinigamesButtons = SingleMinigamesFrame:GetChildren()
+--Done Creating The SingleMinigamesFrame Components
+g.ResetOnSpawn = false
+SingleMinigamesFrame.Position = UDim2.new(-0.23, 0,0.105, 0)
+SingleMinigamesFrame.Size = UDim2.new(0.16, 100,0.632, 100)
+SingleMinigamesFrame.BorderSizePixel = 0
+SingleMinigamesFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+OpenButton.Position = UDim2.new(0.004, 0,0.41, 0)
+OpenButton.Size = UDim2.new(-0.045, 130,0.042, 35)
+OpenButton.TextSize = 50
+OpenButton.Style = Enum.ButtonStyle.RobloxRoundButton
+OpenButton.Text = ">"
+--Button Setup
+OpenButton.MouseButton1Click:connect(function()
+if OpenButton.Text == ">" then
+OpenButton:TweenPosition(UDim2.new(0.234, 0,0.41, 0),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.5)
+SingleMinigamesFrame:TweenPosition(UDim2.new(-0, 0,0.105, 0),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.5)
+OpenButton.Text = "<"
+elseif OpenButton.Text == "<" then
+OpenButton:TweenPosition(UDim2.new(0.004, 0,0.41, 0),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.5)
+SingleMinigamesFrame:TweenPosition(UDim2.new(-0.23, 0,0.105, 0),Enum.EasingDirection.In,Enum.EasingStyle.Sine,0.5)
+OpenButton.Text = ">"
+end
+end)
+--End
+
+--Button Setup
+TileTakeover.Position = UDim2.new(0, 0,0, 0)
+TileTakeover.Size = UDim2.new(0, 130 , 0, 35)
+TileTakeover.TextSize = 10
+TileTakeover.Style = Enum.ButtonStyle.RobloxRoundButton
+TileTakeover.Text = "Tile Takeover"
+TileTakeover.MouseButton1Click:connect(function()
+local rt = 0
+repeat
+wait(1)
+rt = rt + 1
+local tilez = game.Workspace["Tile Takeover"].tiles:GetChildren()
+for i, v in pairs (tilez)do
+v.CanCollide = false
+v.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame - Vector3.new(0,3.3,0)
+end
+until rt == 50
+end)
+--End
+
+--Button Setup
+OrbCollection.Position = UDim2.new(0.408, 0,-0.001, 0)
+OrbCollection.Size = UDim2.new(0, 130 , 0, 35)
+OrbCollection.TextSize = 10
+OrbCollection.Style = Enum.ButtonStyle.RobloxRoundButton
+OrbCollection.Text = "Orb Collection"
+OrbCollection.MouseButton1Click:connect(function()
+local rt = 0
+repeat
+wait(1)
+local orbz = game.Workspace["Orb Collection"].tiles:GetChildren()
+for i, v in pairs (orbz) do
+v.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end
+until rt == 50
+end)
+--End
+
+--Button Setup
+ManicMining.Position = UDim2.new(0, 0,0.069, 0)
+ManicMining.Size = UDim2.new(0, 130 , 0, 35)
+ManicMining.TextSize = 10
+ManicMining.Style = Enum.ButtonStyle.RobloxRoundButton
+ManicMining.Text = "Manic Mining"
+ManicMining.MouseButton1Click:connect(function()
+game.Workspace["Manic Mining"].emerald.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame + Vector3.new(2,2,2)
+end)
+--End
+
+--Button Setup
+BounceOut.Position = UDim2.new(0.408, 0,0.069, 0)
+BounceOut.Size = UDim2.new(0, 130 , 0, 35)
+BounceOut.TextSize = 10
+BounceOut.Style = Enum.ButtonStyle.RobloxRoundButton
+BounceOut.Text = "Bounce Out"
+BounceOut.MouseButton1Click:connect(function()
+game.Workspace["Bounce Out"].Goal.Goal.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end)
+--End
+
+--Button Setup
+BulletEvasion.Position = UDim2.new(0, 0,0.138, 0)
+BulletEvasion.Size = UDim2.new(0, 130 , 0, 35)
+BulletEvasion.TextSize = 10
+BulletEvasion.Style = Enum.ButtonStyle.RobloxRoundButton
+BulletEvasion.Text = "Bullet Evasion"
+BulletEvasion.MouseButton1Click:connect(function()
+game.Workspace["Bullet Evasion"].bullets:Destroy()
+end)
+--End
+
+--Button Setup
+AztecAdventure.Position = UDim2.new(0.408, 0,0.138, 0)
+AztecAdventure.Size = UDim2.new(0, 130 , 0, 35)
+AztecAdventure.TextSize = 10
+AztecAdventure.Style = Enum.ButtonStyle.RobloxRoundButton
+AztecAdventure.Text = "Aztec Adventure"
+AztecAdventure.MouseButton1Click:connect(function()
+game.Workspace["Aztec Adventure"].Goal.Goal.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end)
+--End
+
+--Button Setup
+JustJump.Position = UDim2.new(0, 0,0.208, 0)
+JustJump.Size = UDim2.new(0, 130 , 0, 35)
+JustJump.TextSize = 10
+JustJump.Style = Enum.ButtonStyle.RobloxRoundButton
+JustJump.Text = "Just Jump"
+JustJump.MouseButton1Click:connect(function()
+game.Workspace["Just Jump"].map.rope:Destroy()
+end)
+--End
+
+--Button Setup
+SlipperySledding.Position = UDim2.new(0.408, 0,0.207, 0)
+SlipperySledding.Size = UDim2.new(0, 130 , 0, 35)
+SlipperySledding.TextSize = 10
+SlipperySledding.Style = Enum.ButtonStyle.RobloxRoundButton
+SlipperySledding.Text = "Slippery Sledding"
+SlipperySledding.MouseButton1Click:connect(function()
+game.Workspace["Slippery Sledding"].Goal.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end)
+--End
+
+--Button Setup
+TheCrusher.Position = UDim2.new(0, 0,0.277, 0)
+TheCrusher.Size = UDim2.new(0, 130 , 0, 35)
+TheCrusher.TextSize = 10
+TheCrusher.Style = Enum.ButtonStyle.RobloxRoundButton
+TheCrusher.Text = "The Crusher"
+TheCrusher.MouseButton1Click:connect(function()
+game.Workspace["The Crusher"].Goal.Goal.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end)
+--End
+
+--Button Setup
+TheSweeper.Position = UDim2.new(0.408, 0,0.276, 0)
+TheSweeper.Size = UDim2.new(0, 130 , 0, 35)
+TheSweeper.TextSize = 10
+TheSweeper.Style = Enum.ButtonStyle.RobloxRoundButton
+TheSweeper.Text = "The Sweeper"
+TheSweeper.MouseButton1Click:connect(function()
+game.Workspace["The Sweeper"].sweeper:Destroy()
+end)
+--End
+
+--Button Setup
+TrialTravsersing.Position = UDim2.new(0, 0,0.346, 0)
+TrialTravsersing.Size = UDim2.new(0, 130 , 0, 35)
+TrialTravsersing.TextSize = 10
+TrialTravsersing.Style = Enum.ButtonStyle.RobloxRoundButton
+TrialTravsersing.Text = "Trial Travsersing"
+TrialTravsersing.MouseButton1Click:connect(function()
+game.Workspace["Trial Traversing"].Goal.Goal.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end)
+--End
+
+--Button Setup
+BlowDryerBattle.Position = UDim2.new(0.408, 0,0.346, 0)
+BlowDryerBattle.Size = UDim2.new(0, 130 , 0, 35)
+BlowDryerBattle.TextSize = 10
+BlowDryerBattle.Style = Enum.ButtonStyle.RobloxRoundButton
+BlowDryerBattle.Text = "BlowDryer Battle"
+BlowDryerBattle.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character.Torso.Anchored = true
+wait(60)
+game.Players.LocalPlayer.Character.Torso.Anchored = false
+end)
+--End
+
+--Button Setup
+BulletBound.Position = UDim2.new(0, 0,0.415, 0)
+BulletBound.Size = UDim2.new(0, 130 , 0, 35)
+BulletBound.TextSize = 10
+BulletBound.Style = Enum.ButtonStyle.RobloxRoundButton
+BulletBound.Text = "Bullet Bound"
+BulletBound.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Character.Toros.CFrame = game.Workspace["Bullet Bound"].Goal.Goal.CFrame
+end)
+--End
+
+--Button Setup
+DownHillRoll.Position = UDim2.new(0.408, 0,0.415, 0)
+DownHillRoll.Size = UDim2.new(0, 130 , 0, 35)
+DownHillRoll.TextSize = 10
+DownHillRoll.Style = Enum.ButtonStyle.RobloxRoundButton
+DownHillRoll.Text = "DownHill Roll"
+DownHillRoll.MouseButton1Click:connect(function()
+game.Workspace["Downhill Roll"].Goal.Goal.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end)
+--End
+
+--Button Setup
+LaserGuidance.Position = UDim2.new(0.408, 0,0.484, 0)
+LaserGuidance.Size = UDim2.new(0, 130 , 0, 35)
+LaserGuidance.TextSize = 10
+LaserGuidance.Style = Enum.ButtonStyle.RobloxRoundButton
+LaserGuidance.Text = "Laser Guidance"
+LaserGuidance.MouseButton1Click:connect(function()
+game.Workspace["Laser Guidance"].vlaser:Destroy()
+game.Workspace["Laser Guidance"].hlaser:Destroy()
+end)
+--End
+
+--Button Setup
+LaneJumping.Position = UDim2.new(0, 0,0.485, 0)
+LaneJumping.Size = UDim2.new(0, 130 , 0, 35)
+LaneJumping.TextSize = 10
+LaneJumping.Style = Enum.ButtonStyle.RobloxRoundButton
+LaneJumping.Text = "Lane Jumping"
+LaneJumping.MouseButton1Click:connect(function()
+game.Workspace["Lane Jumping"].Goal.Goal.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end)
+--End
+
+--Button Setup
+HauntedHallways.Position = UDim2.new(0, 0,0.554, 0)
+HauntedHallways.Size = UDim2.new(0, 130 , 0, 35)
+HauntedHallways.TextSize = 10
+HauntedHallways.Style = Enum.ButtonStyle.RobloxRoundButton
+HauntedHallways.Text = "Haunted Hallways"
+HauntedHallways.MouseButton1Click:connect(function()
+game.Workspace["Haunted Hallways"].Goal.Goal.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end)
+--End
+
+--Button Setup
+HedgeWayOut.Position = UDim2.new(0.408, 0,0.555, 0)
+HedgeWayOut.Size = UDim2.new(0, 130 , 0, 35)
+HedgeWayOut.TextSize = 10
+HedgeWayOut.Style = Enum.ButtonStyle.RobloxRoundButton
+HedgeWayOut.Text = "Hedge Way Out"
+HedgeWayOut.MouseButton1Click:connect(function()
+game.Workspace["Hedge Way Out"].hedges:Destroy()
+end)
+--End
+
+--Button Setup
+HighRolling.Position = UDim2.new(0, 0,0.625, 0)
+HighRolling.Size = UDim2.new(0, 130 , 0, 35)
+HighRolling.TextSize = 10
+HighRolling.Style = Enum.ButtonStyle.RobloxRoundButton
+HighRolling.Text = "High Rolling"
+HighRolling.MouseButton1Click:connect(function()
+game.Workspace["High-Rolling"].Goal.Goal.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end)
+--End
+
+--Button Setup
+HardPressed.Position = UDim2.new(0.408, 0,0.624, 0)
+HardPressed.Size = UDim2.new(0, 130 , 0, 35)
+HardPressed.TextSize = 10
+HardPressed.Style = Enum.ButtonStyle.RobloxRoundButton
+HardPressed.Text = "Hard Pressed"
+HardPressed.MouseButton1Click:connect(function()
+game.Workspace["Hard-Pressed"].map.presses:Destroy()
+end)
+--End
+
+--Button Setup
+CannonCooldownRed.Position = UDim2.new(0, 0,0.694, 0)
+CannonCooldownRed.Size = UDim2.new(0, 130 , 0, 35)
+CannonCooldownRed.TextSize = 7
+CannonCooldownRed.Style = Enum.ButtonStyle.RobloxRoundButton
+CannonCooldownRed.Text = "Cannon Cooldown Red"
+CannonCooldownRed.MouseButton1Click:connect(function()
+local rt = 0
+repeat
+local rp = game.Workspace["Cannon Cooldown"].trpads:GetChildren()
+wait (0.1)
+for i, v in pairs(rp) do
+v.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end
+until rt == 10
+end)
+--End
+
+--Button Setup
+CannonCooldownBlue.Position = UDim2.new(0.408, 0,0.694, 0)
+CannonCooldownBlue.Size = UDim2.new(0, 130 , 0, 35)
+CannonCooldownBlue.TextSize = 7
+CannonCooldownBlue.Style = Enum.ButtonStyle.RobloxRoundButton
+CannonCooldownBlue.Text = "Cannon Cooldown Blue"
+CannonCooldownBlue.MouseButton1Click:connect(function()
+local rt = 0
+repeat
+local rp = game.Workspace["Cannon Cooldown"].tbpads:GetChildren()
+wait (0.1)
+for i, v in pairs(rp) do
+v.CFrame = game.Players.LocalPlayer.Character.Torso.CFrame
+end
+until rt == 10
+end)
+--End
+end
+MakeGui()
+
+Mouse.KeyDown:connect(function(Key)
+if Key == "z" then
+Sprinting = true
+repeat
+wait()
+Player.Character.Torso.Velocity = Player.Character.Torso.CFrame.lookVector * SprintSpeed * 2
+until Sprinting == false
+end
+if Key == "x" then
+Flying = true
+repeat
+wait()
+Player.Character.Torso.Velocity = Vector3.new(0,FlySpeed,0)
+until Flying == false
+end
+if Key == "p" then
+local Path = Instance.new("Part",game.Workspace)
+Path.Size = Vector3.new(XZPathSize,1,XZPathSize)
+Path.Anchored = true
+Path.CFrame = Player.Character.Torso.CFrame - Vector3.new(0,3.5,0)
+end
+if Key == "v" then
+vDown = true
+end
+end)
+Mouse.KeyUp:connect(function(Key)
+if Key == "z" then
+Sprinting = false
+end
+if Key == "x" then
+Flying = false
+end
+if Key == "p" then
+Pathing = false
+end
+if Key == "v" then
+vDown = false
+end
+end)
+Mouse.Button1Down:connect(function()
+if vDown == true then
+Mouse.Target:Destroy()
+end
+end)

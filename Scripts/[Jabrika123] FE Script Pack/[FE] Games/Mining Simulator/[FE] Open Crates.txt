@@ -1,0 +1,5 @@
+local CratesToOpen = 1000 -- Crates to open
+for i = 1,CratesToOpen do
+workspace.RemoteEvent:FireServer('SpinCrate', 'Epic')
+wait(.5)
+end

@@ -1,0 +1,3 @@
+local env = getsenv(game.Players.LocalPlayer.Backpack.Sword.SwordScript).lunge
+debug.setupvalue(env, "slash_damage", 100)
+debug.setupvalue(env, "lunge_damage", 100)

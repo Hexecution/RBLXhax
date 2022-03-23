@@ -1,0 +1,9 @@
+while true do
+local remote = Game["Workspace"]["Remotes"]["addCoins"]
+local args = {
+    [1] = "CGA brown",
+    [2] = 70 --[[number]]
+}
+remote:FireServer(unpack(args))
+wait()
+end

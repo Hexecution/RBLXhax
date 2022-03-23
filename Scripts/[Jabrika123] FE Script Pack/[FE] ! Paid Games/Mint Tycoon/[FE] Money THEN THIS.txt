@@ -1,0 +1,9 @@
+while true do
+local remote = Game["Workspace"]["Remotes"]["FillOrder"]
+local args = {
+    [1] = Game["Workspace"]["Greenhouse"],
+    [2] = Game["Workspace"]["ImportantBuildings"]["TradingGallery"]["Micro"]["Booth3"]["Screen"]["SurfaceGui"]["OrderFrame"]
+}
+remote:FireServer(unpack(args))
+wait()
+end

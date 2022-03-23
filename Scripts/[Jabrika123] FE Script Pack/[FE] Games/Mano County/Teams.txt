@@ -1,0 +1,17 @@
+TEAMS
+
+Navy blue =  Clearcreek Township 
+
+Black = County S.W.A.T
+
+New Yeller = Department of Transport
+
+Bright red = Fire Department
+
+Bronze = Sheriffs Office
+
+Bright Yellow =  Rescue Squad
+
+Really black = Prisoners
+
+Mid  gray = Civilians

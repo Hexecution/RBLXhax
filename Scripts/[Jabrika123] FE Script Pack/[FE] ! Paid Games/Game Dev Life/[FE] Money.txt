@@ -1,0 +1,7 @@
+-- lower price more sales
+price = "5"
+while wait(0.5) do
+game.ReplicatedStorage.RemoteEvents.ChangeValue:FireServer("GamePrice", price)
+game.ReplicatedStorage.RemoteEvents.StartGameHandler:FireServer()
+game.ReplicatedStorage.RemoteEvents.CrateDelivered:FireServer()
+end

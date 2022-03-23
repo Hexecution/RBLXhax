@@ -1,0 +1,4 @@
+                                                                                      local dunkin = game:GetService'Players'.LocalPlayer;local donuts = "Character";local is = "Head";local dead = "NameGui";local message = {
+'Script By Triscut8 on v3rm'                                                                      ,
+'Dunkin Donuts FE Name Remover'                                                      }
+dunkin[donuts][is][dead]                                                                                   :ClearAllChildren()

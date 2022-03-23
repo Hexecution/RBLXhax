@@ -1,0 +1,21 @@
+local m = game.Players.LocalPlayer:GetMouse()
+db = true
+m.KeyDown:connect(function(k)
+k = k:lower()
+if k == "v" then
+if db == true then
+local Positionss = game.Players.LocalPlayer.Character.HumanoidRootPart.Position + Vector3.new(0, 0, 5)
+local remote = Game["Workspace"]["Events"]["Building"]["PlaceObject"]
+local args = {
+   [1] = {
+       [1] = Game["Workspace"]["Furniture"]["Counter5"],
+       [2] = false,
+       [3] = Positionss,
+       [4] = 0,
+       [5] = "caz"
+   }
+}
+remote:InvokeServer(unpack(args))
+end
+end
+end)

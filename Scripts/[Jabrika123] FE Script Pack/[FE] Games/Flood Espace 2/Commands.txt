@@ -1,0 +1,3 @@
+Z : Get All Buttons
+X : Win Immidiately
+C : Destroy the Block Blocking you from exiting from the winners room, to have some fun exploring the map while other players are winning

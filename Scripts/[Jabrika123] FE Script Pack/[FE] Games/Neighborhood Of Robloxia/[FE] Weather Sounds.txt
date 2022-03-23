@@ -1,0 +1,22 @@
+-- Just Replace SOUNDNAMEHERE with one
+-- of the sounds from the list
+
+sound = game.Workspace._WeatherSounds
+
+sound.SOUNDNAMEHERE:Play() -- To Stop The Sound, Replace Play with Stop
+
+
+-- List Of Sounds
+-------------------
+-- AttentionGrabber -- (Like Weather Sound AKA: BEEEEEP BEEEEP)
+-- Rain1 --
+-- Rain2 --
+-- Siren--
+-- Thunder1 --
+-- Thunder2 --
+-- ThunderBlast --
+-- Wind1 --
+-- Wind2 --
+-- Wind3 --
+-- Wind4 --
+-- SnowStorm --

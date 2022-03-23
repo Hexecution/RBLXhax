@@ -1,0 +1,33 @@
+mouse = game.Players.LocalPlayer:GetMouse()
+
+mouse.KeyDown:connect(function(key)
+
+if key == "m" then
+
+for i, v in pairs(game.Workspace.Vehicles:GetChildren()) do
+if v:IsA("Model") then
+for a, b in pairs(v:GetChildren()) do
+if b.Name == "owner" then
+if b.Value == game.Players.LocalPlayer.Name then
+v.Name = "This One"
+end
+end
+end
+end
+end
+
+car = game.Workspace.Vehicles["This One"]
+end
+
+
+if key == "p" then
+game.ReplicatedStorage.VehicleEvents.Nitro:FireServer(true, car.Chassis.FrontAxle.Front.NitroSound, car.Chassis.FrontAxle.Front.Nitro, -150250)
+end
+
+if key == "l" then
+game.ReplicatedStorage.VehicleEvents.Nitro:FireServer(false, car.Chassis.FrontAxle.Front.NitroSound, car.Chassis.FrontAxle.Front.Nitro, -150250)
+end
+
+end)
+
+game.ReplicatedStorage.VehicleEvents.Nitro:FireServer(true, car.Chassis.FrontAxle.Front.NitroSound, car.Chassis.FrontAxle.Front.Nitro, -150250)

@@ -1,0 +1,7 @@
+for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+if v:IsA("Tool") then
+TakeL = v.Name
+local env = getsenv(game.Players.LocalPlayer.Backpack[TakeL].LocalScript).reload
+debug.setupvalue(env, "maxAmmo", math.huge)
+end
+end

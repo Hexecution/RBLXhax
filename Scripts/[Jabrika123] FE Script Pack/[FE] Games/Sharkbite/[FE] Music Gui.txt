@@ -1,0 +1,67 @@
+-- Objects
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextBox = Instance.new("TextBox")
+local TextButton = Instance.new("TextButton")
+
+-- Properties
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.new(0, 1, 1)
+Frame.Position = UDim2.new(0.463629693, 0, 0.263345182, 0)
+Frame.Size = UDim2.new(0, 332, 0, 201)
+Frame.Active = true
+Frame.Draggable = true
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.new(0.666667, 1, 1)
+TextLabel.BorderSizePixel = 0
+TextLabel.Size = UDim2.new(0, 332, 0, 50)
+TextLabel.Font = Enum.Font.Code
+TextLabel.Text = "SharkBite Music GUI    Made By Bloxy"
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14
+TextLabel.TextWrapped = true
+
+TextBox.Parent = TextLabel
+TextBox.BackgroundColor3 = Color3.new(0.666667, 1, 1)
+TextBox.Position = UDim2.new(0.198795184, 0, 2.63999987, 0)
+TextBox.Size = UDim2.new(0, 200, 0, 50)
+TextBox.Font = Enum.Font.Code
+TextBox.Text = "id"
+TextBox.TextScaled = true
+TextBox.TextSize = 14
+TextBox.TextWrapped = true
+
+TextButton.Parent = TextBox
+TextButton.BackgroundColor3 = Color3.new(0.666667, 1, 1)
+TextButton.Position = UDim2.new(0, 0, -1.36000001, 0)
+TextButton.Size = UDim2.new(0, 200, 0, 50)
+TextButton.Font = Enum.Font.Code
+TextButton.Text = "Play"
+TextButton.TextScaled = true
+TextButton.TextSize = 14
+TextButton.TextWrapped = true
+
+TextButton.MouseButton1Down:connect(function()
+	for i,v in pairs(game.Players:GetPlayers()) do
+game.Workspace.Events.Sounds.DeathSound:FireServer(v.Character.Head.Died, "rbxassetid://musicid")
+end
+
+for i,z in pairs(game.Players.LocalPlayer.Character.Head:GetChildren()) do
+if z:IsA'Sound' then z.Playing = true end
+wait()
+for i,v in pairs(game.Players:GetPlayers()) do
+game.Workspace.Events.Sounds.DeathSound:FireServer(v.Character.Head.Died, TextBox.Text)
+end
+
+for i,z in pairs(game.Players.LocalPlayer.Character.Head:GetChildren()) do
+if z:IsA'Sound' then z.Playing = true end
+end
+
+end
+end)

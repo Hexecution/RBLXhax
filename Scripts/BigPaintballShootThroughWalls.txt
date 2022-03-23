@@ -1,0 +1,59 @@
+--Made by Cyber-Spyder
+--please give credit this took a while
+--press b if on a team match on blue
+--press r if on a team match on red
+--press o if on a free for all
+--press k if on a skill
+local player2 = game.Players.LocalPlayer
+local mouse2 = player2:GetMouse()
+
+mouse2.KeyDown:connect(function(key)
+    if key == "o" then
+        Game.Workspace.__MAP.Map:Remove()
+        game.workspace.Gravity = 0
+        print("Pressed o")
+        
+        
+    end
+end)
+mouse2.KeyDown:connect(function(key)
+    if key == "k" then
+        if Game.Workspace.__MAP.Model then
+            Game.Workspace.__MAP.Model:Remove()
+        end
+        if Game.Workspace.__MAP.Main then
+            Game.Workspace.__MAP.Main:Remove()
+        end
+        if Game.Workspace.__MAP.Map then
+            Game.Workspace.__MAP.Map:Remove()
+        end
+        game.workspace.Gravity = 0
+        print("Pressed k")  
+        
+        
+    end
+end)
+mouse2.KeyDown:connect(function(key)
+    if key == "b" then
+        print("Pressed b")
+        if Game.Workspace.__MAP.RedSide then
+            Game.Workspace.__MAP.RedSide:Remove()
+        end
+        if Game.Workspace.__MAP.Main then
+            Game.Workspace.__MAP.Main:Remove()
+            game.workspace.Gravity = 0
+        end
+    end
+end)
+mouse2.KeyDown:connect(function(key)
+    if key == "r" then
+        print("Pressed r")
+        if Game.Workspace.__MAP.BlueSide then
+            Game.Workspace.__MAP.BlueSide:Remove()
+        end
+        if Game.Workspace.__MAP.Main then
+            Game.Workspace.__MAP.Main:Remove()
+            game.workspace.Gravity = 0
+        end
+    end
+end)

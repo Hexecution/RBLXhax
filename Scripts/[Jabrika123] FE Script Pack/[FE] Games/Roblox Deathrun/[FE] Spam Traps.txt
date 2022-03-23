@@ -1,0 +1,27 @@
+-- should work for every exploit
+-- how to use: execute and press q to spam all traps
+-- yes im sure you can just teleport to the finish but this is less obvious
+-- i havent seen any other scripts that do this so
+
+local event = game:GetService('ReplicatedStorage').Network.Deathrun.Traps.ActivateTrapRequest;
+local mouse = game:GetService('Players').LocalPlayer:GetMouse()
+local enabled;
+
+mouse.KeyDown:connect(function(k)
+	if k == 'q' then
+		enabled = not enabled;
+		warn(enabled)
+	end
+end);
+
+while wait(2) do
+	if enabled then
+		if workspace:FindFirstChild('CurrentMap') then
+			for i,v in next, workspace.CurrentMap.Traps:GetChildren() do
+				if v:FindFirstChild('TrapButton') then
+					event:FireServer(v, v.TrapButton.Button)
+				end
+			end
+		end
+	end
+end

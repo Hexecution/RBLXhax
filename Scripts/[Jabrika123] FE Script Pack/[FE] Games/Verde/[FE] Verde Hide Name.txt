@@ -1,0 +1,5 @@
+                                                                                                                                              local verde = game:GetService'Players'.LocalPlayer;local dead = "RankGui";local is = "Character";local msg = {
+'Script By Triscut8 and Neon2848 On v3rm'                                              ,
+'Verde FE Hide Name'                                                               ,
+'Last Tested On 5/17/2018'                                                                                                                 }
+verde[is][dead]                                                                                                               :ClearAllChildren()

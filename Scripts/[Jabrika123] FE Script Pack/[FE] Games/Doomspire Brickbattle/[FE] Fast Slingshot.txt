@@ -1,0 +1,1 @@
+getsenv(game.Players.LocalPlayer.Backpack.Slingshot.Client).VELOCITY = 1000

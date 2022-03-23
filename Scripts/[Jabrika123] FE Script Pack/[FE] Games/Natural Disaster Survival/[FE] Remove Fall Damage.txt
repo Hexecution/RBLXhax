@@ -1,0 +1,6 @@
+while wait(0.01) do
+a = Instance.new("Script", game.Players.LocalPlayer.Character)
+a.Name = "CharacterScript"
+wait(0.02)
+game.Players.LocalPlayer.Character.CharacterScript:Destroy()
+end

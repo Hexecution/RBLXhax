@@ -1,0 +1,625 @@
+-- Objects
+
+local Drop = Instance.new("ScreenGui")
+local Hax = Instance.new("Frame")
+local Line = Instance.new("Frame")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local Block = Instance.new("TextButton")
+local Tool = Instance.new("TextButton")
+local Hat = Instance.new("TextButton")
+local Ball = Instance.new("TextButton")
+local Change = Instance.new("TextButton")
+local Date = Instance.new("TextButton")
+local TextBox = Instance.new("TextBox")
+
+-- Properties
+
+Drop.Name = "Drop"
+Drop.Parent = game.CoreGui
+
+Hax.Name = "Hax"
+Hax.Active = true
+Hax.Selectable = true
+Hax.Parent = Drop
+Hax.BackgroundColor3 = Color3.new(1, 1, 1)
+Hax.BackgroundTransparency = 0.15000000596046
+Hax.BorderSizePixel = 0
+Hax.Draggable = true
+Hax.Position = UDim2.new(0.32188201, 0, 0.295843542, 0)
+Hax.Size = UDim2.new(0, 477, 0, 334)
+
+Line.Name = "Line"
+Line.Parent = Hax
+Line.BackgroundColor3 = Color3.new(0.694118, 0.647059, 0)
+Line.BorderSizePixel = 0
+Line.Size = UDim2.new(0, 477, 0, 10)
+
+Frame.Parent = Hax
+Frame.BackgroundColor3 = Color3.new(0.870588, 0.8, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0, 0, 0.029940119, 0)
+Frame.Size = UDim2.new(0, 477, 0, 61)
+
+TextLabel.Parent = Hax
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0.208595395, 0, 0.0714285746, 0)
+TextLabel.Size = UDim2.new(0, 278, 0, 38)
+TextLabel.Font = Enum.Font.Highway
+TextLabel.Text = "dank legos"
+TextLabel.TextSize = 30
+
+Block.Name = "Block"
+Block.Parent = Hax
+Block.BackgroundColor3 = Color3.new(0.866667, 0.768628, 0.207843)
+Block.BorderSizePixel = 0
+Block.Position = UDim2.new(0.0209643599, 0, 0.543189406, 0)
+Block.Size = UDim2.new(0, 148, 0, 43)
+Block.Font = Enum.Font.Highway
+Block.Text = "Block Spam"
+Block.TextColor3 = Color3.new(0, 0, 0)
+Block.TextSize = 16
+Block.MouseButton1Down:connect(function()
+for i=1,100 do
+local A_1 =
+{
+   [1] = "Wear",
+   [2] = "15857936",
+   [3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait(0.1)
+for index, child in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if child.ClassName == "Hat" or child.ClassName == "Accessory" then
+if child.Handle:FindFirstChild("Mesh") then
+child.Handle.Mesh.Parent = nil
+child.Parent = game.Workspace
+end
+end
+end
+end
+end)
+
+Tool.Name = "Tool"
+Tool.Parent = Hax
+Tool.BackgroundColor3 = Color3.new(0.866667, 0.768628, 0.207843)
+Tool.BorderSizePixel = 0
+Tool.Position = UDim2.new(0.34591195, 0, 0.544850469, 0)
+Tool.Size = UDim2.new(0, 148, 0, 43)
+Tool.Font = Enum.Font.Highway
+Tool.Text = "Tool Spam"
+Tool.TextColor3 = Color3.new(0, 0, 0)
+Tool.TextSize = 16
+Tool.MouseButton1Down:connect(function()
+for i=1,100 do
+local A_1 = "Ice cream"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "GravityCoil"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "RainbowUnicorn"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "TeddyBloxpin"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "BlueFidgetSpinner"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "RedFidgetSpinner"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "Slurpee"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "NeonBloxter"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "Motorcycle"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+wait()
+local A_1 = "BloxsterV3"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "NavyConvertible"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "RedHyperbike"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "BunchOfBalloons"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait()
+local A_1 = "BlueRoPed"
+local A_2 = 0
+local Event = game:GetService("Workspace").BuyTools
+Event:FireServer(A_1, A_2)
+wait(0.1)
+for a, bacon in pairs(game.Players.localPlayer.Backpack:GetChildren()) do
+if bacon:IsA'Tool' then
+bacon.CanBeDropped = true
+bacon.Parent = game.Players.localPlayer.Character
+bacon.Parent = workspace
+end
+end
+end
+end)
+
+Hat.Name = "Hat"
+Hat.Parent = Hax
+Hat.BackgroundColor3 = Color3.new(0.866667, 0.768628, 0.207843)
+Hat.BorderSizePixel = 0
+Hat.Position = UDim2.new(0.67295593, 0, 0.543189347, 0)
+Hat.Size = UDim2.new(0, 148, 0, 43)
+Hat.Font = Enum.Font.Highway
+Hat.Text = "Hat Spam"
+Hat.TextColor3 = Color3.new(0, 0, 0)
+Hat.TextSize = 16
+Hat.MouseButton1Down:connect(function()
+for i=1,10 do
+local A_1 =
+{
+[1] = "Wear",
+[2] = "100427922",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1016145591",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1016174762",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "102616790",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1028715",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1028859",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1029025",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1032939553",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1032940025",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1033116801",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1038669",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1060280793",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "106690045",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "106710727",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1149615697",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "116777285",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "151784320",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1425126225",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1425132751",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1425132751",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "273967011",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "439944088",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "215719598",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "18757803",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "187846561",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "9251145",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "78033458",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "67291394",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "67291394",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1191136725",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "1191142249",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "258183674",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "255791946",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "24341406",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "398673423",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "346675520",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "362030276",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait()
+local A_1 =
+{
+[1] = "Wear",
+[2] = "409739014",
+[3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait(0.1)
+for index, child in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if child.ClassName == "Hat" or child.ClassName == "Accessory" then
+child.Parent = game.Workspace
+end
+end
+end
+end)
+
+Ball.Name = "Ball"
+Ball.Parent = Hax
+Ball.BackgroundColor3 = Color3.new(0.866667, 0.768628, 0.207843)
+Ball.BorderSizePixel = 0
+Ball.Position = UDim2.new(0.0209643599, 0, 0.762458503, 0)
+Ball.Size = UDim2.new(0, 148, 0, 43)
+Ball.Font = Enum.Font.Highway
+Ball.Text = "Ball Spam"
+Ball.TextColor3 = Color3.new(0, 0, 0)
+Ball.TextSize = 16
+Ball.MouseButton1Down:connect(function()
+for i=1,100 do
+local A_1 =
+{
+   [1] = "Wear",
+   [2] = "9251145",
+   [3] = "Hats"
+}
+local Event = game:GetService("ReplicatedStorage").WearItem
+Event:FireServer(A_1)
+wait(0.1)
+for index, child in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+if child.ClassName == "Hat" or child.ClassName == "Accessory" then
+if child.Handle:FindFirstChild("Mesh") then
+child.Handle.Mesh.Parent = nil
+child.Parent = game.Workspace
+end
+end
+end
+end
+end)
+
+Change.Name = "Change"
+Change.Parent = Hax
+Change.BackgroundColor3 = Color3.new(0.866667, 0.768628, 0.207843)
+Change.BorderSizePixel = 0
+Change.Position = UDim2.new(0.344863713, 0, 0.764119565, 0)
+Change.Size = UDim2.new(0, 148, 0, 43)
+Change.Font = Enum.Font.Highway
+Change.Text = "Change Name"
+Change.TextColor3 = Color3.new(0, 0, 0)
+Change.TextSize = 16
+Change.MouseButton1Down:connect(function()
+local A_1 = "RPName"
+local A_2 = TextBox.Text
+local Event = game:GetService("ReplicatedStorage").NetworkEvent
+Event:FireServer(A_1, A_2)
+end)
+
+Date.Name = "Date"
+Date.Parent = Hax
+Date.BackgroundColor3 = Color3.new(0.866667, 0.768628, 0.207843)
+Date.BorderSizePixel = 0
+Date.Position = UDim2.new(0.67295599, 0, 0.764119565, 0)
+Date.Size = UDim2.new(0, 148, 0, 43)
+Date.Font = Enum.Font.Highway
+Date.Text = "Date"
+Date.TextColor3 = Color3.new(0, 0, 0)
+Date.TextSize = 16
+Date.MouseButton1Down:connect(function()
+local A_1 = "Hey there bb gurl,"
+local A_2 = "All"
+local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+Event:FireServer(A_1, A_2)
+wait(1)
+local A_1 = "Wanna OD?"
+local A_2 = "All"
+local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+Event:FireServer(A_1, A_2)
+wait(1)
+local A_1 = "U might like my big bacon ;)"
+local A_2 = "All"
+local Event = game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest
+Event:FireServer(A_1, A_2)
+end)
+
+TextBox.Parent = Hax
+TextBox.BackgroundColor3 = Color3.new(0.615686, 0.615686, 0.615686)
+TextBox.BackgroundTransparency = 0.55000001192093
+TextBox.BorderSizePixel = 0
+TextBox.Position = UDim2.new(0.0209643599, 0, 0.312292367, 0)
+TextBox.Size = UDim2.new(0, 459, 0, 52)
+TextBox.Font = Enum.Font.Highway
+TextBox.Text = "Name"
+TextBox.TextSize = 25

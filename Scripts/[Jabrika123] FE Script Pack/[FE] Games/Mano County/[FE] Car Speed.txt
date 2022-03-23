@@ -1,0 +1,4 @@
+local A_1 = "\71\101\97\114"
+local A_2 = 1000 --Change this to the speed you want
+local Event = game:GetService("Players").NAMEHERE.PlayerGui.CarGui.Frame.BossEvent
+Event:FireServer(A_1, A_2)

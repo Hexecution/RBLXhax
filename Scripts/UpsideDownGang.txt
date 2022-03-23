@@ -1,0 +1,24 @@
+local torso = workspace.irobloxianlover.Head
+local newCFrame = (torso.CFrame + Vector3.new(0,-4,0)) * CFrame.fromEulerAnglesXYZ(0, 0, math.rad(180))
+local player2 = game.Players.LocalPlayer
+local mouse2 = player2:GetMouse()
+
+mouse2.KeyDown:connect(function(key)
+    if key == "w" then
+	newCFrame = newCFrame + Vector3.new(0,0,3)
+    end
+    if key == "s" then
+	newCFrame = newCFrame + Vector3.new(0,0,-3)
+    end
+    if key == "a" then
+	newCFrame = newCFrame + Vector3.new(3,0,0)
+    end
+    if key == "d" then
+	newCFrame = newCFrame + Vector3.new(-3,0,0)
+    end
+end)
+
+while true do
+torso.CFrame = newCFrame
+wait(0)
+end 	

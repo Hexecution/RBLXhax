@@ -1,0 +1,2 @@
+local CratesToBuy = 1000 -- How many you want to buy
+workspace.RemoteEvent:FireServer('OpenCrate', 'Epic',CratesToBuy )

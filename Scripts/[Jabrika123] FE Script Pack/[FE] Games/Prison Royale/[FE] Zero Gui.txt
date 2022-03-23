@@ -1,0 +1,157 @@
+-----------------------------
+-----------------------------
+---Made By: Zero#0511---
+--Use your keyboard ;)----
+-----------------------------
+-----------------------------
+
+local PrisonRoyaleHack = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local SecondMain = Instance.new("Frame")
+local TextLabel_2 = Instance.new("TextLabel")
+local TextLabel_3 = Instance.new("TextLabel")
+local TextLabel_4 = Instance.new("TextLabel")
+local TextLabel_5 = Instance.new("TextLabel")
+PrisonRoyaleHack.Name = "PrisonRoyaleHack"
+PrisonRoyaleHack.Parent = game.CoreGui
+Main.Name = "Main"
+Main.Parent = PrisonRoyaleHack
+Main.BackgroundColor3 = Color3.new(0, 0, 0)
+Main.BackgroundTransparency = 0.25
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.74432379, 0, 0.608286262, 0)
+Main.Size = UDim2.new(0, 174, 0, 27)
+TextLabel.Parent = Main
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Position = UDim2.new(0.275862068, 0, 0.111111112, 0)
+TextLabel.Size = UDim2.new(0, 91, 0, 20)
+TextLabel.Font = Enum.Font.SourceSansSemibold
+TextLabel.Text = "'Z' To open!"
+TextLabel.TextColor3 = Color3.new(1, 1, 1)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14
+TextLabel.TextWrapped = true
+
+SecondMain.Name = "SecondMain"
+SecondMain.Parent = Main
+SecondMain.BackgroundColor3 = Color3.new(0, 0, 0)
+SecondMain.BackgroundTransparency = 0.25
+SecondMain.BorderSizePixel = 0
+SecondMain.Position = UDim2.new(0, 0, -7, 0)
+SecondMain.Size = UDim2.new(0, 174, 0, 189)
+SecondMain.Visible = false
+
+TextLabel_2.Parent = SecondMain
+TextLabel_2.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel_2.BackgroundTransparency = 1
+TextLabel_2.Position = UDim2.new(0, 0, 0.0105820103, 0)
+TextLabel_2.Size = UDim2.new(0, 174, 0, 37)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "Made by: Zero#0511 // ZeroTroool @V3rm"
+TextLabel_2.TextColor3 = Color3.new(1, 1, 1)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14
+TextLabel_2.TextWrapped = true
+
+TextLabel_3.Parent = SecondMain
+TextLabel_3.BackgroundColor3 = Color3.new(0.0862745, 0.0862745, 0.0862745)
+TextLabel_3.BackgroundTransparency = 0.20000000298023
+TextLabel_3.BorderSizePixel = 0
+TextLabel_3.Position = UDim2.new(0, 0, 0.238095224, 0)
+TextLabel_3.Size = UDim2.new(0, 174, 0, 31)
+TextLabel_3.Font = Enum.Font.SourceSans
+TextLabel_3.Text = "'M' For OP Loot!"
+TextLabel_3.TextColor3 = Color3.new(0.956863, 0.956863, 0.956863)
+TextLabel_3.TextSize = 14
+
+TextLabel_4.Parent = SecondMain
+TextLabel_4.BackgroundColor3 = Color3.new(0.0862745, 0.0862745, 0.0862745)
+TextLabel_4.BackgroundTransparency = 0.20000000298023
+TextLabel_4.BorderSizePixel = 0
+TextLabel_4.Position = UDim2.new(0, 0, 0.455026478, 0)
+TextLabel_4.Size = UDim2.new(0, 174, 0, 31)
+TextLabel_4.Font = Enum.Font.SourceSans
+TextLabel_4.Text = "'B' For ammo!"
+TextLabel_4.TextColor3 = Color3.new(0.956863, 0.956863, 0.956863)
+TextLabel_4.TextSize = 14
+
+TextLabel_5.Parent = SecondMain
+TextLabel_5.BackgroundColor3 = Color3.new(0.0862745, 0.0862745, 0.0862745)
+TextLabel_5.BackgroundTransparency = 0.20000000298023
+TextLabel_5.BorderSizePixel = 0
+TextLabel_5.Position = UDim2.new(0, 0, 0.703703701, 0)
+TextLabel_5.Size = UDim2.new(0, 174, 0, 32)
+TextLabel_5.Font = Enum.Font.SourceSans
+TextLabel_5.Text = "'T' For armo!"
+TextLabel_5.TextColor3 = Color3.new(0.956863, 0.956863, 0.956863)
+TextLabel_5.TextSize = 14
+
+local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+mouse.KeyDown:connect(function(key)
+if key:lower() == "z" then 
+if SecondMain.Visible == false then
+	SecondMain.Visible = true
+	TextLabel.Text = "'Z' To close!"
+else
+	SecondMain.Visible = false
+	TextLabel.Text = "'Z' To open!"
+end
+end
+end)
+Gun = "Scar-H"
+Ammo = "7.62mm NATO"
+Snipers = "L115A3"
+SniperAmmo = ".338 Magnum"
+local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+mouse.KeyDown:connect(function(key)
+if key:lower() == "m" then 
+game.Workspace.Loot[Gun]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+game.Workspace.Loot[Ammo]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+game.Workspace.Loot[Snipers]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+game.Workspace.Loot[SniperAmmo]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+end
+end)
+
+local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+mouse.KeyDown:connect(function(key)
+if key:lower() == "b" then 
+game.Workspace.Loot[Ammo]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+game.Workspace.Loot[SniperAmmo]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+wait(3)
+game.Workspace.Loot[Ammo]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+game.Workspace.Loot[SniperAmmo]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+end
+end)
+
+Helmet = "Military Helmet"
+Vest = "Tier 3 Vest"
+Pack = "Military Pack"
+
+local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+mouse.KeyDown:connect(function(key)
+if key:lower() == "t" then 
+game.Workspace.Loot[Helmet]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+game.Workspace.Loot[Vest]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+game.Workspace.Loot[Pack]:MoveTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+end
+end)
+
+local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+mouse.KeyDown:connect(function(key)
+if key:lower() == "end" then 
+PrisonRoyaleHack:Destroy()
+end
+end)
+-----------------------------
+-----------------------------
+---Made By: Zero#0511---
+--Use your keyboard ;)----
+-----------------------------
+-----------------------------

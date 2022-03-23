@@ -1,0 +1,63 @@
+-- Objects
+
+local main = Instance.new("ScreenGui")
+local main_2 = Instance.new("Frame")
+local colors = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local clicktp = Instance.new("TextButton")
+
+-- Properties
+
+main.Name = "main"
+main.Parent = game.CoreGui
+main.Active = true 
+main.Draggable = true
+
+main_2.Name = "main"
+main_2.Parent = main
+main_2.Active = true
+main_2.BackgroundColor3 = Color3.new(1, 1, 1)
+main_2.BorderSizePixel = 0
+main_2.Position = UDim2.new(0.0103675779, 0, 0.689723313, 0)
+main_2.Size = UDim2.new(0, 178, 0, 148)
+
+colors.Name = "colors"
+colors.Parent = main_2
+colors.BackgroundColor3 = Color3.new(0, 0.666667, 1)
+colors.BorderSizePixel = 0
+colors.Size = UDim2.new(0, 178, 0, 27)
+
+TextLabel.Parent = colors
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 5
+TextLabel.Position = UDim2.new(0.00155697763, 0, -0.407407403, 0)
+TextLabel.Size = UDim2.new(0, 173, 0, 50)
+TextLabel.Font = Enum.Font.Highway
+TextLabel.Text = "Survivor  ClickTP"
+TextLabel.TextColor3 = Color3.new(1, 1, 1)
+TextLabel.TextSize = 20
+
+clicktp.Name = "click-tp"
+clicktp.Parent = main_2
+clicktp.BackgroundColor3 = Color3.new(0, 0.666667, 1)
+clicktp.BorderSizePixel = 0
+clicktp.Position = UDim2.new(0.0883788168, 0, 0.265734255, 0)
+clicktp.Size = UDim2.new(0, 146, 0, 96)
+clicktp.Font = Enum.Font.SourceSans
+clicktp.Text = "Click TP"
+clicktp.TextColor3 = Color3.new(1, 1, 1)
+clicktp.TextSize = 25
+
+
+clicktp.MouseButton1Click:connect(function()
+	mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Click Teleport"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+end)

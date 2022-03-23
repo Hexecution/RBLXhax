@@ -1,0 +1,5 @@
+while wait() do
+local A_1 = game:GetService("Workspace").Items.Items.Watch.P
+local Event = game:GetService("ReplicatedStorage").remoteGiveCashCarried
+Event:FireServer(A_1)
+end

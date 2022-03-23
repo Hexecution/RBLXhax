@@ -1,0 +1,3 @@
+for _,v in pairs(workspace.Map.Zombies:GetChildren()) do
+game.ReplicatedStorage.Resources.GunEngine.Events.Damage:FireServer(9079537222, v.Zombie, 1)
+end

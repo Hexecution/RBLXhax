@@ -1,0 +1,38 @@
+local targethouse = Instance.new("ObjectValue")
+workspace.ChildAdded:connect(function(instance)
+targethouse.Value = nil
+if instance.Name == "DewTool" then
+workspace.GameService.AddPizzaToBackpack:FireServer(workspace.DewTool)
+wait(0.1)
+if game.Players.LocalPlayer.Character:findFirstChild("PizzaTool") then
+targethouse.Value = instance.House.Value
+end
+if game.Players.LocalPlayer.Character:findFirstChild("DewTool") then
+targethouse.Value = instance.House.Value
+end
+
+local upgrades = targethouse.Value.Upgrades:getChildren()
+for i=1,#upgrades do
+if upgrades[i]:findFirstChild("GivePizza") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(upgrades[i].GivePizza.Position)
+end
+end
+end
+if instance.Name == "PizzaTool" then
+workspace.GameService.AddPizzaToBackpack:FireServer(workspace.PizzaTool)
+wait(0.1)
+if game.Players.LocalPlayer.Character:findFirstChild("PizzaTool") then
+targethouse.Value = instance.House.Value
+end
+if game.Players.LocalPlayer.Character:findFirstChild("DewTool") then
+targethouse.Value = instance.House.Value
+end
+
+local upgrades = targethouse.Value.Upgrades:getChildren()
+for i=1,#upgrades do
+if upgrades[i]:findFirstChild("GivePizza") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(upgrades[i].GivePizza.Position)
+end
+end
+end
+end)

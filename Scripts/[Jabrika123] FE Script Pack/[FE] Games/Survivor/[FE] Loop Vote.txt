@@ -1,0 +1,7 @@
+UserToVote = 'Builderman' -- Their ROBLOX name (not survivor name)
+VoteMethod = 'TribalVote' -- Either TribalVote, PickLeader or FinaleVote
+Speed = 1 -- In seconds, 0.1 to 1 works best
+
+while wait(speed) do
+game.ReplicatedStorage.LocalEvents[VoteMethod]:FireServer(UserToVote)
+end

@@ -1,0 +1,24 @@
+local plr = game.Players.LocalPlayer
+
+function getvehicle()
+for i,v in pairs(game.Workspace.Vehicles:GetChildren()) do
+if v:IsA("Model") then
+if v.owner.Value == plr.Name then
+return v
+end
+end
+end
+return nil
+end
+
+local car = getvehicle()
+
+car.Handling.RearWheelDrive.Force.Value = 4000
+car.Handling.FrontWheelDrive.Force.Value = 1000
+car.Handling.StickyWheels.Value = 241 
+car.Handling.FrictionOffroad.Value = 1724 
+car.Handling.FrictionRoad.Value = 7114 
+car.Handling.Torque.Value = 152045
+car.Handling.Nitro.NitroSpeed.Value  = 1000000
+car.Handling.Nitro.NitroForce.Value = 52381
+car.Variables.Brakes.Value = 10000 --idk if this rly w0rks just added it

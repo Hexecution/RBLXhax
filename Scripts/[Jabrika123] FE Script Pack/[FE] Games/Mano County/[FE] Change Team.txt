@@ -1,0 +1,3 @@
+local A_1 = "Navy blue" --Change this to the ones i put in the thread 
+local Event = game:GetService("Workspace").TeamEventScript.TeamChangeEvent
+Event:FireServer(A_1)

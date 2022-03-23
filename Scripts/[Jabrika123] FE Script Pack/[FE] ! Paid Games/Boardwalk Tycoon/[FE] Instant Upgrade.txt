@@ -1,0 +1,9 @@
+local save = "Save1" --Where u save
+
+function up(a)
+game.ReplicatedStorage.Events.UpdateVal:FireServer(a, 1)
+end
+
+for i,v in pairs(game.Workspace.Stats[game.Players.LocalPlayer.Name][save].Buildings:GetChildren())do
+up(v.BuildTimeLeft)
+end

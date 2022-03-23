@@ -1,0 +1,3 @@
+local skin = "Dolphins" --I forgot the list of skins
+
+game.ReplicatedStorage.Events.SpawnSurfboard:FireServer(game.ReplicatedStorage.SurfboardSkins[skin])

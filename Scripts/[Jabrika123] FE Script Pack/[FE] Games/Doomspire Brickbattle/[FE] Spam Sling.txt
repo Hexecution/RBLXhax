@@ -1,0 +1,8 @@
+while game:GetService("RunService").RenderStepped:Wait() do
+local plr = game.Players.LocalPlayer
+local mouse = plr:GetMouse()
+local A_1 = mouse.hit.p
+local A_2 = Vector3.new(0, 0, 0)
+local Event = plr.Character.Slingshot.PelletCreateEvent
+Event:FireServer(A_1, A_2)
+end

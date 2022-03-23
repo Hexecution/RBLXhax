@@ -1,0 +1,5 @@
+for i,v in pairs(game.Workspace.Players:GetDescendants()) do
+if v.Name == "Owner" then
+v.Value = game.Players.LocalPlayer
+end
+end

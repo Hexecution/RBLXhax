@@ -1,0 +1,170 @@
+-- rephlo's miner haven gui
+
+-- Variables
+
+local Toggled = false
+local MinerHax = Instance.new("ScreenGui")
+local MinerHaxMain = Instance.new("TextButton")
+local LastCalledDisplay = Instance.new("TextLabel")
+local Main = Instance.new("Frame")
+local CrateToYou = Instance.new("TextButton")
+local ToggleCrateToYou = Instance.new("TextButton")
+local LuckyClovers = Instance.new("TextButton")
+local TwitchCoins = Instance.new("TextButton")
+local BringMM = Instance.new("TextButton")
+
+-- Properties
+
+MinerHax.Name = "MinerHax"
+
+MinerHaxMain.Name = "MinerLuxMain"
+MinerHaxMain.Parent = MinerHax
+MinerHaxMain.BackgroundColor3 = Color3.new(1,1,1)
+MinerHaxMain.BorderColor3 = Color3.new(0,0,0)
+MinerHaxMain.Position = UDim2.new(0,5,0.75,-20)
+MinerHaxMain.Size = UDim2.new(0,180,0,40)
+MinerHaxMain.Style = Enum.ButtonStyle.RobloxRoundDropdownButton
+MinerHaxMain.Font = Enum.Font.SciFi
+MinerHaxMain.FontSize = Enum.FontSize.Size36
+MinerHaxMain.Text = "rephlo's GUI"
+MinerHaxMain.TextColor3 = Color3.new(1,1,1)
+MinerHaxMain.TextSize = 32
+MinerHaxMain.TextStrokeTransparency = 0
+MinerHaxMain.TextWrapped = true
+MinerHaxMain.Draggable = true
+
+Main.Name = "Main"
+Main.Draggable = true
+Main.Parent = MinerHaxMain
+Main.BackgroundColor3 = Color3.new(1,1,1)
+Main.Position = UDim2.new(0,190,0.75,-49)
+Main.Size = UDim2.new (0, 396, 0, 135)
+Main.Visible = false
+Main.Style = Enum.FrameStyle.DropShadow
+MinerHaxMain.MouseButton1Click:connect(function()
+Main.Visible = not Main.Visible
+end)
+
+LuckyClovers.Name = "LuckyClovers"
+LuckyClovers.Parent = Main
+LuckyClovers.BackgroundColor3 = Color3.new(1, 1, 1)
+LuckyClovers.BorderColor3 = Color3.new(0, 0, 0)
+LuckyClovers.Position = UDim2.new(0, 0, 0, 80)
+LuckyClovers.Size = UDim2.new(0, 180, 0, 40)
+LuckyClovers.Style = Enum.ButtonStyle.RobloxRoundDropdownButton
+LuckyClovers.Font = Enum.Font.SciFi
+LuckyClovers.FontSize = Enum.FontSize.Size18
+LuckyClovers.Text = "+1 Lucky Clover"
+LuckyClovers.TextColor3 = Color3.new(1, 1, 1)
+LuckyClovers.TextSize = 18
+LuckyClovers.TextStrokeTransparency = 0
+LuckyClovers.TextWrapped = true
+LuckyClovers.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.Clovers.Value = 1
+end)
+
+CrateToYou.Name = "CrateToYou"
+CrateToYou.Parent = Main
+CrateToYou.BackgroundColor3 = Color3.new(1,1,1)
+CrateToYou.BorderColor3 = Color3.new(0,0,0)
+CrateToYou.Position = UDim2.new(0,1,0,0)
+CrateToYou.Size = UDim2.new(0,180,0,40)
+CrateToYou.Style = Enum.ButtonStyle.RobloxRoundDropdownButton
+CrateToYou.Font = Enum.Font.SciFi
+CrateToYou.FontSize = Enum.FontSize.Size18
+CrateToYou.Text = "Bring Crates"
+CrateToYou.TextColor3 = Color3.new(1,1,1)
+CrateToYou.TextSize = 18
+CrateToYou.TextStrokeTransparency = 0
+CrateToYou.TextWrapped = true
+CrateToYou.MouseButton1Click:connect(function()
+for _,obj in pairs(game.Workspace:GetChildren()) do
+if string.match(obj.Name,"%s*Crate") then
+obj.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame+Vector3.new(math.random(-2,2),5,math.random(-2,2))
+end
+end
+end)
+
+ToggleCrateToYou.Name = "ToggleCrateToYou"
+ToggleCrateToYou.Parent = Main
+ToggleCrateToYou.BackgroundColor3 = Color3.new(1,1,1)
+ToggleCrateToYou.BorderColor3 = Color3.new(0,0,0)
+ToggleCrateToYou.Position = UDim2.new(0,1,0,40)
+ToggleCrateToYou.Size = UDim2.new(0,180,0,40)
+ToggleCrateToYou.Style = Enum.ButtonStyle.RobloxRoundDropdownButton
+ToggleCrateToYou.Font = Enum.Font.SciFi
+ToggleCrateToYou.FontSize = Enum.FontSize.Size36
+ToggleCrateToYou.Text = "Auto Bring Crates: "..(Toggled and "ON" or "OFF")
+ToggleCrateToYou.TextColor3 = Color3.new(1,1,1)
+ToggleCrateToYou.TextScaled = true
+ToggleCrateToYou.TextSize = 36
+ToggleCrateToYou.TextStrokeTransparency = 0
+ToggleCrateToYou.TextWrapped = true
+ToggleCrateToYou.MouseButton1Click:connect(function()
+Toggled = not Toggled
+ToggleCrateToYou.Text = "Auto Bring Crates: "..(Toggled and "ON" or "OFF")
+if Toggled then
+for _,obj in pairs(game.Workspace:GetChildren()) do
+if string.match(obj.Name,"%s*Crate") then
+obj.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame+Vector3.new(0,0,5)
+end
+end
+end
+end)
+
+game.Workspace.ChildAdded:connect(function(obj)
+if MinerHaxMain ~= nil and Toggled and string.match(obj.Name,"%s*Crate") then
+obj.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame+Vector3.new(0,0,5)
+end
+end)
+
+TwitchCoins.Name = "TwitchCoins"
+TwitchCoins.Parent = Main
+TwitchCoins.BackgroundColor3 = Color3.new(1, 1, 1)
+TwitchCoins.BorderColor3 = Color3.new(0, 0, 0)
+TwitchCoins.Position = UDim2.new(.5, 1, 0, 0)
+TwitchCoins.Size = UDim2.new(0, 180, 0, 40)
+TwitchCoins.Style = Enum.ButtonStyle.RobloxRoundDropdownButton
+TwitchCoins.Font = Enum.Font.SciFi
+TwitchCoins.FontSize = Enum.FontSize.Size18
+TwitchCoins.Text = "+1 Twitch Coin"
+TwitchCoins.TextColor3 = Color3.new(1, 1, 1)
+TwitchCoins.TextSize = 18
+TwitchCoins.TextStrokeTransparency = 0
+TwitchCoins.TextWrapped = true
+TwitchCoins.MouseButton1Click:connect(function()
+game.Players.LocalPlayer.TwitchPoints.Value = 1
+end)
+
+BringMM.Name = "BringMM"
+BringMM.Parent = Main
+BringMM.BackgroundColor3 = Color3.new(1, 1, 1)
+BringMM.BorderColor3 = Color3.new(0, 0, 0)
+BringMM.Position = UDim2.new(.5, 1, .35, 0)
+BringMM.Size = UDim2.new(0, 180, 0, 40)
+BringMM.Style = Enum.ButtonStyle.RobloxRoundDropdownButton
+BringMM.Font = Enum.Font.SciFi
+BringMM.FontSize = Enum.FontSize.Size18
+BringMM.Text = "Bring MM"
+BringMM.TextColor3 = Color3.new(1, 1, 1)
+BringMM.TextSize = 18
+BringMM.TextStrokeTransparency = 0
+BringMM.TextWrapped = true
+BringMM.MouseButton1Click:connect(function()
+local thing = game.Workspace.Market.Hitfox
+local tell = Instance.new("SurfaceGui",thing)
+local tell2 = Instance.new("TextLabel",tell)
+thing = game.Workspace.Market.Hitfox
+thing.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame+Vector3.new(math.random(0,0),0,math.random(0,0))
+thing.Transparency = 0
+thing.BrickColor = BrickColor.new(255,0,100)
+tell2.Size = UDim2.new(0, 800, 0, 750)
+tell2.TextWrapped= true
+tell2.TextScaled = true
+tell2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+tell2.TextColor3 = Color3.fromRGB(255, 255, 255)
+tell2.Text =  "Click Me!"
+end)
+
+
+MinerHax.Parent = game.Players.LocalPlayer.PlayerGui

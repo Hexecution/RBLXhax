@@ -1,0 +1,32 @@
+if workspace.CurrentMap.Game:findFirstChild("Pickups") then
+local pickup = workspace.CurrentMap.Game.Pickups:getChildren()
+for i=1,#pickup do
+wait(0.2)
+game.Players.LocalPlayer.Character:MoveTo(pickup[i].Position)
+end
+end
+
+if workspace.CurrentMap.Game:findFirstChild("CoinPickups") then
+local pickup = workspace.CurrentMap.Game.CoinPickups:getChildren()
+for i=1,#pickup do
+wait(0.2)
+game.Players.LocalPlayer.Character:MoveTo(pickup[i].Position)
+end
+end
+
+
+local checkpoint = workspace.CurrentMap.Game.CheckPointsModel:getChildren()
+for i=1,#checkpoint do
+wait(0.2)
+game.Players.LocalPlayer.Character:MoveTo(checkpoint[i].Button.Base.Position)
+end
+
+wait(0.5)
+
+if workspace.CurrentMap.Map:findFirstChild("EndingTeleporter") then
+game.Players.LocalPlayer.Character:MoveTo(workspace.CurrentMap.Map.EndingTeleporter.Base.Position)
+end
+
+if workspace.CurrentMap.Map:findFirstChild("EndingTeleporterModel") then
+game.Players.LocalPlayer.Character:MoveTo(workspace.CurrentMap.Map.EndingTeleporterModel.Base.Position)
+end

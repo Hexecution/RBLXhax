@@ -1,0 +1,5 @@
+local idk = getsenv(game.Players.LocalPlayer.PlayerGui.ScreenGui.LocalScript)
+local idk2 = debug.getupvalues(idk.updateColors)
+
+idk2.purchases.Colors = true
+idk2.purchases.Materials = true

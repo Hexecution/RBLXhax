@@ -1,0 +1,34 @@
+--[[10m Flee the Facility Script Made By Willza ;3]]--
+game.Players.LocalPlayer.SavedPlayerStatsModule.BeastChance.Value = "72"
+game.Players.LocalPlayer.SavedPlayerStatsModule.VIP.Value = true
+game.workspace["Vexifity"].Ragdoller:Destroy()
+--[[Put the maps name in ("1")]]--
+B = game.Workspace:FindFirstChild("1")
+if not B then
+print("Error")
+else
+print("Found")
+wait(0.1)
+while wait(0.2) do
+local C = game.workspace["1"]:FindFirstChild("ComputerTable")
+local Y = game.workspace["1"]:FindFirstChild("FreezePod")
+Y.Podtrigger:Destroy()
+Wait(0.1)
+C.ComputerTrigger1:Destroy()
+C.ComputerTrigger2:Destroy()
+C.ComputerTrigger3:Destroy()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = C.Screen.CFrame*CFrame.new(1,2,0)
+end
+end
+
+--[[Beast Script]]--
+while wait(0.2) do
+local Y = game:GetService("Players")
+--[[Change ("") to the person you want to TP to]]--
+local O = Y:FindFirstChild("")
+if O.Captured == false then
+warn("Locked")
+game.Workspace.LocalPlayer.Character.HumanoidRootPart.CFrame = O.HumanoidRootPart.CFrame*CFrame.new(0,3,0)
+wait(0.1)
+game.workspace.Vexifity.Hammer.HammerEvent:FireServer("HammerClick",true)
+end

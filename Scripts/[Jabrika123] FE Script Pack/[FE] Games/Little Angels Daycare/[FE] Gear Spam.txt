@@ -1,0 +1,15 @@
+--made by bloxy
+
+for i = 1,500 do
+game.ReplicatedStorage.Events.Give:FireServer("Burger")
+game.ReplicatedStorage.Events.Give:FireServer("Pizza")
+
+
+for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+if v:IsA'Tool' then
+v.Parent = game.Players.LocalPlayer.Character
+wait()
+v.Parent = workspace:FindFirstChildOfClass'Model'
+end
+end
+end

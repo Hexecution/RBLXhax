@@ -1,0 +1,250 @@
+-- Objects
+
+local DeathRunGUI = Instance.new("ScreenGui")
+local MainGUI83 = Instance.new("Frame")
+local Title34 = Instance.new("Frame")
+local isle = Instance.new("TextButton")
+local volc = Instance.new("TextButton")
+local train = Instance.new("TextButton")
+local safety = Instance.new("TextButton")
+local pirate = Instance.new("TextButton")
+local castle = Instance.new("TextButton")
+local jungle = Instance.new("TextButton")
+local ice = Instance.new("TextButton")
+local poisoned = Instance.new("TextButton")
+local LBL1 = Instance.new("TextLabel")
+local exit = Instance.new("TextButton")
+
+-- Properties
+
+DeathRunGUI.Name = "DeathRunGUI"
+DeathRunGUI.Parent = game.CoreGui
+
+MainGUI83.Name = "MainGUI83"
+MainGUI83.Parent = DeathRunGUI
+MainGUI83.Active = true
+MainGUI83.BackgroundColor3 = Color3.new(0.117647, 0.117647, 0.117647)
+MainGUI83.BorderSizePixel = 0
+MainGUI83.Draggable = true
+MainGUI83.Position = UDim2.new(0.413363546, 0, 0.239202663, 0)
+MainGUI83.Selectable = true
+MainGUI83.Size = UDim2.new(0, 242, 0, 286)
+MainGUI83.Style = Enum.FrameStyle.RobloxRound
+
+Title34.Name = "Title34"
+Title34.Parent = MainGUI83
+Title34.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+Title34.BorderSizePixel = 0
+Title34.Position = UDim2.new(-0.0351239629, 0, -0.0472266153, 0)
+Title34.Size = UDim2.new(0, 242, 0, 42)
+
+isle.Name = "isle"
+isle.Parent = MainGUI83
+isle.BackgroundColor3 = Color3.new(0.0156863, 0.337255, 0.580392)
+isle.Position = UDim2.new(0.00826446433, 0, 0.148169816, 0)
+isle.Size = UDim2.new(0, 105, 0, 35)
+isle.Font = Enum.Font.SourceSans
+isle.Text = "ISLA LOUCA"
+isle.TextColor3 = Color3.new(1, 1, 1)
+isle.TextSize = 14
+
+isle.MouseButton1Down:connect(function() 
+local PlayerName = game.Players.LocalPlayer.Name
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+game.Workspace[PlayerName]:MoveTo(Vector3.new(2107,76,-1558))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(2397,86,-1517))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(2393,101,-1702))
+end)
+
+volc.Name = "volc"
+volc.Parent = MainGUI83
+volc.BackgroundColor3 = Color3.new(0.0156863, 0.337255, 0.580392)
+volc.Position = UDim2.new(0.00826446433, 0, 0.323104441, 0)
+volc.Size = UDim2.new(0, 105, 0, 35)
+volc.Font = Enum.Font.SourceSans
+volc.Text = "JURASS VOLCANO"
+volc.TextColor3 = Color3.new(1, 1, 1)
+volc.TextSize = 14
+
+volc.MouseButton1Down:connect(function() 
+local PlayerName = game.Players.LocalPlayer.Name
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1262,113,-310))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1241,113,-97))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1444,99,117))
+end)
+
+train.Name = "train"
+train.Parent = MainGUI83
+train.BackgroundColor3 = Color3.new(0.0156863, 0.337255, 0.580392)
+train.Position = UDim2.new(0.00826450065, 0, 0.674266696, 0)
+train.Size = UDim2.new(0, 105, 0, 35)
+train.Font = Enum.Font.SourceSans
+train.Text = "TRAINING COURSE"
+train.TextColor3 = Color3.new(1, 1, 1)
+train.TextSize = 14
+
+train.MouseButton1Down:connect(function() 
+local PlayerName = game.Players.LocalPlayer.Name
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1220,-104,-1092))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1107,-81,-752))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(918,-81,-518))
+end)
+
+safety.Name = "safety"
+safety.Parent = MainGUI83
+safety.BackgroundColor3 = Color3.new(0.0156863, 0.337255, 0.580392)
+safety.Position = UDim2.new(0.00826446433, 0, 0.501151145, 0)
+safety.Size = UDim2.new(0, 105, 0, 35)
+safety.Font = Enum.Font.SourceSans
+safety.Text = "SAFETY FIRST"
+safety.TextColor3 = Color3.new(1, 1, 1)
+safety.TextSize = 14
+
+safety.MouseButton1Down:connect(function() 
+local PlayerName = game.Players.LocalPlayer.Name
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+game.Workspace[PlayerName]:MoveTo(Vector3.new(430,87,-1261))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(157,106,-1252))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(143,111,-1123))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(457,121,-997))
+end)
+
+pirate.Name = "pirate"
+pirate.Parent = MainGUI83
+pirate.BackgroundColor3 = Color3.new(0.0156863, 0.337255, 0.580392)
+pirate.Position = UDim2.new(0.533057868, 0, 0.144423574, 0)
+pirate.Size = UDim2.new(0, 105, 0, 35)
+pirate.Font = Enum.Font.SourceSans
+pirate.Text = "PIRATE CAVE"
+pirate.TextColor3 = Color3.new(1, 1, 1)
+pirate.TextSize = 14
+
+pirate.MouseButton1Down:connect(function() 
+local PlayerName = game.Players.LocalPlayer.Name
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1546,64,-2325))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1470,65,-2475))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1540,65,-2570))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1582,67,-2492))
+end)
+
+
+castle.Name = "castle"
+castle.Parent = MainGUI83
+castle.BackgroundColor3 = Color3.new(0.0156863, 0.337255, 0.580392)
+castle.Position = UDim2.new(0.533057868, 0, 0.323104441, 0)
+castle.Size = UDim2.new(0, 105, 0, 35)
+castle.Font = Enum.Font.SourceSans
+castle.Text = "CASTLE DEFENSE"
+castle.TextColor3 = Color3.new(1, 1, 1)
+castle.TextSize = 14
+
+castle.MouseButton1Down:connect(function() 
+local PlayerName = game.Players.LocalPlayer.Name
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+game.Workspace[PlayerName]:MoveTo(Vector3.new(-94,183,-1011))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(-111,214,-1220))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(-217,235,-1322))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(-295,234,-1261))
+end)
+
+jungle.Name = "jungle"
+jungle.Parent = MainGUI83
+jungle.BackgroundColor3 = Color3.new(0.0156863, 0.337255, 0.580392)
+jungle.Position = UDim2.new(0.533057868, 0, 0.504841208, 0)
+jungle.Size = UDim2.new(0, 105, 0, 35)
+jungle.Font = Enum.Font.SourceSans
+jungle.Text = "CORRUPT JUNGLE"
+jungle.TextColor3 = Color3.new(1, 1, 1)
+jungle.TextSize = 14
+
+jungle.MouseButton1Down:connect(function() 
+local PlayerName = game.Players.LocalPlayer.Name
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+game.Workspace[PlayerName]:MoveTo(Vector3.new(-773,100,-2412))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(-1091,102,-2398))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(-1112,102,-2170))
+end)
+
+ice.Name = "ice"
+ice.Parent = MainGUI83
+ice.BackgroundColor3 = Color3.new(0.0156863, 0.337255, 0.580392)
+ice.Position = UDim2.new(0.533057868, 0, 0.677763224, 0)
+ice.Size = UDim2.new(0, 105, 0, 35)
+ice.Font = Enum.Font.SourceSans
+ice.Text = "ICE CAVERN"
+ice.TextColor3 = Color3.new(1, 1, 1)
+ice.TextSize = 14
+
+ice.MouseButton1Down:connect(function() 
+local PlayerName = game.Players.LocalPlayer.Name
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+game.Workspace[PlayerName]:MoveTo(Vector3.new(781,19,-685))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(647,9,-846))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(767,8,-854)) 
+end)
+
+poisoned.Name = "poisoned"
+poisoned.Parent = MainGUI83
+poisoned.BackgroundColor3 = Color3.new(0.0156863, 0.337255, 0.580392)
+poisoned.Position = UDim2.new(0.00826446246, 0, 0.842657328, 0)
+poisoned.Size = UDim2.new(0, 223, 0, 35)
+poisoned.Font = Enum.Font.SourceSans
+poisoned.Text = "Poisoned Sky Ruins"
+poisoned.TextColor3 = Color3.new(1, 1, 1)
+poisoned.TextSize = 14
+
+poisoned.MouseButton1Down:connect(function() 
+local PlayerName = game.Players.LocalPlayer.Name
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 100
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1603,117,1229))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1422,99,1027))
+wait(0.5)
+game.Workspace[PlayerName]:MoveTo(Vector3.new(1660,119,1010)) 
+end)
+
+LBL1.Name = "LBL1"
+LBL1.Parent = MainGUI83
+LBL1.BackgroundColor3 = Color3.new(0.0588235, 0.0588235, 0.0588235)
+LBL1.BorderSizePixel = 0
+LBL1.Position = UDim2.new(0.115702473, 0, -0.0314685293, 0)
+LBL1.Size = UDim2.new(0, 151, 0, 31)
+LBL1.Text = "DeathRun Auto"
+LBL1.TextColor3 = Color3.new(1, 0.737255, 0.741176)
+LBL1.TextSize = 14
+
+exit.Name = "exit"
+exit.Parent = MainGUI83
+exit.BackgroundColor3 = Color3.new(1, 0, 0.0156863)
+exit.Position = UDim2.new(0.851239681, 0, -0.0139860138, 0)
+exit.Size = UDim2.new(0, 32, 0, 23)
+exit.AutoButtonColor = false
+exit.Font = Enum.Font.SciFi
+exit.Text = "X"
+exit.TextSize = 14
+
+exit.MouseButton1Down:connect(function() 
+MainGUI83.Visible = false
+end)

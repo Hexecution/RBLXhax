@@ -1,0 +1,1 @@
+Game.ReplicatedStorage.ShopPurchase:FireServer(-9999999, "EggPets")

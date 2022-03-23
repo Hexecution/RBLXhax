@@ -1,0 +1,6 @@
+local c = game:GetService("Players").LocalPlayer.leaderstats.CurrentVehicle
+local prec = c.Value.PrimaryPart.CFrame
+while true do
+wait(5)
+c.Value:SetPrimaryPartCFrame(prec)
+end

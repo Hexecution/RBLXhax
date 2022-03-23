@@ -1,0 +1,606 @@
+-- Objects
+local player = game.Players.LocalPlayer
+local mouse = player:GetMouse()
+local ScreenGui = Instance.new("ScreenGui")
+local Window = Instance.new("Frame")
+local Bank = Instance.new("TextButton")
+local Circle = Instance.new("ImageLabel")
+local Jewelry = Instance.new("TextButton")
+local Circle_2 = Instance.new("ImageLabel")
+local JLRY = Instance.new("Frame")
+local Top = Instance.new("TextButton")
+local Bottom = Instance.new("TextButton")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local Frame_2 = Instance.new("Frame")
+local TextLabel_2 = Instance.new("TextLabel")
+local Helicopter = Instance.new("TextButton")
+local Circle_3 = Instance.new("ImageLabel")
+local Heli = Instance.new("Frame")
+local Base2 = Instance.new("TextButton")
+local Base1 = Instance.new("TextButton")
+local Ban = Instance.new("Frame")
+local Vault = Instance.new("TextButton")
+local Top2 = Instance.new("TextButton")
+local Prison = Instance.new("TextButton")
+local Circle_4 = Instance.new("ImageLabel")
+local Priso = Instance.new("Frame")
+local Cars = Instance.new("TextButton")
+local Field = Instance.new("TextButton")
+local Front = Instance.new("TextButton")
+local Other = Instance.new("TextButton")
+local Circle_5 = Instance.new("ImageLabel")
+local Othe = Instance.new("Frame")
+local Cave = Instance.new("TextButton")
+local SR = Instance.new("TextButton")
+local DOnut = Instance.new("TextButton")
+
+-- Properties
+
+ScreenGui.Parent = game.CoreGui
+
+Window.Name = "Window"
+Window.Parent = ScreenGui
+Window.BackgroundColor3 = Color3.new(1, 1, 1)
+Window.BorderSizePixel = 0
+Window.Position = UDim2.new(0, 0, 0.25, 0)
+Window.Size = UDim2.new(0.150000006, 0, 0.5, 0)
+
+Bank.Name = "Bank"
+Bank.Parent = Window
+Bank.BackgroundColor3 = Color3.new(0, 0.333333, 1)
+Bank.BorderSizePixel = 0
+Bank.ClipsDescendants = true
+Bank.Position = UDim2.new(0, 20, 0, 50)
+Bank.Size = UDim2.new(0, 80, 0, 50)
+Bank.Font = Enum.Font.SourceSansBold
+Bank.FontSize = Enum.FontSize.Size24
+Bank.Text = "Bank"
+Bank.TextColor3 = Color3.new(1, 1, 1)
+Bank.TextSize = 20
+Bank.TextWrapped = true
+
+Circle.Name = "Circle"
+Circle.Parent = Bank
+Circle.BackgroundColor3 = Color3.new(1, 1, 1)
+Circle.BackgroundTransparency = 1
+Circle.Position = UDim2.new(0, 32, 0, 20)
+Circle.Image = "rbxassetid://232918622"
+Circle.ImageColor3 = Color3.new(0, 0, 0)
+
+Jewelry.Name = "Jewelry"
+Jewelry.Parent = Window
+Jewelry.BackgroundColor3 = Color3.new(0, 0.333333, 1)
+Jewelry.BorderSizePixel = 0
+Jewelry.ClipsDescendants = true
+Jewelry.Position = UDim2.new(0, 20, 0, 110)
+Jewelry.Size = UDim2.new(0, 80, 0, 50)
+Jewelry.Font = Enum.Font.SourceSansBold
+Jewelry.FontSize = Enum.FontSize.Size24
+Jewelry.Text = "Jewelry"
+Jewelry.TextColor3 = Color3.new(1, 1, 1)
+Jewelry.TextSize = 20
+Jewelry.TextWrapped = true
+
+Circle_2.Name = "Circle"
+Circle_2.Parent = Jewelry
+Circle_2.BackgroundColor3 = Color3.new(1, 1, 1)
+Circle_2.BackgroundTransparency = 1
+Circle_2.Position = UDim2.new(0, 32, 0, 20)
+Circle_2.Image = "rbxassetid://232918622"
+Circle_2.ImageColor3 = Color3.new(0, 0, 0)
+
+JLRY.Name = "JLRY"
+JLRY.Parent = Window
+JLRY.BackgroundColor3 = Color3.new(1, 0, 0)
+JLRY.BorderSizePixel = 0
+JLRY.Position = UDim2.new(0, 100, 0, 110)
+JLRY.Size = UDim2.new(0, 80, 0, 50)
+JLRY.Visible = false
+
+Top.Name = "Top"
+Top.Parent = JLRY
+Top.BackgroundColor3 = Color3.new(1, 0, 0)
+Top.BorderSizePixel = 0
+Top.ClipsDescendants = true
+Top.Size = UDim2.new(0, 80, 0, 25)
+Top.Font = Enum.Font.SourceSansBold
+Top.FontSize = Enum.FontSize.Size24
+Top.Text = "Top"
+Top.TextColor3 = Color3.new(1, 1, 1)
+Top.TextSize = 20
+Top.TextWrapped = true
+
+Bottom.Name = "Bottom"
+Bottom.Parent = JLRY
+Bottom.BackgroundColor3 = Color3.new(0, 0, 1)
+Bottom.BorderSizePixel = 0
+Bottom.ClipsDescendants = true
+Bottom.Position = UDim2.new(0, 0, 0, 25)
+Bottom.Size = UDim2.new(0, 80, 0, 25)
+Bottom.Font = Enum.Font.SourceSansBold
+Bottom.FontSize = Enum.FontSize.Size24
+Bottom.Text = "Bottom"
+Bottom.TextColor3 = Color3.new(1, 1, 1)
+Bottom.TextSize = 20
+Bottom.TextWrapped = true
+
+Frame.Parent = Window
+Frame.BackgroundColor3 = Color3.new(0.784314, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Size = UDim2.new(1, 0, 0, 20)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.Size = UDim2.new(1, 0, 1, 0)
+TextLabel.Font = Enum.Font.SourceSansBold
+TextLabel.FontSize = Enum.FontSize.Size14
+TextLabel.Text = "Jailbreak GUI made by dogew121"
+TextLabel.TextColor3 = Color3.new(1, 1, 1)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14
+TextLabel.TextWrapped = true
+TextLabel.TextXAlignment = Enum.TextXAlignment.Right
+
+Frame_2.Parent = Window
+Frame_2.BackgroundColor3 = Color3.new(1, 0, 0)
+Frame_2.BorderSizePixel = 0
+Frame_2.Position = UDim2.new(0, 0, 0, 20)
+Frame_2.Size = UDim2.new(1, 0, 0, 20)
+
+TextLabel_2.Parent = Frame_2
+TextLabel_2.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel_2.BackgroundTransparency = 1
+TextLabel_2.Size = UDim2.new(1, 0, 1, 0)
+TextLabel_2.Font = Enum.Font.SourceSansBold
+TextLabel_2.FontSize = Enum.FontSize.Size14
+TextLabel_2.Text = "N to close M to open"
+TextLabel_2.TextColor3 = Color3.new(1, 1, 1)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14
+TextLabel_2.TextWrapped = true
+TextLabel_2.TextXAlignment = Enum.TextXAlignment.Right
+
+Helicopter.Name = "Helicopter"
+Helicopter.Parent = Window
+Helicopter.BackgroundColor3 = Color3.new(0, 0.333333, 1)
+Helicopter.BorderSizePixel = 0
+Helicopter.ClipsDescendants = true
+Helicopter.Position = UDim2.new(0, 20, 0, 170)
+Helicopter.Size = UDim2.new(0, 80, 0, 50)
+Helicopter.Font = Enum.Font.SourceSansBold
+Helicopter.FontSize = Enum.FontSize.Size24
+Helicopter.Text = "Helicopter"
+Helicopter.TextColor3 = Color3.new(1, 1, 1)
+Helicopter.TextSize = 20
+Helicopter.TextWrapped = true
+
+Circle_3.Name = "Circle"
+Circle_3.Parent = Helicopter
+Circle_3.BackgroundColor3 = Color3.new(1, 1, 1)
+Circle_3.BackgroundTransparency = 1
+Circle_3.Position = UDim2.new(0, 32, 0, 20)
+Circle_3.Image = "rbxassetid://232918622"
+Circle_3.ImageColor3 = Color3.new(0, 0, 0)
+
+Heli.Name = "Heli"
+Heli.Parent = Window
+Heli.BackgroundColor3 = Color3.new(1, 0, 0)
+Heli.BorderSizePixel = 0
+Heli.Position = UDim2.new(0, 100, 0, 170)
+Heli.Size = UDim2.new(0, 80, 0, 50)
+Heli.Visible = false
+
+Base2.Name = "Base2"
+Base2.Parent = Heli
+Base2.BackgroundColor3 = Color3.new(0, 0, 1)
+Base2.BorderSizePixel = 0
+Base2.ClipsDescendants = true
+Base2.Position = UDim2.new(0, 0, 0, 25)
+Base2.Size = UDim2.new(0, 80, 0, 25)
+Base2.Font = Enum.Font.SourceSansBold
+Base2.FontSize = Enum.FontSize.Size24
+Base2.Text = "2nd Base"
+Base2.TextColor3 = Color3.new(1, 1, 1)
+Base2.TextSize = 20
+Base2.TextWrapped = true
+
+Base1.Name = "Base1"
+Base1.Parent = Heli
+Base1.BackgroundColor3 = Color3.new(1, 0, 0)
+Base1.BorderSizePixel = 0
+Base1.ClipsDescendants = true
+Base1.Size = UDim2.new(0, 80, 0, 25)
+Base1.Font = Enum.Font.SourceSansBold
+Base1.FontSize = Enum.FontSize.Size24
+Base1.Text = "1st Base"
+Base1.TextColor3 = Color3.new(1, 1, 1)
+Base1.TextSize = 20
+Base1.TextWrapped = true
+
+Ban.Name = "Ban"
+Ban.Parent = Window
+Ban.BackgroundColor3 = Color3.new(1, 0, 0)
+Ban.BorderSizePixel = 0
+Ban.Position = UDim2.new(0, 100, 0, 50)
+Ban.Size = UDim2.new(0, 80, 0, 50)
+Ban.Visible = false
+
+Vault.Name = "Vault"
+Vault.Parent = Ban
+Vault.BackgroundColor3 = Color3.new(0, 0, 1)
+Vault.BorderSizePixel = 0
+Vault.ClipsDescendants = true
+Vault.Position = UDim2.new(0, 0, 0, 25)
+Vault.Size = UDim2.new(0, 80, 0, 25)
+Vault.Font = Enum.Font.SourceSansBold
+Vault.FontSize = Enum.FontSize.Size24
+Vault.Text = "Vault"
+Vault.TextColor3 = Color3.new(1, 1, 1)
+Vault.TextSize = 20
+Vault.TextWrapped = true
+
+Top2.Name = "Top2"
+Top2.Parent = Ban
+Top2.BackgroundColor3 = Color3.new(1, 0, 0)
+Top2.BorderSizePixel = 0
+Top2.ClipsDescendants = true
+Top2.Size = UDim2.new(0, 80, 0, 25)
+Top2.Font = Enum.Font.SourceSansBold
+Top2.FontSize = Enum.FontSize.Size24
+Top2.Text = "Top"
+Top2.TextColor3 = Color3.new(1, 1, 1)
+Top2.TextSize = 20
+Top2.TextWrapped = true
+
+Prison.Name = "Prison"
+Prison.Parent = Window
+Prison.BackgroundColor3 = Color3.new(0, 0.333333, 1)
+Prison.BorderSizePixel = 0
+Prison.ClipsDescendants = true
+Prison.Position = UDim2.new(0, 20, 0, 230)
+Prison.Size = UDim2.new(0, 80, 0, 50)
+Prison.Font = Enum.Font.SourceSansBold
+Prison.FontSize = Enum.FontSize.Size24
+Prison.Text = "Prison"
+Prison.TextColor3 = Color3.new(1, 1, 1)
+Prison.TextSize = 20
+Prison.TextWrapped = true
+
+Circle_4.Name = "Circle"
+Circle_4.Parent = Prison
+Circle_4.BackgroundColor3 = Color3.new(1, 1, 1)
+Circle_4.BackgroundTransparency = 1
+Circle_4.Position = UDim2.new(0, 32, 0, 20)
+Circle_4.Image = "rbxassetid://232918622"
+Circle_4.ImageColor3 = Color3.new(0, 0, 0)
+
+Priso.Name = "Priso"
+Priso.Parent = Window
+Priso.BackgroundColor3 = Color3.new(1, 0, 0)
+Priso.BorderSizePixel = 0
+Priso.Position = UDim2.new(0, 100, 0, 230)
+Priso.Size = UDim2.new(0, 80, 0, 50)
+Priso.Visible = false
+
+Cars.Name = "Cars"
+Cars.Parent = Priso
+Cars.BackgroundColor3 = Color3.new(0, 0, 1)
+Cars.BorderSizePixel = 0
+Cars.ClipsDescendants = true
+Cars.Position = UDim2.new(0, 0, 0, 25)
+Cars.Size = UDim2.new(0, 80, 0, 25)
+Cars.Font = Enum.Font.SourceSansBold
+Cars.FontSize = Enum.FontSize.Size24
+Cars.Text = "Cars"
+Cars.TextColor3 = Color3.new(1, 1, 1)
+Cars.TextSize = 20
+Cars.TextWrapped = true
+
+Field.Name = "Field"
+Field.Parent = Priso
+Field.BackgroundColor3 = Color3.new(0.666667, 0, 1)
+Field.BorderSizePixel = 0
+Field.ClipsDescendants = true
+Field.Position = UDim2.new(0, 80, 0, 0)
+Field.Size = UDim2.new(0, 25, 0, 50)
+Field.Font = Enum.Font.SourceSansBold
+Field.FontSize = Enum.FontSize.Size24
+Field.Text = "Field"
+Field.TextColor3 = Color3.new(1, 1, 1)
+Field.TextSize = 20
+Field.TextWrapped = true
+
+Front.Name = "Front"
+Front.Parent = Priso
+Front.BackgroundColor3 = Color3.new(1, 0, 0)
+Front.BorderSizePixel = 0
+Front.ClipsDescendants = true
+Front.Size = UDim2.new(0, 80, 0, 25)
+Front.Font = Enum.Font.SourceSansBold
+Front.FontSize = Enum.FontSize.Size24
+Front.Text = "Front"
+Front.TextColor3 = Color3.new(1, 1, 1)
+Front.TextSize = 20
+Front.TextWrapped = true
+
+Other.Name = "Other"
+Other.Parent = Window
+Other.BackgroundColor3 = Color3.new(0, 0.333333, 1)
+Other.BorderSizePixel = 0
+Other.ClipsDescendants = true
+Other.Position = UDim2.new(0, 20, 0, 290)
+Other.Size = UDim2.new(0, 80, 0, 50)
+Other.Font = Enum.Font.SourceSansBold
+Other.FontSize = Enum.FontSize.Size24
+Other.Text = "Other"
+Other.TextColor3 = Color3.new(1, 1, 1)
+Other.TextSize = 20
+Other.TextWrapped = true
+
+Circle_5.Name = "Circle"
+Circle_5.Parent = Other
+Circle_5.BackgroundColor3 = Color3.new(1, 1, 1)
+Circle_5.BackgroundTransparency = 1
+Circle_5.Position = UDim2.new(0, 32, 0, 20)
+Circle_5.Image = "rbxassetid://232918622"
+Circle_5.ImageColor3 = Color3.new(0, 0, 0)
+
+Othe.Name = "Othe"
+Othe.Parent = Window
+Othe.BackgroundColor3 = Color3.new(1, 0, 0)
+Othe.BorderSizePixel = 0
+Othe.Position = UDim2.new(0, 100, 0, 290)
+Othe.Size = UDim2.new(0, 80, 0, 50)
+Othe.Visible = false
+
+Cave.Name = "Cave"
+Cave.Parent = Othe
+Cave.BackgroundColor3 = Color3.new(0, 0, 1)
+Cave.BorderSizePixel = 0
+Cave.ClipsDescendants = true
+Cave.Position = UDim2.new(0, 0, 0, 25)
+Cave.Size = UDim2.new(0, 80, 0, 25)
+Cave.Font = Enum.Font.SourceSansBold
+Cave.FontSize = Enum.FontSize.Size24
+Cave.Text = "Cave"
+Cave.TextColor3 = Color3.new(1, 1, 1)
+Cave.TextSize = 20
+Cave.TextWrapped = true
+
+SR.Name = "SR"
+SR.Parent = Othe
+SR.BackgroundColor3 = Color3.new(1, 0, 0)
+SR.BorderSizePixel = 0
+SR.ClipsDescendants = true
+SR.Size = UDim2.new(0, 80, 0, 25)
+SR.Font = Enum.Font.SourceSansBold
+SR.FontSize = Enum.FontSize.Size24
+SR.Text = "Shooting Range"
+SR.TextColor3 = Color3.new(1, 1, 1)
+SR.TextScaled = true
+SR.TextSize = 20
+SR.TextWrapped = true
+
+DOnut.Name = "DOnut"
+DOnut.Parent = Othe
+DOnut.BackgroundColor3 = Color3.new(0.666667, 0, 1)
+DOnut.BorderSizePixel = 0
+DOnut.ClipsDescendants = true
+DOnut.Position = UDim2.new(0, 80, 0, 0)
+DOnut.Size = UDim2.new(0, 80, 0, 25)
+DOnut.Font = Enum.Font.SourceSansBold
+DOnut.FontSize = Enum.FontSize.Size24
+DOnut.Text = "Donut"
+DOnut.TextColor3 = Color3.new(1, 1, 1)
+DOnut.TextSize = 20
+DOnut.TextWrapped = true
+
+-- SCRIPTS
+--Open
+Prison.MouseButton1Click:connect(function()
+Priso.Visible = true
+Circle_4:TweenSize(UDim2.new(3, 0, 3, 0), "Out", "Quad", 0.1, true)
+Circle_4:TweenPosition(UDim2.new(-1,0,-1,0), "Out", "Quad", 0.1, true)
+Circle_4.ImageTransparency = 0.01
+wait(0.01)
+Circle_4.ImageTransparency = 0.2
+wait(0.01)
+Circle_4.ImageTransparency = 0.3
+wait(0.01)
+Circle_4.ImageTransparency = 0.4
+wait(0.01)
+Circle_4.ImageTransparency = 0.5
+wait(0.01)
+Circle_4.ImageTransparency = 0.6
+wait(0.01)
+Circle_4.ImageTransparency = 0.7
+wait(0.01)
+Circle_4.ImageTransparency = 0.8
+wait(0.01)
+Circle_4.ImageTransparency = 0.9
+wait(0.01)
+Circle_4.ImageTransparency = 1
+wait(0.01)
+Circle_4.ImageTransparency = 0
+Circle_4:TweenPosition(UDim2.new(0,32,0,20), "Out", "Quad", 0.1, true)
+Circle_4:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Quad", 0, true)
+end)
+Jewelry.MouseButton1Click:connect(function()
+JLRY.Visible = true
+Circle_2:TweenSize(UDim2.new(3, 0, 3, 0), "Out", "Quad", 0.1, true)
+Circle_2:TweenPosition(UDim2.new(-1,0,-1,0), "Out", "Quad", 0.1, true)
+Circle_2.ImageTransparency = 0.01
+wait(0.01)
+Circle_2.ImageTransparency = 0.2
+wait(0.01)
+Circle_2.ImageTransparency = 0.3
+wait(0.01)
+Circle_2.ImageTransparency = 0.4
+wait(0.01)
+Circle_2.ImageTransparency = 0.5
+wait(0.01)
+Circle_2.ImageTransparency = 0.6
+wait(0.01)
+Circle_2.ImageTransparency = 0.7
+wait(0.01)
+Circle_2.ImageTransparency = 0.8
+wait(0.01)
+Circle_2.ImageTransparency = 0.9
+wait(0.01)
+Circle_2.ImageTransparency = 1
+wait(0.01)
+Circle_2.ImageTransparency = 0
+Circle_2:TweenPosition(UDim2.new(0,32,0,20), "Out", "Quad", 0.1, true)
+Circle_2:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Quad", 0, true)
+end)
+Helicopter.MouseButton1Click:connect(function()
+Heli.Visible = true
+Circle_3:TweenSize(UDim2.new(3, 0, 3, 0), "Out", "Quad", 0.1, true)
+Circle_3:TweenPosition(UDim2.new(-1,0,-1,0), "Out", "Quad", 0.1, true)
+Circle_3.ImageTransparency = 0.01
+wait(0.01)
+Circle_3.ImageTransparency = 0.2
+wait(0.01)
+Circle_3.ImageTransparency = 0.3
+wait(0.01)
+Circle_3.ImageTransparency = 0.4
+wait(0.01)
+Circle_3.ImageTransparency = 0.5
+wait(0.01)
+Circle_3.ImageTransparency = 0.6
+wait(0.01)
+Circle_3.ImageTransparency = 0.7
+wait(0.01)
+Circle_3.ImageTransparency = 0.8
+wait(0.01)
+Circle_3.ImageTransparency = 0.9
+wait(0.01)
+Circle_3.ImageTransparency = 1
+wait(0.01)
+Circle_3.ImageTransparency = 0
+Circle_3:TweenPosition(UDim2.new(0,32,0,20), "Out", "Quad", 0.1, true)
+Circle_3:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Quad", 0, true)
+end)
+Bank.MouseButton1Click:connect(function()
+Ban.Visible = true
+Circle:TweenSize(UDim2.new(3, 0, 3, 0), "Out", "Quad", 0.1, true)
+Circle:TweenPosition(UDim2.new(-1,0,-1,0), "Out", "Quad", 0.1, true)
+Circle.ImageTransparency = 0.01
+wait(0.01)
+Circle.ImageTransparency = 0.2
+wait(0.01)
+Circle.ImageTransparency = 0.3
+wait(0.01)
+Circle.ImageTransparency = 0.4
+wait(0.01)
+Circle.ImageTransparency = 0.5
+wait(0.01)
+Circle.ImageTransparency = 0.6
+wait(0.01)
+Circle.ImageTransparency = 0.7
+wait(0.01)
+Circle.ImageTransparency = 0.8
+wait(0.01)
+Circle.ImageTransparency = 0.9
+wait(0.01)
+Circle.ImageTransparency = 1
+wait(0.01)
+Circle.ImageTransparency = 0
+Circle:TweenPosition(UDim2.new(0,32,0,20), "Out", "Quad", 0.1, true)
+Circle:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Quad", 0, true)
+end)
+Other.MouseButton1Click:connect(function()
+Othe.Visible = true
+Circle_5:TweenSize(UDim2.new(3, 0, 3, 0), "Out", "Quad", 0.1, true)
+Circle_5:TweenPosition(UDim2.new(-1,0,-1,0), "Out", "Quad", 0.1, true)
+Circle_5.ImageTransparency = 0.01
+wait(0.01)
+Circle_5.ImageTransparency = 0.2
+wait(0.01)
+Circle_5.ImageTransparency = 0.3
+wait(0.01)
+Circle_5.ImageTransparency = 0.4
+wait(0.01)
+Circle_5.ImageTransparency = 0.5
+wait(0.01)
+Circle_5.ImageTransparency = 0.6
+wait(0.01)
+Circle_5.ImageTransparency = 0.7
+wait(0.01)
+Circle_5.ImageTransparency = 0.8
+wait(0.01)
+Circle_5.ImageTransparency = 0.9
+wait(0.01)
+Circle_5.ImageTransparency = 1
+wait(0.01)
+Circle_5.ImageTransparency = 0
+Circle_5:TweenPosition(UDim2.new(0,32,0,20), "Out", "Quad", 0.1, true)
+Circle_5:TweenSize(UDim2.new(0, 0, 0, 0), "Out", "Quad", 0, true)
+end)
+-- Bank
+Vault.MouseButton1Click:connect(function()
+Ban.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(35.4850616, 0.715307713, 809.113647) + Vector3.new(1,0,0)
+end)
+Top2.MouseButton1Click:connect(function()
+Ban.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(11.18, 17.9, 788.27) + Vector3.new(1,0,0)
+end)
+
+-- Jewelry
+Bottom.MouseButton1Click:connect(function()
+JLRY.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(137.325, 17.878, 1320.123) + Vector3.new(1,0,0)
+end)
+Top.MouseButton1Click:connect(function()
+JLRY.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(109.72, 98.65, 1304.22) + Vector3.new(1,0,0)
+end)
+
+-- Others
+SR.MouseButton1Click:connect(function()
+Othe.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-22.68, 17.81, -1758.71) + Vector3.new(1,0,0)
+end)
+DOnut.MouseButton1Click:connect(function()
+Othe.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(245.92, 17.81, -1756.59) + Vector3.new(1,0,0)
+end)
+Cave.MouseButton1Click:connect(function()
+Othe.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1642.32, 49.77, -1736.75) + Vector3.new(1,0,0)
+end)
+
+-- Prison
+Field.MouseButton1Click:connect(function()
+Priso.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1219.61, 17.79, -1760.19) + Vector3.new(1,0,0)
+end)
+Front.MouseButton1Click:connect(function()
+Priso.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1138.66, 18.009, -1430.01) + Vector3.new(1,0,0)
+end)
+Cars.MouseButton1Click:connect(function()
+Priso.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1100.4469, 17.7500038, -1493.18286) + Vector3.new(1,0,0)
+end)
+
+-- Heli
+Base1.MouseButton1Click:connect(function()
+Heli.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1176.4231, 59.7911148, -1572.6908) + Vector3.new(1,0,0)
+end)
+Base2.MouseButton1Click:connect(function()
+Heli.Visible = false
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(751.44,69.52,1124.96) + Vector3.new(1,0,0)
+end)
+
+mouse.KeyDown:connect(function(key)
+        if key == "n" then
+ScreenGui.Enabled = false
+        elseif key == "m" then
+ScreenGui.Enabled = true
+        end            
+    end)

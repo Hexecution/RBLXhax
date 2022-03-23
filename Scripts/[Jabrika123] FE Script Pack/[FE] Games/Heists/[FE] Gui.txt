@@ -1,0 +1,124 @@
+-- Objects
+-- Vouch! dont be a leech
+local HeistsGui = Instance.new("ScreenGui")
+local TopFrame = Instance.new("Frame")
+local MainFrame = Instance.new("Frame")
+local Car = Instance.new("TextButton")
+local r1 = Instance.new("TextButton")
+local r2 = Instance.new("TextButton")
+local r4 = Instance.new("TextButton")
+local r3 = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+
+-- Properties
+
+HeistsGui.Name = "HeistsGui"
+HeistsGui.Parent = CoreGui
+
+TopFrame.Name = "TopFrame"
+TopFrame.Parent = HeistsGui
+TopFrame.BackgroundColor3 = Color3.new(0.137255, 0.117647, 0.113725)
+TopFrame.Position = UDim2.new(0.492378056, 0, 0.599999964, 0)
+TopFrame.Size = UDim2.new(0, 286, 0, 189)
+
+MainFrame.Name = "Main Frame"
+MainFrame.Parent = TopFrame
+MainFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+MainFrame.Position = UDim2.new(0.031468533, 0, 0.0476190522, 0)
+MainFrame.Size = UDim2.new(0, 271, 0, 170)
+
+Car.Name = "Car"
+Car.Parent = MainFrame
+Car.BackgroundColor3 = Color3.new(1, 1, 1)
+Car.Position = UDim2.new(0.0442804433, 0, 0.105882354, 0)
+Car.Size = UDim2.new(0, 79, 0, 23)
+Car.Font = Enum.Font.SourceSans
+Car.Text = "Spawn Car!"
+Car.TextColor3 = Color3.new(0, 0, 0)
+Car.TextSize = 14
+Car.MouseButton1Click:Connect(function()
+local A_1 = "Car7" -- Example : Car1, Car2, Car3, Car4, Car5, Car7, Car8
+local Event = game:GetService("ReplicatedStorage").remoteBuyCar
+Event:FireServer(A_1, 1, 1) 
+end)
+
+r1.Name = "r1"
+r1.Parent = MainFrame
+r1.BackgroundColor3 = Color3.new(1, 1, 1)
+r1.Position = UDim2.new(0.0313653126, 0, 0.323529422, 0)
+r1.Size = UDim2.new(0, 86, 0, 30)
+r1.Font = Enum.Font.SourceSans
+r1.Text = "Room 1"
+r1.TextColor3 = Color3.new(0, 0, 0)
+r1.TextSize = 14
+r1.MouseButton1Click:Connect(function()
+game.ReplicatedStorage.remoteBuyRoom:FireServer(1) --Rooms 1-4
+end)
+
+r2.Name = "r2"
+r2.Parent = r1
+r2.BackgroundColor3 = Color3.new(1, 1, 1)
+r2.Position = UDim2.new(0, 0, 1.43333328, 0)
+r2.Size = UDim2.new(0, 85, 0, 25)
+r2.Font = Enum.Font.SourceSans
+r2.Text = "Room 2"
+r2.TextColor3 = Color3.new(0, 0, 0)
+r2.TextSize = 14
+r2.MouseButton1Click:Connect(function()
+game.ReplicatedStorage.remoteBuyRoom:FireServer(2) --Rooms 1-4
+end)
+
+r4.Name = "r4"
+r4.Parent = r2
+r4.BackgroundColor3 = Color3.new(1, 1, 1)
+r4.Position = UDim2.new(1.94117641, 0, 0.0399999991, 0)
+r4.Size = UDim2.new(0, 87, 0, 26)
+r4.Font = Enum.Font.SourceSans
+r4.Text = "Room 4"
+r4.TextColor3 = Color3.new(0, 0, 0)
+r4.TextSize = 14
+r4.MouseButton1Click:Connect(function()
+game.ReplicatedStorage.remoteBuyRoom:FireServer(4) --Rooms 1-4
+end)
+
+r3.Name = "r3"
+r3.Parent = r4
+r3.BackgroundColor3 = Color3.new(1, 1, 1)
+r3.Position = UDim2.new(0, 0, -1.65384614, 0)
+r3.Size = UDim2.new(0, 85, 0, 28)
+r3.Font = Enum.Font.SourceSans
+r3.Text = "Room 3"
+r3.TextColor3 = Color3.new(0, 0, 0)
+r3.TextSize = 14
+r3.MouseButton1Click:Connect(function()
+game.ReplicatedStorage.remoteBuyRoom:FireServer(3) --Rooms 1-4
+end)
+
+TextLabel.Parent = MainFrame
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.Position = UDim2.new(0.464944661, 0, -0.176470593, 0)
+TextLabel.Size = UDim2.new(0, 198, 0, 63)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Credits to dabmaster69 and zeestriaa"
+TextLabel.TextColor3 = Color3.new(0, 0, 0)
+TextLabel.TextSize = 14
+
+TextButton.Parent = MainFrame
+TextButton.BackgroundColor3 = Color3.new(1, 1, 1)
+TextButton.Position = UDim2.new(0.0350553505, 0, 0.800000012, 0)
+TextButton.Size = UDim2.new(0, 252, 0, 25)
+TextButton.Font = Enum.Font.SourceSans
+TextButton.Text = "Insta Rob"
+TextButton.TextColor3 = Color3.new(0, 0, 0)
+TextButton.TextSize = 14
+TextButton.MouseButton1Click:Connect(function()
+game:GetService("Lighting").ItemConfiguration.Watch.StealTime.Value = 0.1 -- Item Name: Diamond, Computer, Server, Watch, etc
+local mouse = game:GetService("Players").LocalPlayer:GetMouse()
+mouse.KeyDown:connect(function(key)
+if key == "e" then
+game:GetService("ReplicatedStorage").remoteGiveCashCarried:FireServer(mouse.Target)
+end
+end)
+
+end)

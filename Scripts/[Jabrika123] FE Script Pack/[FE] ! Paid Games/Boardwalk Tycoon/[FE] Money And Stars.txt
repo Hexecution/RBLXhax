@@ -1,0 +1,4 @@
+for i = 1, 6 do
+game.ReplicatedStorage.Events.UpdateVal:FireServer(workspace.Stats[game.Players.LocalPlayer.Name]['Save' .. i].Coins, -math.huge)
+game.ReplicatedStorage.Events.UpdateVal:FireServer(workspace.Stats[game.Players.LocalPlayer.Name]['Save' .. i].Stars, -math.huge)
+end

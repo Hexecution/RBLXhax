@@ -1,0 +1,250 @@
+-- Objects
+
+local gui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local color = Instance.new("Frame")
+local title = Instance.new("TextLabel")
+local guimaker = Instance.new("TextLabel")
+local scriptsfrom = Instance.new("TextLabel")
+local limo = Instance.new("TextButton")
+local pickacar = Instance.new("TextLabel")
+local Heli = Instance.new("TextButton")
+local Golfcart = Instance.new("TextButton")
+local jeep = Instance.new("TextButton")
+local Archer = Instance.new("TextButton")
+local Seminole = Instance.new("TextButton")
+local Monotracer = Instance.new("TextButton")
+local moneygiver = Instance.new("TextButton")
+local invite = Instance.new("TextLabel")
+
+-- Properties
+
+gui.Name = "gui"
+gui.Parent = game.CoreGui
+
+main.Name = "main"
+main.Parent = gui
+main.BackgroundColor3 = Color3.new(0, 0.666667, 1)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.323584914, 0, 0.199623346, 0)
+main.Size = UDim2.new(0, 416, 0, 319)
+main.Active = true
+main.Draggable = true
+
+color.Name = "color"
+color.Parent = main
+color.BackgroundColor3 = Color3.new(1, 1, 1)
+color.BorderSizePixel = 0
+color.Size = UDim2.new(0, 416, 0, 88)
+
+title.Name = "title"
+title.Parent = color
+title.BackgroundColor3 = Color3.new(1, 1, 1)
+title.BackgroundTransparency = 1
+title.BorderSizePixel = 0
+title.Position = UDim2.new(0.259615391, 0, 0.215909094, 0)
+title.Size = UDim2.new(0, 200, 0, 50)
+title.Font = Enum.Font.Highway
+title.Text = "The Plaza Vehicle Spawner GUI"
+title.TextColor3 = Color3.new(0.333333, 0.666667, 1)
+title.TextSize = 30
+
+guimaker.Name = "guimaker"
+guimaker.Parent = color
+guimaker.BackgroundColor3 = Color3.new(1, 1, 1)
+guimaker.BackgroundTransparency = 1
+guimaker.BorderSizePixel = 0
+guimaker.Position = UDim2.new(-0.0408653617, 0, 0.613636374, 0)
+guimaker.Size = UDim2.new(0, 200, 0, 50)
+guimaker.Font = Enum.Font.Highway
+guimaker.Text = "GUI Maker - Jimbo#9089"
+guimaker.TextSize = 14
+
+scriptsfrom.Name = "scriptsfrom"
+scriptsfrom.Parent = color
+scriptsfrom.BackgroundColor3 = Color3.new(1, 1, 1)
+scriptsfrom.BackgroundTransparency = 1
+scriptsfrom.BorderSizePixel = 0
+scriptsfrom.Position = UDim2.new(0.550480783, 0, 0.613636374, 0)
+scriptsfrom.Size = UDim2.new(0, 200, 0, 50)
+scriptsfrom.Font = Enum.Font.Highway
+scriptsfrom.Text = "Scripts from  - Hazzel#7453"
+scriptsfrom.TextSize = 14
+
+limo.Name = "limo"
+limo.Parent = main
+limo.BackgroundColor3 = Color3.new(1, 1, 1)
+limo.BorderSizePixel = 0
+limo.Position = UDim2.new(0, 0, 0.366771162, 0)
+limo.Size = UDim2.new(0, 98, 0, 61)
+limo.Font = Enum.Font.SourceSans
+limo.Text = "Limo"
+limo.TextSize = 40
+
+pickacar.Name = "pick a car"
+pickacar.Parent = main
+pickacar.BackgroundColor3 = Color3.new(1, 1, 1)
+pickacar.BackgroundTransparency = 1
+pickacar.BorderSizePixel = 0
+pickacar.Position = UDim2.new(0.259615391, 0, 0.234717876, 0)
+pickacar.Size = UDim2.new(0, 200, 0, 50)
+pickacar.Font = Enum.Font.Highway
+pickacar.Text = "Pick a vehicle"
+pickacar.TextColor3 = Color3.new(1, 1, 1)
+pickacar.TextSize = 30
+
+Heli.Name = "Heli"
+Heli.Parent = main
+Heli.BackgroundColor3 = Color3.new(1, 1, 1)
+Heli.BorderSizePixel = 0
+Heli.Position = UDim2.new(0.358173102, 0, 0.366771162, 0)
+Heli.Size = UDim2.new(0, 98, 0, 61)
+Heli.Font = Enum.Font.SourceSans
+Heli.Text = "Heli"
+Heli.TextSize = 40
+
+Golfcart.Name = "Golfcart"
+Golfcart.Parent = main
+Golfcart.BackgroundColor3 = Color3.new(1, 1, 1)
+Golfcart.BorderSizePixel = 0
+Golfcart.Position = UDim2.new(0.723557651, 0, 0.366771162, 0)
+Golfcart.Size = UDim2.new(0, 98, 0, 61)
+Golfcart.Font = Enum.Font.SourceSans
+Golfcart.Text = "Golf Cart"
+Golfcart.TextSize = 30
+
+jeep.Name = "jeep"
+jeep.Parent = main
+jeep.BackgroundColor3 = Color3.new(1, 1, 1)
+jeep.BorderSizePixel = 0
+jeep.Position = UDim2.new(-5.96046448e-08, 0, 0.586206913, 0)
+jeep.Size = UDim2.new(0, 98, 0, 61)
+jeep.Font = Enum.Font.SourceSans
+jeep.Text = "Jeep"
+jeep.TextSize = 40
+
+Archer.Name = "Archer"
+Archer.Parent = main
+Archer.BackgroundColor3 = Color3.new(1, 1, 1)
+Archer.BorderSizePixel = 0
+Archer.Position = UDim2.new(0.358173013, 0, 0.586206913, 0)
+Archer.Size = UDim2.new(0, 98, 0, 61)
+Archer.Font = Enum.Font.SourceSans
+Archer.Text = "Archer"
+Archer.TextSize = 40
+
+Seminole.Name = "Seminole"
+Seminole.Parent = main
+Seminole.BackgroundColor3 = Color3.new(1, 1, 1)
+Seminole.BorderSizePixel = 0
+Seminole.Position = UDim2.new(0.723557591, 0, 0.586206913, 0)
+Seminole.Size = UDim2.new(0, 98, 0, 61)
+Seminole.Font = Enum.Font.SourceSans
+Seminole.Text = "Seminole"
+Seminole.TextSize = 30
+
+Monotracer.Name = "Monotracer"
+Monotracer.Parent = main
+Monotracer.BackgroundColor3 = Color3.new(1, 1, 1)
+Monotracer.BorderSizePixel = 0
+Monotracer.Position = UDim2.new(-1.1920929e-07, 0, 0.808777452, 0)
+Monotracer.Size = UDim2.new(0, 98, 0, 61)
+Monotracer.Font = Enum.Font.SourceSans
+Monotracer.Text = "Monotracer"
+Monotracer.TextSize = 24
+
+moneygiver.Name = "moneygiver"
+moneygiver.Parent = main
+moneygiver.BackgroundColor3 = Color3.new(1, 1, 1)
+moneygiver.BorderSizePixel = 0
+moneygiver.Position = UDim2.new(0.358173013, 0, 0.808777452, 0)
+moneygiver.Size = UDim2.new(0, 98, 0, 61)
+moneygiver.Font = Enum.Font.SourceSans
+moneygiver.Text = "Money Giver"
+moneygiver.TextSize = 23
+
+invite.Name = "invite"
+invite.Parent = main
+invite.BackgroundColor3 = Color3.new(1, 1, 1)
+invite.BackgroundTransparency = 1
+invite.BorderSizePixel = 0
+invite.Position = UDim2.new(0.599759638, 0, 0.82601881, 0)
+invite.Size = UDim2.new(0, 159, 0, 50)
+invite.Font = Enum.Font.Highway
+invite.Text = "https://discordapp.com/invite/CbNtdRJ"
+invite.TextColor3 = Color3.new(1, 1, 1)
+invite.TextSize = 20
+invite.TextWrapped = true
+
+
+limo.MouseButton1Down:connect(function()
+local remote = Game["ReplicatedStorage"]["ServerStats"]["SpawnVehicle"]
+local args = {
+    [1] = "Limo",
+    [2] = "Deep blue"
+}
+remote:FireServer(unpack(args))
+end)
+
+Archer.MouseButton1Down:connect(function()
+local remote = Game["ReplicatedStorage"]["ServerStats"]["SpawnVehicle"]
+local args = {
+    [1] = "Archer",
+    [2] = "Deep blue"
+}
+remote:FireServer(unpack(args))
+end)
+
+jeep.MouseButton1Down:connect(function()
+local remote = Game["ReplicatedStorage"]["ServerStats"]["SpawnVehicle"]
+local args = {
+    [1] = "Jeep",
+    [2] = "Deep blue"
+}
+remote:FireServer(unpack(args))
+end)
+
+
+Golfcart.MouseButton1Down:connect(function()
+local remote = Game["ReplicatedStorage"]["ServerStats"]["SpawnVehicle"]
+local args = {
+    [1] = "Golfcart",
+    [2] = "Deep blue"
+}
+remote:FireServer(unpack(args))
+end)
+
+
+Monotracer.MouseButton1Down:connect(function()
+local remote = Game["ReplicatedStorage"]["ServerStats"]["SpawnVehicle"]
+local args = {
+    [1] = "Monotracer",
+    [2] = "Deep blue"
+}
+remote:FireServer(unpack(args))
+end)
+
+Seminole.MouseButton1Down:connect(function()
+local remote = Game["ReplicatedStorage"]["ServerStats"]["SpawnVehicle"]
+local args = {
+    [1] = "Seminole",
+    [2] = "Deep blue"
+}
+remote:FireServer(unpack(args))
+end)
+
+Heli.MouseButton1Down:connect(function()
+local remote = Game["ReplicatedStorage"]["ServerStats"]["SpawnVehicle"]
+local args = {
+    [1] = "Heli",
+    [2] = "Deep blue"
+}
+remote:FireServer(unpack(args))
+end)
+
+moneygiver.MouseButton1Down:connect(function()
+	local amount = 10e9
+game.ReplicatedStorage.ServerStats.ChangeMoney:FireServer(amount, math.floor(math.sqrt(game.ReplicatedStorage.ServerStats.CurrentID.Value)) + 1337)
+
+--credits to hazzel
+end)

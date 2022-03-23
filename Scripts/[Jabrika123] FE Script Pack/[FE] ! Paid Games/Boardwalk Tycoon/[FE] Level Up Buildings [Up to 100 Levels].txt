@@ -1,0 +1,11 @@
+local save = "Save1"
+
+function level(a)
+game.ReplicatedStorage.Events.LevelUpBuilding:FireServer(a)
+end
+
+for i=1,100 do
+for i,v in pairs(game.Workspace.Stats[game.Players.LocalPlayer.Name][save].Buildings:GetChildren())do
+level(v)
+end
+end

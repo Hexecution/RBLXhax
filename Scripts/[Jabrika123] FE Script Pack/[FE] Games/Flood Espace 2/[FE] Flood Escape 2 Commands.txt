@@ -1,0 +1,48 @@
+local Player = game.Players.LocalPlayer
+local Mouse = Player:GetMouse()
+local Multiplayer = game.Workspace.Multiplayer
+
+Mouse.KeyDown:Connect(function(Key)
+if Key == "z" then
+local Map = Multiplayer.Map
+local Btns = {}
+local Desc = {}
+for i, v in pairs(Map:GetDescendants())do
+Desc[v.Name.."Obj"] = v
+end
+for i=0,30 do
+if Desc["_Button".. tostring(i).. "Obj"] ~= nil then
+table.insert(Btns,Desc["_Button".. tostring(i).. "Obj"])
+end
+end
+for i, v in pairs(Btns)do
+local Hitbox = v.Hitbox
+Player.Character.HumanoidRootPart.CFrame = Hitbox.CFrame
+wait(0.3)
+end
+elseif Key == "x" then
+local Map = Multiplayer.Map
+local ExitBlock = Map:FindFirstChild("ExitBlock")
+local Char = Player.Character
+local Ts = game:GetService("TweenService")
+local Ti = TweenInfo.new(
+2,
+Enum.EasingStyle.Sine,
+Enum.EasingDirection.Out,
+0,
+false,
+0
+)
+local Tp = {
+CFrame = ExitBlock.CFrame
+}
+if ExitBlock ~= nil and ExitBlock:IsA("Part") then
+local Tw = Ts:Create(Player.Character.HumanoidRootPart,Ti,Tp)
+wait(0.1)
+Tw:Play()
+end
+elseif Key == "c" then
+local Map = Multiplayer.Map
+Map.ExitBlock:Destroy()
+end
+end)

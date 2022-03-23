@@ -1,0 +1,10 @@
+local Player = game.Players.LocalPlayer
+local pahthing = "plsnohackmygameipoormanwithlittlepennies" .. math.floor(Player.UserId * 3.16)
+
+game.Workspace.Zombies.ChildAdded:connect(function(c)
+   for i=1,100 do
+       game.ReplicatedStorage.RemoteEvents.RemoteDealDamage:FireServer(Workspace.Zombies.Zombie['Head'], game.Players.LocalPlayer.Backpack.Pistol, {Critical = true, PAH = pahthing})
+   end
+end)
+
+print("Auto Grinder Loaded")
